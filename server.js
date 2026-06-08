@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const db = require('./config/db'); // Jalur disesuaikan karena db.js sekarang di dalam folder config
 const authController = require('./controllers/authController'); // Manggil logika registrasi & login
+const bookingController = require('./controllers/bookingController'); // Manggil CRUD booking
 
 dotenv.config();
 
@@ -31,6 +32,11 @@ app.get('/api/test-db', async (req, res) => {
 app.post('/api/auth/register', authController.register);
 app.post('/api/auth/login', authController.login);
 
+// 3. ROUTE CRUD BOOKING
+app.post('/api/booking', bookingController.create);      // Membuat pesanan
+app.get('/api/booking', bookingController.getAll);       // Melihat semua pesanan
+app.put('/api/booking/:id', bookingController.update);   // Mengedit pesanan
+app.delete('/api/booking/:id', bookingController.delete); // Menghapus pesanan
 
 // MENJALANKAN SERVER
 const PORT = process.env.PORT || 5000;
