@@ -5,7 +5,8 @@ const jwt = require('jsonwebtoken');
 
 // 1. LOGIKA DAFTAR (REGISTER)
 exports.register = async (req, res) => {
-    const { name, email, password } = req.body;
+    // Tambahkan 'phone' agar ikut ditangkap dari request body front-end
+    const { name, email, phone, password } = req.body;
 
     try {
         // Cek apakah email sudah pernah terdaftar di database
@@ -18,10 +19,10 @@ exports.register = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Masukkan data user baru ke tabel phpMyAdmin
+        // Masukkan data user baru ke tabel phpMyAdmin (Disisipkan kolom phone)
         await db.query(
-            'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
-            [name, email, hashedPassword, 'user']
+            'INSERT INTO users (name, email, phone, password, role) VALUES (?, ?, ?, ?, ?)',
+            [name, email, phone, hashedPassword, 'user'] // Urutan array harus sama dengan tanda tanya (?) di atas
         );
 
         return res.status(201).json({ message: 'User berhasil didaftarkan!' });

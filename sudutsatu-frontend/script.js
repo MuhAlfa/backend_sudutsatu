@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dataRegister = {
                 name: document.getElementById('fullName').value, // Sesuai id="fullName"
                 email: document.getElementById('email').value,    // Sesuai id="email"
+                phone: document.getElementById('phone').value,
                 password: password
                 // Jika database kamu nanti butuh nomor telepon, bisa tambahkan: 
                 // phone: document.getElementById('phone').value
