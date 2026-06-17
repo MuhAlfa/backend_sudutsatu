@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2026 at 08:15 AM
+-- Generation Time: Jun 17, 2026 at 03:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,13 +38,6 @@ CREATE TABLE `bookings` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `bookings`
---
-
-INSERT INTO `bookings` (`id`, `user_id`, `booking_date`, `start_time`, `end_time`, `total_price`, `status`, `created_at`) VALUES
-(1, 1, '2026-06-15', '15:00:00', '17:00:00', 300000, 'pending', '2026-06-08 06:13:39');
-
 -- --------------------------------------------------------
 
 --
@@ -56,6 +49,7 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `phone` varchar(15) DEFAULT NULL,
   `role` enum('user','admin') DEFAULT 'user',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -64,9 +58,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`) VALUES
-(1, 'Alfa', 'alfa@email.com', '$2b$10$HQfQ80iRSrApSHK4nAMzbu3DULETmhNk9ckT6iNQ8E5THtKcmy4J.', 'user', '2026-06-08 03:51:45'),
-(128324, 'Alfa', '250660121056@student.unsap.ac.id', 'unsap', 'admin', '2026-06-08 04:01:13');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `role`, `created_at`) VALUES
+(128325, 'tes', 'tes@gmail.com', '$2b$10$gzvcOBA.sqoBT5nuO5SO7OH8anfTHStgWfz6kHp12D1w3nyru4ZqS', NULL, 'user', '2026-06-17 13:05:53');
 
 --
 -- Indexes for dumped tables
@@ -100,7 +93,7 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128325;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128326;
 
 --
 -- Constraints for dumped tables
