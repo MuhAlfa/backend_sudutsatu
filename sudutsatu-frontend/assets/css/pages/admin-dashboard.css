@@ -1,0 +1,170 @@
+/* ==========================================================================
+   GLOBAL UTILITIES (Admin Specific)
+   ========================================================================== */
+body.admin-body { background-color: #050505; color: #ccc; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+.m-0 { margin: 0; } .mb-8 { margin-bottom: 8px; } .mb-12 { margin-bottom: 12px; } .mb-16 { margin-bottom: 16px; } .mb-24 { margin-bottom: 24px; } .mb-32 { margin-bottom: 32px; }
+.mt-4 { margin-top: 4px; } .mt-12 { margin-top: 12px; }
+.mx-4 { margin-left: 4px; margin-right: 4px; }
+.gap-4 { gap: 4px; } .gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .gap-16 { gap: 16px; }
+.d-flex { display: flex; } .d-block { display: block; }
+.align-center { align-items: center; } .align-start { align-items: flex-start; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.text-white { color: #fff; } .text-muted { color: #888; } .text-primary { color: var(--color-primary, #ccff00); }
+.text-small { font-size: 13px; } .text-tiny { font-size: 11px; }
+.bold { font-weight: 700; } .uppercase { text-transform: uppercase; }
+.text-decoration-none { text-decoration: none; }
+.line-height-normal { line-height: 1.5; }
+.position-relative { position: relative; }
+
+/* Kunci tinggi Top Bar agar tidak menyusut tertekan konten */
+.admin-topbar {
+  min-height: 70px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Memastikan dot notifikasi merah tampil benar di ikon lonceng */
+.notification-dot {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #ccff00;
+  border-radius: 50%;
+  border: 2px solid #0a0a0a;
+}
+
+/* Badge Merah Sidebar */
+.badge-red-icon {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #ff3333;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #0a0a0a;
+}
+
+/* ==========================================================================
+   LAYOUT UTAMA
+   ========================================================================== */
+.admin-layout { display: flex; height: 100vh; overflow: hidden; }
+
+/* ==========================================================================
+   SIDEBAR KIRI
+   ========================================================================== */
+.admin-sidebar { width: 260px; background-color: #0a0a0a; border-right: 1px solid #1a1a1a; display: flex; flex-direction: column; flex-shrink: 0; }
+.sidebar-header { padding: 24px; border-bottom: 1px solid #1a1a1a; }
+.brand-logo { display: flex; align-items: center; gap: 12px; }
+.brand-icon { width: 32px; height: 32px; background: rgba(204, 255, 0, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.brand-title { font-size: 16px; font-weight: 800; color: var(--color-primary); margin: 0; letter-spacing: 0.5px; }
+.brand-subtitle { font-size: 11px; color: #888; margin: 0; }
+
+.sidebar-menus { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 24px 0; overflow-y: auto; }
+.menu-list { list-style: none; padding: 0; margin: 0; }
+.menu-list li { margin-bottom: 4px; }
+.menu-item { display: flex; align-items: center; gap: 16px; padding: 14px 24px; color: #888; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.2s; border-left: 3px solid transparent; }
+.menu-item:hover { color: #fff; background: #111; }
+.menu-item.active { background: #1a1a00; color: var(--color-primary); border-left-color: var(--color-primary); font-weight: 600; }
+.bottom-menu { border-top: 1px solid #1a1a1a; padding-top: 16px; margin-top: 16px; }
+
+/* ==========================================================================
+   MAIN CONTENT AREA
+   ========================================================================== */
+.admin-main { flex-grow: 1; display: flex; flex-direction: column; background-color: #111; overflow: hidden; }
+
+/* --- TOP BAR --- */
+.admin-topbar { height: 70px; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: space-between; align-items: center; padding: 0 32px; }
+.topbar-search { display: flex; align-items: center; background: #141414; border: 1px solid #222; border-radius: 8px; padding: 10px 16px; gap: 12px; width: 400px; }
+.topbar-search input { background: transparent; border: none; color: #fff; width: 100%; outline: none; font-size: 13px; }
+.topbar-actions { display: flex; align-items: center; gap: 20px; }
+.icon-btn { background: transparent; border: none; color: #aaa; cursor: pointer; padding: 0; display: flex; align-items: center; transition: 0.2s; }
+.icon-btn:hover { color: #fff; }
+.notification-dot { position: absolute; top: 0; right: 2px; width: 8px; height: 8px; background: var(--color-primary); border-radius: 50%; border: 2px solid #0a0a0a; }
+.topbar-profile img { width: 32px; height: 32px; border-radius: 6px; object-fit: cover; border: 1px solid #333; }
+
+/* --- CONTENT AREA (Scrollable) --- */
+.admin-content-area { flex-grow: 1; padding: 32px; overflow-y: auto; }
+
+/* --- HEADER KONTEN --- */
+.page-title { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+.btn-outline-dark { background: transparent; border: 1px solid #333; color: #ccc; padding: 10px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.btn-outline-dark.active-btn { border-color: #555; color: #fff; }
+
+/* ==========================================================================
+   4 KARTU STATISTIK
+   ========================================================================== */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.stat-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 24px; border-radius: 12px; }
+.stat-label { font-size: 10px; font-weight: 700; color: #888; letter-spacing: 0.5px; }
+.stat-value { font-size: 40px; font-weight: 700; letter-spacing: -1px; line-height: 1; margin: 0; }
+.stat-trend { font-size: 11px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+
+/* Khusus Kartu 3: Pengguna Aktif & Avatar Tumpuk */
+.dot-online { display: inline-block; width: 6px; height: 6px; background: var(--color-primary); border-radius: 50%; }
+.relative-box { position: relative; }
+.avatar-stack { position: absolute; bottom: 20px; right: 20px; display: flex; }
+.avatar-circle { width: 28px; height: 28px; background: #333; border: 2px solid #0a0a0a; border-radius: 50%; margin-left: -8px; }
+.avatar-circle:nth-child(1) { background: #444; z-index: 3; margin-left: 0; }
+.avatar-circle:nth-child(2) { background: #555; z-index: 2; }
+.avatar-circle:nth-child(3) { background: #666; z-index: 1; }
+
+/* Khusus Kartu 4: Okupansi */
+.progress-container { width: 100%; height: 6px; background: #222; border-radius: 4px; overflow: hidden; }
+.progress-bar-inner { height: 100%; background: var(--color-primary); border-radius: 4px; }
+.dot-pink { display: inline-block; width: 6px; height: 6px; background: #ff77aa; border-radius: 50%; }
+.dot-yellow { display: inline-block; width: 6px; height: 6px; background: #ddaa00; border-radius: 50%; }
+
+/* ==========================================================================
+   GRID BAWAH (Chart & Aktivitas)
+   ========================================================================== */
+.bottom-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+.content-box { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 12px; padding: 24px; }
+.box-title { font-size: 18px; font-weight: 600; color: #fff; margin: 0; }
+
+/* --- CHART AREA (Kiri) --- */
+.legend-box { width: 12px; height: 12px; border-radius: 2px; }
+.bg-primary { background: var(--color-primary); } .bg-dark { background: #444; }
+
+.chart-area { position: relative; height: 250px; margin-top: 20px; display: flex; padding-left: 30px; padding-bottom: 30px; }
+.y-axis { position: absolute; left: 0; top: 0; bottom: 30px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: #666; }
+.grid-lines { flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; border-left: 1px solid #333; border-bottom: 1px solid #333; }
+.grid-line { width: 100%; height: 1px; background: repeating-linear-gradient(to right, #222, #222 5px, transparent 5px, transparent 10px); }
+.x-axis { position: absolute; bottom: 0; left: 30px; right: 0; display: flex; justify-content: space-around; align-items: flex-end; font-size: 11px; color: #888; padding-top: 10px; }
+.active-day { color: var(--color-primary); font-weight: 600; border-bottom: 2px solid var(--color-primary); padding-bottom: 4px; }
+
+/* --- AKTIVITAS TERBARU (Kanan) --- */
+.activity-list { display: flex; flex-direction: column; gap: 20px; }
+.activity-item { display: flex; align-items: flex-start; gap: 16px; }
+
+.icon-wrapper { width: 36px; height: 36px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+/* Varian Warna Icon */
+.icon-success { background: rgba(204,255,0,0.1); border: 1px solid rgba(204,255,0,0.3); color: var(--color-primary); }
+.icon-neutral { background: #1a1a1a; border: 1px solid #333; color: #aaa; }
+.icon-danger { background: rgba(255,85,85,0.1); border: 1px solid rgba(255,85,85,0.3); color: #ff5555; }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .bottom-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .admin-layout { flex-direction: column; overflow: visible; height: auto; }
+  .admin-sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #222; }
+  .admin-content-area { overflow-y: visible; }
+  .stats-row { grid-template-columns: 1fr; }
+  .admin-topbar { padding: 0 16px; }
+  .topbar-search { width: 200px; }
+}
+.spin-anim { animation: spin 1s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+

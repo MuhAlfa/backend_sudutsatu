@@ -1,0 +1,38 @@
+/* Layout & Sidebar User */
+.user-layout { display: flex; gap: 32px; padding: 32px 20px; max-width: 1200px; margin: 0 auto; min-height: 80vh; }
+.user-sidebar { width: 250px; flex-shrink: 0; }
+.user-content { flex-grow: 1; }
+
+.sidebar-menu { list-style: none; padding: 0; margin: 24px 0; }
+.sidebar-menu li { margin-bottom: 8px; }
+.sidebar-menu a { display: block; padding: 12px 16px; color: #888; border-radius: 8px; font-weight: 500; transition: 0.2s; }
+.sidebar-menu a:hover, .sidebar-menu a.active { background: #1a1a1a; color: var(--color-primary); }
+
+/* Dashboard Specific (Sesuai Mockup Hal 11) */
+.dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.stat-card { background: #141414; border: 1px solid #222; padding: 20px; border-radius: 12px; }
+.stat-value { font-size: 32px; font-weight: 700; color: #fff; margin: 8px 0; }
+
+.booking-card-large { background: #141414; border: 1px solid #222; border-radius: 12px; padding: 24px; position: relative; overflow: hidden; }
+.booking-card-large::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--color-primary); }
+.badge-status { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; }
+.badge-confirmed { background: rgba(204, 255, 0, 0.1); color: var(--color-primary); border: 1px solid var(--color-primary); }
+.badge-cancelled { background: rgba(255, 51, 51, 0.1); color: #ff3333; border: 1px solid #ff3333; }
+
+/* Timeline Activity */
+.activity-feed { border-left: 2px solid #222; margin-left: 12px; padding-left: 20px; }
+.activity-item { position: relative; margin-bottom: 24px; }
+.activity-item::before { content: ""; position: absolute; left: -26px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--color-primary); border: 2px solid #000; }
+
+/* Profile Specific (Sesuai Mockup Hal 15) */
+.profile-card { background: #141414; border: 1px solid #222; border-radius: 12px; padding: 32px; margin-bottom: 24px; }
+.profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.info-group label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+.info-group p { font-size: 16px; color: #fff; font-weight: 500; }
+.danger-zone { border: 1px solid #ff3333; background: rgba(255, 51, 51, 0.05); padding: 24px; border-radius: 12px; }
+
+@media (max-width: 768px) {
+  .user-layout, .dashboard-grid { flex-direction: column; display: flex; }
+  .user-sidebar { width: 100%; }
+}

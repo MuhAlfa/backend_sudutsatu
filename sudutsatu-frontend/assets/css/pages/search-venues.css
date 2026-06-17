@@ -1,0 +1,375 @@
+/* ==========================================================================
+   PAGE: SEARCH-VENUES.CSS
+   ========================================================================== */
+
+/* Layout Utama Halaman Pencarian (Sidebar + Grid) */
+.search-container {
+  display: flex;
+  flex-direction: column; /* Mobile First: Sidebar di atas Grid */
+  gap: 24px;
+  padding-top: 32px;
+  padding-bottom: 60px;
+}
+
+/* --- SIDEBAR FILTER --- */
+.filter-sidebar {
+  background-color: var(--color-bg-surface);
+  padding: 24px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky; /* Sticky filter */
+  top: 96px; /* Sticky di bawah Navbar */
+  height: max-content;
+}
+
+.filter-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--color-text-main);
+}
+
+.filter-group {
+  margin-bottom: 16px;
+}
+
+.filter-label {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+/* Styling Input Form (Clean & Reusable-ready) */
+.form-input, .form-select {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text-main);
+  font-family: var(--font-family);
+  font-size: 14px;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* --- VENUE LISTING GRID --- */
+.venue-listing {
+  flex: 1; /* Mengambil sisa ruang */
+}
+
+.listing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.results-count {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* Grid Lapangan (Responsive) */
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* --- REUSABLE COMPONENT: VENUE CARD --- */
+.venue-card {
+  background-color: var(--color-bg-surface);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.venue-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background-color: #1a1a1a; /* Fallback color */
+}
+
+.venue-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-type-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.venue-card-body {
+  padding: 20px;
+}
+
+.venue-card-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-text-main);
+}
+
+.venue-card-location {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.venue-card-details {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.venue-card-rating {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ffcc00; /* Warna Emas untuk Rating */
+}
+
+.venue-card-price {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.price-unit {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* --- STATE MANAGEMENT UI --- */
+.state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--color-text-muted);
+  grid-column: 1 / -1; /* Mengambil seluruh kolom grid */
+}
+
+.state-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .search-container {
+    flex-direction: row; /* Sidebar di kiri, Grid di kanan */
+  }
+  
+  .filter-sidebar {
+    width: 260px; /* Lebar tetap untuk sidebar */
+  }
+}
+
+/* =========================================================
+   NAVBAR SEARCH & SUB-NAVBAR
+   ========================================================= */
+.nav-search-bar {
+  display: flex;
+  align-items: center;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 6px 12px;
+  width: 250px;
+}
+.nav-search-bar input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+  margin-left: 8px;
+  width: 100%;
+}
+
+.sub-navbar {
+  background-color: #141414;
+  border-top: 1px solid #222; 
+  padding: 16px 0;
+  margin-top: auto; 
+}
+.sub-navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+}
+.sub-brand { font-size: 14px; font-weight: 700; color: #fff; }
+.sub-links { display: flex; gap: 24px; list-style: none; }
+.sub-links a { color: #888; letter-spacing: 0.5px; }
+.sub-links a:hover { color: var(--color-primary); }
+
+/* =========================================================
+   MAIN LAYOUT (2 COLUMNS)
+   ========================================================= */
+.search-layout {
+  display: flex;
+  gap: 32px;
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+
+/* =========================================================
+   SIDEBAR FILTERS
+   ========================================================= */
+.sidebar-filter {
+  width: 260px;
+  flex-shrink: 0;
+  background: #141414;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 24px;
+  height: fit-content;
+}
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+.filter-header h3 { font-size: 16px; }
+.btn-reset { background: none; border: none; color: #888; font-size: 11px; cursor: pointer; }
+
+.filter-group { margin-bottom: 24px; }
+.filter-group h4 {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.5px;
+}
+
+/* Checkbox Custom */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #ccc;
+}
+.checkbox-label input { position: absolute; opacity: 0; cursor: pointer; }
+.checkmark {
+  position: absolute; left: 0; top: 0; height: 18px; width: 18px;
+  background-color: #222; border: 1px solid #444; border-radius: 4px;
+}
+.checkbox-label input:checked ~ .checkmark { background-color: var(--color-primary); border-color: var(--color-primary); }
+.checkmark:after { content: ""; position: absolute; display: none; }
+.checkbox-label input:checked ~ .checkmark:after {
+  display: block; left: 6px; top: 2px; width: 4px; height: 10px;
+  border: solid #000; border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+.count { margin-left: auto; color: #555; font-size: 12px; }
+
+/* Ketersediaan Waktu (Grid Buttons) */
+.time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.btn-time {
+  background: #111; border: 1px solid #333; color: #ccc;
+  padding: 8px; border-radius: 4px; cursor: pointer; font-size: 13px;
+}
+.btn-time.active { background: var(--color-primary); color: #000; border-color: var(--color-primary); font-weight: 600; }
+
+/* =========================================================
+   SEARCH RESULTS (RIGHT COLUMN)
+   ========================================================= */
+.search-results { flex-grow: 1; }
+.results-header {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #141414; border: 1px solid #222; border-radius: 8px;
+  padding: 20px 24px; margin-bottom: 16px;
+}
+.results-title { font-size: 24px; margin-bottom: 4px; }
+.results-subtitle { font-size: 14px; color: #888; }
+.sort-by { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #888; }
+.sort-select { background: #111; color: #fff; border: 1px solid #333; padding: 6px 12px; border-radius: 4px; outline: none; }
+
+/* Active Filters Pills */
+.active-filters { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; font-size: 12px; }
+.active-filters .label { color: #888; }
+.pill { border: 1px solid var(--color-primary); color: var(--color-primary); padding: 4px 12px; border-radius: 20px; cursor: pointer; }
+.clear-all { color: #888; text-decoration: underline; }
+
+/* Venues Grid */
+.venues-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* Venue Card */
+.venue-card {
+  background: #141414; border: 1px solid #222; border-radius: 8px;
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.card-image-wrapper { position: relative; height: 180px; width: 100%; }
+.card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.image-placeholder { width: 100%; height: 100%; background: #222; display: flex; align-items: center; justify-content: center; color: #555; font-size: 12px; }
+
+/* Card Badges */
+.badge-stack { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 4px; }
+.badge-top-left { position: absolute; top: 12px; left: 12px; padding: 4px 8px; font-size: 10px; font-weight: 700; border-radius: 4px; }
+.badge-stack .badge-top-left { position: relative; top: 0; left: 0; width: max-content;}
+.badge-green { background: var(--color-primary); color: #000; }
+.badge-red { background: #ff3333; color: #fff; }
+.badge-dark { background: rgba(0,0,0,0.6); color: #ccc; border: 1px solid #444; }
+
+.btn-heart { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid #444; border-radius: 4px; width: 28px; height: 28px; cursor: pointer; }
+.badge-bottom-left { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.8); padding: 4px 8px; font-size: 12px; font-weight: 700; border-radius: 4px; }
+.review-count { font-weight: 400; color: #aaa; font-size: 10px; }
+.badge-bottom-right { position: absolute; bottom: 12px; right: 12px; color: var(--color-primary); font-size: 16px; }
+
+/* Card Body & Footer */
+.card-content { padding: 16px; flex-grow: 1; border-bottom: 1px solid #222; }
+.card-content h3 { font-size: 16px; margin-bottom: 4px; }
+.card-content p { font-size: 12px; color: #888; }
+
+.card-footer { padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
+.price-info .label { font-size: 10px; color: #888; display: block; margin-bottom: 4px; }
+.price { font-size: 16px; font-weight: 700; }
+.price-strike { font-size: 12px; color: #555; text-decoration: line-through; margin-left: 4px; font-weight: 400; }
+.btn-arrow { background: transparent; border: 1px solid #444; color: #fff; width: 32px; height: 32px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+.btn-arrow:hover { background: var(--color-primary); color: #000; border-color: var(--color-primary); }

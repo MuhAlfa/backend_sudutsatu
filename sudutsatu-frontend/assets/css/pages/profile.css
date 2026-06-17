@@ -1,0 +1,169 @@
+/* ==========================================================================
+   GLOBAL UTILITIES
+   ========================================================================== */
+body { background-color: #0d0d0d; color: #ccc; }
+.m-0 { margin: 0; }
+.pt-40 { padding-top: 40px; } .pb-64 { padding-bottom: 64px; } .py-12 { padding-top: 12px; padding-bottom: 12px; }
+.mb-8 { margin-bottom: 8px; } .mb-12 { margin-bottom: 12px; } .mb-16 { margin-bottom: 16px; } .mb-24 { margin-bottom: 24px; } .mb-32 { margin-bottom: 32px; } .mb-40 { margin-bottom: 40px; }
+.mt-24 { margin-top: 24px; } .mt-auto { margin-top: auto; }
+.gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .gap-16 { gap: 16px; } .gap-24 { gap: 24px; }
+.uppercase { text-transform: uppercase; } .tracking-wide { letter-spacing: 0.5px; }
+.text-small { font-size: 12px; } .bold { font-weight: 700; }
+.text-decoration-none { text-decoration: none; }
+.w-100 { width: 100%; } .d-flex { display: flex; } .d-flex-col { display: flex; flex-direction: column; }
+.flex-between-center { display: flex; justify-content: space-between; align-items: center; }
+.border-bottom-dark { border-bottom: 1px solid #222; } .pb-16 { padding-bottom: 16px; }
+
+/* ==========================================================================
+   NAVBAR KHUSUS PROFIL
+   ========================================================================== */
+.nav-flex-between { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.nav-left, .nav-right { display: flex; align-items: center; }
+.mr-32 { margin-right: 32px; }
+
+.nav-links-custom { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
+.nav-links-custom a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav-links-custom a:hover { color: var(--color-primary); }
+
+.search-box-custom { display: flex; align-items: center; background: #1a1a1a; border-radius: 8px; padding: 10px 16px; gap: 12px; margin-right: 24px; width: 300px; }
+.search-box-custom input { background: transparent; border: none; color: #fff; width: 100%; outline: none; font-size: 13px; }
+.profile-pill { display: flex; align-items: center; background: transparent; border: 1px solid #333; border-radius: 50px; padding: 4px 16px 4px 4px; gap: 12px; color: #fff; font-size: 13px; font-weight: 500; cursor: pointer; }
+.profile-pill img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+
+/* ==========================================================================
+   LAYOUT UTAMA (SIDEBAR + KONTEN KANAN)
+   ========================================================================== */
+.profile-layout { display: flex; gap: 32px; align-items: flex-start; }
+
+/* ==========================================================================
+   SIDEBAR KIRI
+   ========================================================================== */
+.profile-sidebar { width: 240px; flex-shrink: 0; position: sticky; top: 40px; }
+.sidebar-title { font-size: 24px; font-weight: 700; margin: 0; }
+.sidebar-subtitle { font-size: 10px; font-weight: 700; color: #666; letter-spacing: 1px; }
+
+.sidebar-menu { list-style: none; padding: 0; margin: 0; }
+.sidebar-menu li { margin-bottom: 4px; }
+.sidebar-menu a { display: flex; align-items: center; gap: 16px; padding: 14px 16px; color: #aaa; text-decoration: none; font-size: 14px; font-weight: 600; border-radius: 8px; transition: 0.2s; }
+
+/* Menu Riwayat Booking Aktif */
+.active-menu { background-color: rgba(204,255,0,0.05); color: var(--color-primary) !important; border-left: 3px solid var(--color-primary); border-radius: 0 8px 8px 0 !important; }
+.logout-menu:hover { color: #ff3333 !important; }
+
+/* Member Pro Card */
+.member-pro-card { background: transparent; border: 1px solid #222; border-radius: 8px; padding: 16px; }
+
+/* ==========================================================================
+   KONTEN KANAN
+   ========================================================================== */
+.profile-content { flex-grow: 1; min-width: 0; }
+.content-card { background-color: #141414; border: 1px solid #1a1a1a; border-radius: 12px; padding: 32px; }
+
+/* --- 1. HEADER PROFILE CARD --- */
+.avatar-wrapper { position: relative; width: 90px; height: 90px; border-radius: 12px; border: 2px solid var(--color-primary); padding: 2px; }
+.avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.btn-edit-avatar { position: absolute; bottom: -6px; right: -6px; width: 26px; height: 26px; background: #333; border: 2px solid #141414; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+
+.badge-custom { font-size: 9px; font-weight: 800; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+.badge-neon { border: 1px solid var(--color-primary); color: var(--color-primary); background: transparent; }
+.badge-dark { border: 1px solid #333; color: #aaa; background: transparent; }
+
+.btn-outline-gray { background: transparent; border: 1px solid #333; color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: 0.2s; }
+.btn-outline-gray:hover { border-color: #666; }
+
+/* --- 2. MIDDLE GRID (Detail Pribadi & Olahraga) --- */
+.profile-middle-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: stretch; }
+
+/* Detail Pribadi Custom Display Box */
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.detail-label { display: block; font-size: 10px; font-weight: 700; color: #666; margin-bottom: 8px; letter-spacing: 0.5px; }
+.detail-box { background: #1a1a1a; border: 1px solid #222; border-radius: 8px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.edit-icon-green { color: var(--color-primary); font-size: 14px; cursor: pointer; }
+.badge-verified { border: 1px solid var(--color-primary); color: var(--color-primary); font-size: 10px; padding: 4px 8px; border-radius: 4px; background: rgba(204,255,0,0.05); }
+
+/* Olahraga Pilihan */
+.btn-icon-plus { background: transparent; border: none; color: #fff; font-size: 24px; cursor: pointer; line-height: 1; }
+.sport-item { display: flex; justify-content: space-between; align-items: center; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 16px; border-radius: 8px; margin-bottom: 12px; }
+.sport-icon-box { width: 36px; height: 36px; background: #141414; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
+.badge-utama { font-size: 10px; font-weight: 700; background: rgba(204,255,0,0.1); padding: 4px 8px; border-radius: 4px; }
+.btn-remove-cross { background: transparent; border: none; color: #666; font-size: 20px; cursor: pointer; }
+
+/* --- 3. ZONA BAHAYA --- */
+.danger-zone-card { background: #1a0f0f; border: 1px solid #331a1a; border-left: 4px solid #ff3333; border-radius: 8px; padding: 24px 32px; }
+.text-red { color: #ff5555; }
+.btn-hapus-akun { background: transparent; border: 1px solid #ff3333; color: #ff3333; padding: 12px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.btn-hapus-akun:hover { background: #ff3333; color: #fff; }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .profile-middle-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .profile-layout { flex-direction: column; }
+  .profile-sidebar { width: 100%; position: relative; top: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .header-profile-card { flex-direction: column; text-align: center; gap: 24px; }
+  .header-profile-card .d-flex { flex-direction: column; align-items: center; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .danger-zone-card { flex-direction: column; text-align: center; gap: 24px; }
+}
+
+/* ==========================================================================
+   EDIT MODE STYLES & MODAL
+   ========================================================================== */
+.hidden { display: none !important; }
+
+/* Styling untuk input yang muncul saat edit */
+.detail-input {
+  display: none; /* <-- Tambahkan baris ini */
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  width: 90%;
+  outline: none;
+  padding: 4px 0;
+}
+.detail-input:focus { border-bottom: 2px solid var(--color-primary); }
+
+/* Jika class is-editing aktif pada detail-box */
+.detail-box.is-editing .detail-text { display: none; }
+.detail-box.is-editing .detail-input { display: block; }
+.detail-box.is-editing .box-actions,
+.detail-box.is-editing .edit-icon-green { display: none; }
+
+/* Modal & Input Field Styles */
+.modal-overlay { 
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+  background: rgba(0, 0, 0, 0.85); 
+  display: flex; align-items: center; justify-content: center; 
+  z-index: 1000; backdrop-filter: blur(4px); 
+}
+.modal-content { 
+  background: #141414; border: 1px solid #333; border-radius: 12px; 
+  padding: 32px; width: 100%; box-sizing: border-box;
+}
+.modal-input-field { 
+  background-color: #0F0F0F; border: 1px solid #222; color: #fff; 
+  padding: 14px 16px; border-radius: 8px; outline: none; box-sizing: border-box; 
+  transition: 0.2s; font-family: inherit;
+}
+.modal-input-field:focus { 
+  border-color: var(--color-primary); 
+}
+
+/* ==========================================================================
+   RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 1024px) { .profile-middle-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .profile-layout { flex-direction: column; }
+  .profile-sidebar { width: 100%; position: relative; top: 0; }
+  .header-profile-card { flex-direction: column; text-align: center; gap: 24px; }
+  .header-profile-card .d-flex { flex-direction: column; align-items: center; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .danger-zone-card { flex-direction: column; text-align: center; gap: 24px; }
+}

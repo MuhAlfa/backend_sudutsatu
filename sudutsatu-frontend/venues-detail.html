@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail & Checkout - SudutSatu</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages/detail-venues.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo"><span class="text-primary">Sudut</span>Satu</a>
+      
+      <ul class="navbar-menu" style="margin-right: auto; margin-left: 32px;">
+        <li><a href="index.html" class="nav-link active">Beranda</a></li>
+        <li><a href="search-venues.html" class="nav-link">Cari Lapangan</a></li>
+        <li><a href="#" class="nav-link">Tentang Kami</a></li>
+        <li><a href="#" class="nav-link">Hubungi Kami</a></li>
+      </ul>
+
+      <div class="nav-search-bar" style="margin-right: 24px;">
+        <span class="icon-search">&#128269;</span>
+        <input type="text" placeholder="Search venues...">
+      </div>
+
+      <div class="navbar-actions">
+        <a href="pages/auth/login.html" class="btn btn-text">Masuk</a>
+        <a href="pages/auth/register.html" class="btn btn-primary">Daftar</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container detail-layout">
+    
+    <div class="breadcrumb text-muted text-small mb-16">
+      Venues > West Java > <span class="text-white">SudutSatu Sumedang</span>
+    </div>
+
+    <div class="venue-header mb-24">
+      <div>
+        <h1 class="venue-title">SudutSatu Arena Sumedang</h1>
+        <div class="venue-meta text-muted">
+          <span>&#128205; Jl. Prabu Gajah Agung, Sumedang Utara</span>
+          <span class="ml-16 text-white">&#11088; 4.8 (124 Reviews)</span>
+          <span class="badge-premium ml-16">PREMIUM TURF</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-icon">&#9741;</button> <button class="btn-icon">&#9825;</button> </div>
+    </div>
+
+    <div class="gallery-grid mb-32">
+      <img src="assets/images/futsal-vinyl.png" class="gallery-main" alt="Main Venue">
+      <div class="gallery-placeholder"></div>
+      <div class="gallery-placeholder"></div>
+      <div class="gallery-placeholder"></div>
+      <div class="gallery-placeholder position-relative">
+        <div class="overlay-text">&#128247; +12 Photos</div>
+      </div>
+    </div>
+
+    <div class="bottom-layout">
+      
+      <section class="schedule-section">
+        <div class="schedule-header">
+          <h3>&#128197; Schedule & Booking</h3>
+          <div class="legend">
+            <span class="legend-item"><span class="box box-booked"></span> Booked</span>
+            <span class="legend-item"><span class="box box-available"></span> Available</span>
+            <span class="legend-item"><span class="box box-selected"></span> Selected</span>
+          </div>
+        </div>
+
+        <div class="date-tabs">
+          <button class="tab-btn">MON<br>12</button>
+          <button class="tab-btn active">TUE<br><span class="text-primary">13</span></button>
+          <button class="tab-btn">WED<br>14</button>
+        </div>
+
+        <div class="schedule-grid">
+          <div class="grid-header">Time</div>
+          <div class="grid-header">Lapangan 1 (Vinyl)</div>
+          <div class="grid-header">Lapangan 2 (Synt)</div>
+          <div class="grid-header">Lapangan 3(Vinyl)</div>
+
+          <div class="grid-time">18:00 - 19:00</div>
+          <button class="slot disabled">Booked</button>
+          <button class="slot available" data-court="Lapangan 2 (Synt)" data-time="18:00 - 19:00" data-price="150000">Rp 150.000</button>
+          <button class="slot disabled">Booked</button>
+
+          <div class="grid-time">19:00 - 20:00</div>
+          <button class="slot available" data-court="Lapangan 1 (Vinyl)" data-time="19:00 - 20:00" data-price="200000">Rp 200.000</button>
+          <button class="slot disabled">Booked</button>
+          <button class="slot available" data-court="Lapangan 3 (Vinyl)" data-time="19:00 - 20:00" data-price="100000">Rp 100.000</button>
+
+          <div class="grid-time">20:00 - 21:00</div>
+          <button class="slot available" data-court="Lapangan 1 (Vinyl)" data-time="20:00 - 21:00" data-price="200000">Rp 200.000</button>
+          <button class="slot available" data-court="Lapangan 2 (Synt)" data-time="20:00 - 21:00" data-price="150000">Rp 150.000</button>
+          <button class="slot available" data-court="Lapangan 3 (Vinyl)" data-time="20:00 - 21:00" data-price="100000">Rp 100.000</button>
+        </div>
+      </section>
+
+      <aside class="summary-section">
+        <div class="summary-card">
+          <h2>Booking Summary</h2>
+          <p class="text-muted text-small mb-16">SudutSatu Arena Sumedang</p>
+
+          <div id="selectedSlotsContainer" class="selected-list mb-24">
+            <div class="text-center text-muted mt-16 mb-16" id="emptySlotMsg">Belum ada jadwal dipilih</div>
+            </div>
+
+          <div class="form-group mb-24">
+            <label class="text-small text-muted mb-8" style="display:block;">Team Name *</label>
+            <input type="text" id="teamName" class="form-input" placeholder="Enter your team name">
+          </div>
+
+          <label class="text-small text-muted mb-8" style="display:block;">Payment Method</label>
+          <div class="payment-methods mb-24">
+            
+            <label class="pay-radio">
+              <input type="radio" name="paymentType" value="full">
+              <div class="radio-body">
+                <span class="icon-wallet">&#128179;</span> Full Payment
+              </div>
+            </label>
+
+            <label class="pay-radio active-radio">
+              <input type="radio" name="paymentType" value="split" checked>
+              <div class="radio-body">
+                <span class="icon-users">&#128101;</span> Team Cost Sharing (Patungan)
+              </div>
+              <div class="radio-expanded">
+                <p class="text-small text-muted mb-16">Lock the schedule by paying 50% upfront. Share link with teammates for the rest.</p>
+                <div class="dp-box">
+                  <span class="text-small">Kontribusi Awal 50%</span>
+                  <span class="text-primary" id="dpAmount">Rp 0</span>
+                </div>
+                
+                <div style="background: #0a0a0a; border: 1px dashed #333; border-radius: 6px; padding: 12px; text-align: center; margin-bottom: 12px;">
+                  <div style="font-size: 11px; color: #888; margin-bottom: 4px;">Transfer ke BCA:</div>
+                  <div style="font-size: 16px; font-weight: bold; color: #fff;">123-456-7890</div>
+                  <div style="font-size: 10px; color: #888; margin-top: 4px;">a.n. SudutSatu Performance</div>
+                </div>
+                <input type="file" id="tfFileInput" accept="image/*" style="display: none;">
+                <button type="button" id="btnUploadTF" class="btn-outline-primary btn-block text-small mt-8">&#128196; Upload Bukti TF</button>
+                <div id="tfFileName" class="text-small text-primary mt-8 text-center"></div>
+              </div>
+            </label>
+
+          </div>
+
+          <div class="totals mb-24">
+            <div class="total-row text-small"><span class="text-muted">Subtotal</span><span id="subtotal">Rp 0</span></div>
+            <div class="total-row text-small"><span class="text-muted">Admin Fee</span><span>Rp 2.500</span></div>
+            <div class="total-row mt-16">
+              <div class="d-flex flex-col">
+                <span>Total to Pay</span>
+                <span class="text-primary text-tiny mt-4" id="paymentStatusLabel" style="font-size: 8px;">INITIAL CONTRIBUTION</span>
+              </div>
+              <span class="text-primary bold" id="totalToPay" style="font-size: 18px;">Rp 0</span>
+            </div>
+          </div>
+
+          <button id="btnSubmit" class="btn btn-primary btn-block btn-kunci">
+            KUNCI JADWAL<br>
+            <span id="timerDisplay" class="text-small font-normal">&#8986; 10:00 Menit Tersisa</span>
+          </button>
+          
+          <p class="text-center text-muted mt-16" style="font-size: 10px;">By proceeding, you agree to our <span class="text-primary">Terms & Conditions</span></p>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+<!--  <script src="assets/js/data/dummy-data2.js"></script> --> <!-- Hapus comment kalau mau test menggunakan dummy-->
+  <script src="assets/js/pages/detail-venues.js"></script>
+
+  <script src="../../script.js"></script> <!-- Ini buat asli nyambung -->
+</body>
+</html>

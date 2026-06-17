@@ -1,0 +1,106 @@
+/* ==========================================================================
+   CSS KHUSUS KELOLA LAPANGAN ADMIN (LENGKAP DENGAN MODAL)
+   ========================================================================== */
+.hidden { display: none !important; }
+.avatar-initial { width: 32px; height: 32px; background: #2a3547; color: #8cb0ff; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 14px; border: 1px solid #4a5c82; }
+
+/* Kunci tinggi Top Bar agar tidak menyusut tertekan konten */
+.admin-topbar {
+  min-height: 70px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Memastikan dot notifikasi merah tampil benar di ikon lonceng */
+.notification-dot {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #ccff00;
+  border-radius: 50%;
+  border: 2px solid #0a0a0a;
+}
+
+/* Filter Bar Container */
+.venue-filters-card { background: #0a0a0a; border: 1px solid #222; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; flex-wrap: wrap; gap: 16px; }
+.vf-search { display: flex; align-items: center; gap: 12px; width: 40%; min-width: 300px; border: 1px solid #333; background: #141414; padding: 10px 16px; border-radius: 6px; }
+.vf-search input { background: transparent; border: none; color: #fff; width: 100%; outline: none; font-size: 14px; font-family: inherit; }
+
+/* Custom Select Dropdowns */
+.custom-select-wrapper { position: relative; display: flex; align-items: center; }
+.custom-select-wrapper select { appearance: none; background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 8px 32px 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; outline: none; cursor: pointer; }
+.custom-select-wrapper select:focus { border-color: #666; }
+.custom-select-wrapper svg { position: absolute; right: 10px; pointer-events: none; color: #888; }
+.border-left-dark { border-left: 1px solid #333; }
+.pl-24 { padding-left: 24px; }
+
+/* ==========================================================================
+   VENUE GRID & CARD STYLING
+   ========================================================================== */
+.venue-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.venue-card { background: #111; border: 1px solid #222; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: 0.2s; }
+.venue-card:hover { border-color: #444; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+
+/* Card Image Area */
+.vc-image-container { position: relative; height: 220px; background: #080808; display: flex; align-items: center; justify-content: center; }
+.vc-image-container img { width: 100%; height: 100%; object-fit: cover; }
+.vc-icon-placeholder { color: #222; opacity: 0.8; }
+
+/* Status Badges */
+.vc-status-badge { position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 20px; font-size: 10px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
+.dot-green { width: 8px; height: 8px; background: var(--color-primary); border-radius: 50%; box-shadow: 0 0 8px var(--color-primary); }
+.dot-yellow { width: 8px; height: 8px; background: #ffcc00; border-radius: 50%; }
+
+/* Card Content Area */
+.vc-content { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+.vc-title { font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 8px 0; }
+.vc-location { display: flex; align-items: center; gap: 6px; color: #aaa; font-size: 13px; margin-bottom: 24px; }
+
+/* Grid Details */
+.vc-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.vc-label { font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: block; }
+.vc-value-text { font-size: 14px; font-weight: 500; color: #fff; margin: 0; }
+
+.sport-pill-container { display: flex; gap: 8px; flex-wrap: wrap; }
+.sport-pill { background: #222; color: #aaa; font-size: 10px; font-weight: 600; padding: 4px 8px; border-radius: 4px; }
+
+.vc-progress-bg { width: 100%; height: 6px; background: #222; border-radius: 4px; margin-top: 6px; position: relative; }
+.vc-progress-fill { height: 100%; background: var(--color-primary); border-radius: 4px; transition: width 0.5s ease; }
+
+/* Card Actions */
+.vc-actions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: auto; }
+.vc-btn-action { background: #141414; border: 1px solid #222; border-radius: 8px; padding: 16px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #888; cursor: pointer; transition: 0.2s; font-size: 10px; font-weight: 600; }
+.vc-btn-action:hover { background: #1a1a1a; border-color: #444; color: #fff; }
+.vc-btn-action svg { color: #ccc; }
+
+.btn-load-more { background: transparent; border: 1px solid #333; color: #ccc; font-size: 13px; font-weight: 600; padding: 12px 32px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+.btn-load-more:hover { border-color: #666; color: #fff; background: #111; }
+
+/* ==========================================================================
+   MODAL & FORMS STYLING
+   ========================================================================== */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
+.modal-content { background: #141414; border: 1px solid #333; border-radius: 12px; padding: 32px; width: 100%; box-sizing: border-box; position: relative; }
+.btn-close-modal { background: none; border: none; color: #888; font-size: 28px; cursor: pointer; transition: 0.2s; line-height: 1; }
+.btn-close-modal:hover { color: #fff; }
+
+.form-group { display: flex; flex-direction: column; }
+.form-label { font-size: 11px; font-weight: 700; color: #888; margin-bottom: 8px; letter-spacing: 0.5px; }
+.form-input { background: #0a0a0a; border: 1px solid #333; color: #fff; padding: 12px 16px; border-radius: 6px; font-size: 13px; font-family: inherit; outline: none; transition: 0.2s; }
+.form-input:focus { border-color: var(--color-primary); }
+
+.border-bottom-dark { border-bottom: 1px solid #222; }
+.pb-16 { padding-bottom: 16px; }
+.w-100 { width: 100%; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .venue-filters-card { flex-direction: column; align-items: stretch; }
+  .vf-search { width: 100%; }
+  .vf-options { flex-wrap: wrap; justify-content: flex-start; }
+  .border-left-dark { border-left: none; padding-left: 0; }
+}
+@media (max-width: 768px) {
+  .venue-grid { grid-template-columns: 1fr; }
+}

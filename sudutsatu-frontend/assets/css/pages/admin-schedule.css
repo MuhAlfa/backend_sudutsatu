@@ -1,0 +1,107 @@
+/* ==========================================================================
+   CSS KHUSUS MANAJEMEN JADWAL ADMIN & PERBAIKAN BUG
+   ========================================================================== */
+
+/* Utility Utama untuk menyembunyikan elemen */
+.hidden { display: none !important; }
+
+/* Badge Merah Sidebar */
+.badge-red-icon {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #ff3333;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #0a0a0a;
+}
+
+/* ==========================================================================
+   HEADER KONTROL & FILTER
+   ========================================================================== */
+.schedule-header-wrapper { display: flex; justify-content: space-between; align-items: flex-start; }
+.header-filters { display: flex; flex-direction: column; }
+.justify-end { justify-content: flex-end; }
+
+.sport-tabs-container { display: flex; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 4px; }
+.sport-tab { background: transparent; border: none; color: #888; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 6px 16px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+.sport-tab.active { background: #2a2a2a; color: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+
+.venue-select-wrapper { position: relative; display: flex; align-items: center; }
+.venue-select { appearance: none; background: #111; border: 1px solid #333; color: #ccc; padding: 8px 32px 8px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; border-radius: 6px; outline: none; cursor: pointer; text-transform: uppercase; }
+.venue-select:focus { border-color: #555; }
+.venue-select-wrapper .select-icon { position: absolute; right: 12px; pointer-events: none; color: #888; }
+
+.date-navigator { display: flex; align-items: center; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; overflow: hidden; }
+.nav-arrow { background: transparent; border: none; color: #888; padding: 8px 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+.nav-arrow:hover { background: #222; color: #fff; }
+.date-range-text { font-size: 11px; font-weight: 700; color: #ccc; padding: 0 16px; letter-spacing: 0.5px; }
+
+/* ==========================================================================
+   TABEL KALENDER JADWAL
+   ========================================================================== */
+.schedule-grid-container { background: #0a0a0a; border: 1px solid #222; border-radius: 8px; overflow-x: auto; position: relative; }
+.schedule-table { width: 100%; border-collapse: collapse; min-width: 900px; }
+.schedule-table th { border-bottom: 1px solid #222; border-right: 1px solid #222; padding: 16px 8px; text-align: center; background: #111; min-width: 120px; }
+.schedule-table th:last-child { border-right: none; }
+.th-day-name { font-size: 10px; color: #888; font-weight: 700; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+.th-day-number { font-size: 22px; color: #fff; font-weight: 700; display: block; }
+.th-waktu { width: 80px; min-width: 80px; font-size: 11px; color: #888; vertical-align: middle; }
+
+.schedule-table th.active-day .th-day-name,
+.schedule-table th.active-day .th-day-number { color: var(--color-primary); }
+
+.schedule-table td { border-bottom: 1px solid #222; border-right: 1px solid #222; height: 80px; vertical-align: top; padding: 8px; background: #0d0d0d; transition: 0.2s; }
+.schedule-table td:last-child { border-right: none; }
+.td-time-label { text-align: center; font-size: 13px; font-weight: 600; color: #aaa; vertical-align: middle; background: #111; }
+.empty-table-row td { height: 200px; text-align: center; vertical-align: middle; color: #666; font-size: 14px; }
+
+/* ==========================================================================
+   BOOKING CARD COMPONENT
+   ========================================================================== */
+.sch-card { background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 10px; cursor: pointer; transition: 0.2s; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }
+.sch-card:hover { border-color: #555; background: #222; }
+
+.sch-team-name { font-size: 11px; font-weight: 600; color: #fff; margin: 0 0 8px 0; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.sch-badge-container { display: flex; justify-content: space-between; align-items: center; }
+.sch-badge { font-size: 9px; font-weight: 800; padding: 4px 6px; border-radius: 4px; letter-spacing: 0.5px; display: inline-block; }
+.sch-badge-lunas { background: rgba(204,255,0,0.1); color: #ccff00; border: 1px solid rgba(204,255,0,0.3); }
+.sch-badge-dp { background: rgba(0, 200, 83, 0.1); color: #00e676; border: 1px solid rgba(0, 200, 83, 0.3); }
+.sch-badge-menunggu { background: rgba(255, 193, 7, 0.1); color: #ffc107; border: 1px solid rgba(255, 193, 7, 0.3); }
+.sch-badge-batal { background: rgba(255, 85, 85, 0.1); color: #ff5555; border: 1px solid rgba(255, 85, 85, 0.3); }
+.sch-gear-icon { color: #666; }
+
+/* ==========================================================================
+   STATE WRAPPERS (Loading, Error)
+   ========================================================================== */
+.state-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px; background: #0a0a0a; border: 1px solid #222; border-radius: 8px; }
+.spinner { width: 40px; height: 40px; border: 3px solid #222; border-top-color: var(--color-primary); border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+.text-red { color: #ff5555; }
+
+/* ==========================================================================
+   MODAL COMPONENT
+   ========================================================================== */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
+.modal-content { background: #141414; border: 1px solid #333; border-radius: 12px; padding: 32px; width: 100%; box-sizing: border-box; }
+.border-bottom-dark { border-bottom: 1px solid #222; }
+.border-top-dark { border-top: 1px solid #222; }
+.pb-16 { padding-bottom: 16px; }
+.pt-16 { padding-top: 16px; }
+/* Margin Utilities */
+.mb-24 { margin-bottom: 24px; }
+.mt-32 { margin-top: 32px; } /* Jarak wajar untuk modal */
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1024px) { .schedule-header-wrapper { flex-direction: column; gap: 24px; } .header-filters { width: 100%; } .header-filters > div { justify-content: flex-start; } }
+@media (max-width: 768px) { .schedule-table th, .schedule-table td { min-width: 140px; } .th-waktu, .td-time-label { position: sticky; left: 0; z-index: 2; background: #111; border-right: 2px solid #222; } }

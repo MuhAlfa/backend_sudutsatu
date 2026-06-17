@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - SudutSatu</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages/admin-dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--color-primary)" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </div>
+          <div>
+            <h2 class="brand-title text-primary">SUDUTSATU</h2>
+            <p class="brand-subtitle">Facility Manager</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-menus">
+        <ul class="menu-list">
+          <li>
+            <a href="admin-dashboard.html" class="menu-item active">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              Ringkasan
+            </a>
+          </li>
+          <li>
+            <a href="admin-schedule.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Manajemen Jadwal
+            </a>
+          </li>
+          <li>
+            <a href="admin-venues.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+              Kelola Lapangan
+            </a>
+          </li>
+          <li>
+           <a href="admin-payment-verification.html" class="menu-item d-flex align-center justify-between" style="width: 100%;">
+              <div class="d-flex align-center gap-16">
+                <div style="position: relative; display: flex; align-items: center;">
+                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                  <span class="badge-red-icon">3</span>
+                </div>
+                <span>Verifikasi Pembayaran</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="admin-finance.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              Laporan Keuangan
+            </a>
+          </li>
+        </ul>
+
+        <ul class="menu-list bottom-menu">
+          <li>
+            <a href="#" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              Pengaturan
+            </a>
+          </li>
+          <li>
+            <a href="#" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              Bantuan
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+   <div class="admin-main">
+      
+      <header class="admin-topbar">
+        <div class="topbar-search">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#888" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="searchTransaksi" placeholder="Cari transaksi berdasarkan ID atau Nama Tim...">
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn position-relative">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="notification-dot"></span>
+          </button>
+          <div class="topbar-profile">
+            <img src="assets/images/admin.jpg" alt="Admin">
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content-area">
+        
+        <div class="content-header flex-between">
+          <div>
+            <h1 class="page-title text-white mb-8">Tinjauan Operasi</h1>
+            <div class="page-subtitle d-flex align-center gap-8 text-small">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="#888" stroke-width="2" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span class="text-muted">Regional Sumedang</span>
+              <span class="text-muted">•</span>
+              <span class="text-primary bold">Data Langsung</span>
+            </div>
+          </div>
+          
+          <div class="header-actions d-flex gap-12">
+            <button class="btn-outline-dark">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Ekspor
+            </button>
+            
+            <div style="position: relative; display: flex; align-items: center;">
+              <select id="filterWaktuDashboard" style="appearance: none; background-color: #141414; color: #fff; border: 1px solid #333; padding: 10px 32px 10px 16px; border-radius: 6px; outline: none; cursor: pointer; font-size: 13px; font-weight: 600;">
+                <option value="hari_ini" style="background: #141414; color: #fff;">Hari Ini</option>
+                <option value="minggu_ini" selected style="background: #141414; color: #fff;">Minggu Ini</option>
+                <option value="bulan_ini" style="background: #141414; color: #fff;">Bulan Ini</option>
+              </select>
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" style="position: absolute; right: 12px; pointer-events: none; color: #888;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-row mb-24">
+          <div class="stat-box">
+            <div class="flex-between align-start mb-16">
+              <span class="stat-label">TOTAL PENDAPATAN</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="#333" stroke-width="2" fill="none"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
+            </div>
+            <h2 id="angkaPendapatan" class="stat-value text-primary mb-12" style="transition: 0.3s;">Rp 8.000.000</h2>
+            <div class="stat-trend text-primary">
+              <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              <span id="trendPendapatan" style="transition: 0.3s;">+12.5% vs minggu lalu</span>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="flex-between align-start mb-16">
+              <span class="stat-label">TOTAL PEMESANAN</span>
+            </div>
+            <h2 id="angkaPemesanan" class="stat-value text-white mb-12" style="transition: 0.3s;">124</h2>
+            <div class="stat-trend text-primary">
+              <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              <span id="trendPemesanan" style="transition: 0.3s;">+8 vs minggu lalu</span>
+            </div>
+          </div>
+
+          <div class="stat-box relative-box">
+            <div class="flex-between align-start mb-16">
+              <span class="stat-label">PENGGUNA AKTIF</span>
+            </div>
+            <h2 class="stat-value text-white mb-12">89</h2>
+            <div class="stat-trend text-white">
+              Sedang online: 12 <span class="dot-online mx-4"></span>
+            </div>
+            <div class="avatar-stack">
+              <div class="avatar-circle"></div>
+              <div class="avatar-circle"></div>
+              <div class="avatar-circle"></div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="flex-between align-start mb-16">
+              <span class="stat-label">OKUPANSI LAPANGAN</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="#888" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <h2 class="stat-value text-white mb-16">82<span style="font-size: 18px;">%</span></h2>
+            <div class="progress-container mb-8">
+              <div class="progress-bar-inner" style="width: 82%;"></div>
+            </div>
+            <div class="flex-between text-tiny mt-12">
+              <div class="d-flex align-center gap-4"><span class="dot-pink"></span> Waktu Sibuk: <br><strong class="text-white">95%</strong></div>
+              <div class="d-flex align-center gap-4"><span class="dot-yellow"></span> Waktu Sepi: <br><strong class="text-white">40%</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-grid">
+          
+          <div class="content-box chart-box">
+            <div class="flex-between align-center mb-32">
+              <h3 class="box-title">Pendapatan Bulanan</h3>
+              <div class="d-flex gap-16 text-small">
+                <span class="d-flex align-center gap-8"><div class="legend-box bg-primary"></div> Futsal</span>
+                <span class="d-flex align-center gap-8"><div class="legend-box bg-dark"></div> Biliard</span>
+              </div>
+            </div>
+            
+            <div class="chart-area">
+              <div class="y-axis">
+                <span>3M</span>
+                <span>2M</span>
+                <span>1M</span>
+              </div>
+              <div class="grid-lines">
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+              </div>
+              <div class="x-axis">
+                <span>Sen</span>
+                <span>Sel</span>
+                <span>Rab</span>
+                <span class="active-day">Kam</span>
+                <span>Jum</span>
+                <span>Sab</span>
+                <span>Min</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-box activity-box">
+            <div class="flex-between align-center mb-24">
+              <h3 class="box-title">Aktivitas Terbaru</h3>
+              <button id="btnLihatSemuaAktivitas" class="text-primary text-small bold text-decoration-none" style="background:none; border:none; cursor:pointer;">Lihat Semua</button>
+            </div>
+            
+            <div class="activity-list" id="activityListContainer">
+              <div class="activity-item">
+                <div class="icon-wrapper icon-success">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div class="activity-text">
+                  <p class="m-0 text-white text-small line-height-normal">Pembayaran diverifikasi untuk Pemesanan #1042</p>
+                  <span class="text-tiny text-muted mt-4 d-block">2 mnt lalu</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="icon-wrapper icon-neutral">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="M12 12l3.5-2m-3.5 2l-3.5-2m3.5 2v4m7.5-6a5 5 0 00-7.5 0m-4 0a5 5 0 00-7.5 0"></path></svg>
+                </div>
+                <div class="activity-text">
+                  <p class="m-0 text-white text-small line-height-normal">Budi S. memesan <span class="text-primary bold">Futsal Court A</span></p>
+                  <span class="text-tiny text-muted mt-4 d-block">15 mnt lalu • 19:00 - 21:00</span>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="icon-wrapper icon-danger">
+                  <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                </div>
+                <div class="activity-text">
+                  <p class="m-0 text-white text-small line-height-normal">Pembatalan diminta untuk Pemesanan #1038</p>
+                  <span class="text-tiny text-muted mt-4 d-block">1 jam lalu</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="assets/js/pages/admin-dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi Pembayaran - Admin SudutSatu</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages/admin-dashboard.css">
+  <link rel="stylesheet" href="assets/css/pages/admin-payment-verification.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--color-primary)" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </div>
+          <div>
+            <h2 class="brand-title text-primary">SUDUTSATU</h2>
+            <p class="brand-subtitle">Facility Manager</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-menus">
+        <ul class="menu-list">
+          <li>
+            <a href="admin-dashboard.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              Ringkasan
+            </a>
+          </li>
+          <li>
+            <a href="admin-schedule.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Manajemen Jadwal
+            </a>
+          </li>
+          <li>
+            <a href="admin-venues.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+              Kelola Lapangan
+            </a>
+          </li>
+          <li>
+            <a href="admin-payment-verification.html" class="menu-item active d-flex align-center justify-between" style="width: 100%;">
+              <div class="d-flex align-center gap-16">
+                <div style="position: relative; display: flex; align-items: center;">
+                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                  <span class="badge-red-icon">3</span>
+                </div>
+                <span>Verifikasi Pembayaran</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="admin-finance.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              Laporan Keuangan
+            </a>
+          </li>
+        </ul>
+
+        <ul class="menu-list bottom-menu">
+          <li>
+            <a href="#" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              Pengaturan
+            </a>
+          </li>
+          <li>
+            <a href="#" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              Bantuan
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      
+      <header class="admin-topbar flex-between align-center">
+        <h2 class="text-white m-0" style="font-size: 18px; font-weight: 600;">Panel Admin SudutSatu</h2>
+        <div class="topbar-actions d-flex align-center gap-24">
+          <div class="topbar-search">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="#888" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="searchInput" placeholder="Cari ID Booking...">
+          </div>
+          <div class="topbar-profile">
+            <img src="assets/images/admin.jpg" alt="Admin">
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content-area">
+        
+        <div class="flex-between align-start mb-32">
+          <div>
+            <h1 class="page-title text-white m-0 mb-8" style="font-size: 26px;">Verifikasi Pembayaran Masuk</h1>
+            <p class="text-muted text-small m-0">(Team Cost Sharing) - Wilayah Operasional: Sumedang</p>
+          </div>
+          <div class="status-pill-dark">
+            <span class="dot-yellow"></span> 3 MENUNGGU VERIFIKASI
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-neon-line"></div>
+          <table class="verif-table">
+            <thead>
+              <tr>
+                <th>ID BOOKING</th>
+                <th>NAMA TIM</th>
+                <th>LAPANGAN</th>
+                <th>SLOT JAM</th>
+                <th>NOMINAL 50%</th>
+                <th>BUKTI BAYAR</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              
+              <tr class="table-row">
+                <td><span class="id-pill text-white">#BK-SMD-8821</span></td>
+                <td>
+                  <div class="d-flex align-center gap-12">
+                    <div class="team-avatar" style="background: #2a3547; color: #8cb0ff;">TF</div>
+                    <span class="text-white bold team-name-cell">Tampomas FC</span>
+                  </div>
+                </td>
+                <td class="text-muted">Lapangan Vinyl</td>
+                <td class="text-primary bold">19:00 - 21:00</td>
+                <td class="text-white">Rp 150.000</td>
+                <td><img src="assets/images/struk1.jpg" class="bukti-thumb" alt="Bukti 1"></td>
+              </tr>
+
+              <tr class="table-row">
+                <td><span class="id-pill text-white">#BK-SMD-8822</span></td>
+                <td>
+                  <div class="d-flex align-center gap-12">
+                    <div class="team-avatar" style="background: #1e2846; color: #7da5ff;">JU</div>
+                    <span class="text-white bold team-name-cell">Jatinangor United</span>
+                  </div>
+                </td>
+                <td class="text-muted">Lapangan Vinyl</td>
+                <td class="text-primary bold">20:00 - 22:00</td>
+                <td class="text-white">Rp 225.000</td>
+                <td><img src="assets/images/struk2.jpg" class="bukti-thumb" alt="Bukti 2"></td>
+              </tr>
+
+              <tr class="table-row">
+                <td><span class="id-pill text-white">#BK-SMD-8825</span></td>
+                <td>
+                  <div class="d-flex align-center gap-12">
+                    <div class="team-avatar" style="background: #23314d; color: #8baeff;">CB</div>
+                    <span class="text-white bold team-name-cell">Cimalaka Boys</span>
+                  </div>
+                </td>
+                <td class="text-muted">Lapangan Sintetis</td>
+                <td class="text-primary bold">15:00 - 17:00</td>
+                <td class="text-white">Rp 100.000</td>
+                <td><img src="assets/images/struk3.jpg" class="bukti-thumb" alt="Bukti 3"></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <div class="table-footer flex-between align-center">
+            <span class="text-muted text-small">Menampilkan <strong class="text-white">1</strong> hingga <strong class="text-white">3</strong> dari <strong class="text-white">3</strong> verifikasi tertunda</span>
+            <div class="pagination-box">
+              <button class="page-btn"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+              <button class="page-btn active-page">1</button>
+              <button class="page-btn"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="modalBukti" class="modal-overlay hidden">
+    <div class="modal-content" style="max-width: 400px; text-align: center; position: relative;">
+      <button id="closeModal" class="modal-close-simple">&times;</button>
+      <h3 class="text-white m-0 mb-16">Pratinjau Bukti Bayar</h3>
+      <img id="previewImage" src="" class="mb-16" style="width: 100%; border-radius: 8px;">
+      <div class="d-flex mt-24">
+        <button id="btnBukaKonfirmasi" class="btn btn-primary w-100 py-12 bold">Verifikasi</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalKonfirmasi" class="modal-overlay hidden">
+    <div class="modal-content p-0" style="max-width: 850px; overflow: hidden; position: relative;">
+      <button id="closeKonfirmasi" class="modal-close-split">&times;</button>
+      
+      <div class="split-modal-layout">
+        <div class="split-left">
+          <div class="receipt-wrapper">
+            <img id="konfImg" src="" alt="Bukti Pembayaran">
+          </div>
+          <div class="receipt-filename mt-16 text-muted text-tiny uppercase tracking-wide d-flex align-center justify-center gap-8">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            <span id="konfFilename">PAYMENT_RECEIPT</span>
+          </div>
+        </div>
+
+        <div class="split-right">
+          <h2 class="text-white m-0 mb-8" style="font-size: 24px;">Verifikasi Pembayaran</h2>
+          <p class="text-muted text-small m-0 mb-24 line-height-normal">Periksa bukti pembayaran yang diunggah dengan detail pemesanan di bawah ini.</p>
+          
+          <div class="status-pill-dark mb-32" style="display: inline-flex;">
+            <span class="dot-yellow"></span> MENUNGGU TINJAUAN
+          </div>
+
+          <div class="konfirmasi-grid mb-32">
+            <div class="info-group">
+              <label class="text-muted text-tiny uppercase tracking-wide d-block mb-4">ID PEMESANAN</label>
+              <p id="konfId" class="text-white m-0 bold" style="font-size: 16px;">#BK-SMD-8821</p>
+            </div>
+            <div class="info-group">
+              <label class="text-muted text-tiny uppercase tracking-wide d-block mb-4">TOTAL TAGIHAN</label>
+              <p id="konfNominal" class="text-primary m-0 bold" style="font-size: 16px;">Rp 150.000</p>
+            </div>
+            <div class="info-group">
+              <label class="text-muted text-tiny uppercase tracking-wide d-block mb-4">NAMA TIM</label>
+              <p id="konfTim" class="text-white m-0" style="font-size: 15px;">Tampomas FC</p>
+            </div>
+            <div class="info-group">
+              <label class="text-muted text-tiny uppercase tracking-wide d-block mb-4">LOKASI</label>
+              <p id="konfLokasi" class="text-white m-0" style="font-size: 15px;">Sudutsatu Arena</p>
+            </div>
+          </div>
+
+          <div class="info-group mb-32">
+            <label class="text-muted text-tiny uppercase tracking-wide d-block mb-8">SLOT WAKTU</label>
+            <div class="d-flex align-center gap-8 text-white" style="font-size: 14px;">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span id="konfWaktu">19:00 - 21:00 | 20 Mei 2026</span>
+            </div>
+          </div>
+
+          <div class="neon-divider mb-24">
+            <div class="neon-line"></div>
+            <div class="dark-line"></div>
+          </div>
+
+          <div class="d-flex gap-16">
+            <button class="btn btn-primary flex-grow-1 py-12 bold d-flex align-center justify-center gap-8" id="btnSetujui">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="#000" stroke-width="2" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              SETUJUI PEMBAYARAN
+            </button>
+            <button class="btn-outline-dark py-12 px-24 bold d-flex align-center justify-center gap-8" id="btnTolak">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              TOLAK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/pages/admin-payment-verification.js"></script>
+</body>
+</html>

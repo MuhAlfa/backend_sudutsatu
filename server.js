@@ -8,7 +8,8 @@ const bookingController = require('./controllers/bookingController'); // Manggil
 
 dotenv.config();
 
-const app = express();
+const app = express(); // ✅ CUKUP SATU KALI DI SINI
+
 app.use(cors());
 app.use(express.json()); // Wajib agar server bisa membaca data format JSON dari Postman/Front-End
 

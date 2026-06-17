@@ -1,0 +1,465 @@
+/* ==========================================================================
+   1. GLOBAL VARIABLES & RESETS
+   ========================================================================== */
+:root {
+  /* Brand Colors */
+  --color-primary: #ccff00; /* Hijau Neon SudutSatu */
+  --color-primary-hover: #b3e600;
+  
+  /* Background & Surface Colors */
+  --color-bg-base: #0a0a0a; /* Background utama sangat gelap */
+  --color-bg-surface: #141414; /* Background card/navbar */
+  --color-bg-card-1: #0d121f; /* Gradient Futsal */
+  --color-bg-card-2: #111111; /* Gradient Billiard */
+  
+  /* Text Colors */
+  --color-text-main: #ffffff;
+  --color-text-muted: #a3a3a3;
+  --color-text-dark: #000000;
+  
+  /* Spacing & Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  
+  /* Typography */
+  --font-family: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Utilitas Teks */
+.text-primary {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   2. REUSABLE COMPONENTS
+   ========================================================================== */
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--color-text-main);
+}
+
+.btn-text:hover {
+  color: var(--color-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text-main);
+  border: 1px solid #333;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-dark {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-main);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dot-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+/* Links */
+.link-primary {
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.link-primary:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   3. LAYOUT: NAVBAR
+   ========================================================================== */
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: var(--color-bg-base);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
+
+.navbar-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.navbar-menu {
+  display: none; /* Disembunyikan di Mobile, dimunculkan di Desktop */
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  position: relative;
+  padding-bottom: 24px; /* Untuk menempatkan garis active di bawah */
+}
+
+.nav-link:hover {
+  color: var(--color-text-main);
+}
+
+.nav-link.active {
+  color: var(--color-text-main);
+  font-weight: 500;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   4. PAGE: HERO SECTION
+   ========================================================================== */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 24px 0 16px;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+  max-width: 90%;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--border-radius-lg);
+  /* Fallback warna jika gambar tidak memuat */
+  background-color: #1a1a1a; 
+  min-height: 300px;
+}
+
+.floating-card.live-score {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.live-score-label {
+  display: block;
+  font-size: 10px;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.live-score-numbers {
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.score-highlight {
+  color: var(--color-primary);
+  font-size: 18px;
+}
+
+/* ==========================================================================
+   5. PAGE: CATEGORIES SECTION
+   ========================================================================== */
+.categories-section {
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.category-card {
+  position: relative;
+  padding: 32px;
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.card-futsal {
+  background: linear-gradient(135deg, rgba(13, 18, 31, 1) 0%, rgba(10, 10, 10, 1) 100%);
+}
+
+.card-billiard {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 1) 0%, rgba(10, 10, 10, 1) 100%);
+}
+
+.card-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.category-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.box-primary {
+  background-color: var(--color-primary);
+  color: #000;
+}
+
+.box-dark {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.category-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.category-desc {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  max-width: 90%;
+}
+
+/* ==========================================================================
+   6. LAYOUT: FOOTER
+   ========================================================================== */
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 32px 0;
+  background-color: var(--color-bg-surface);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.footer-links a:hover {
+  color: var(--color-text-main);
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: #666;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 48px;
+  }
+  
+  .section-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .navbar-menu {
+    display: flex; /* Menu navigasi tengah muncul */
+  }
+  
+  .hero-section {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}

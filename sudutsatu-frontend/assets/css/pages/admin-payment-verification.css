@@ -1,0 +1,60 @@
+/* ==========================================================================
+   CSS KHUSUS HALAMAN VERIFIKASI PEMBAYARAN ADMIN
+   ========================================================================== */
+.hidden { display: none !important; }
+
+/* Status Pill */
+.status-pill-dark { background: #0a0a0a; border: 1px solid #333; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; padding: 8px 16px; border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+.dot-yellow { width: 6px; height: 6px; background: #ffcc00; border-radius: 50%; }
+
+/* Styling Tabel */
+.table-card { background: #111; border: 1px solid #222; border-radius: 8px; overflow: hidden; }
+.table-neon-line { height: 2px; width: 100%; background: linear-gradient(90deg, #111 0%, var(--color-primary) 50%, #111 100%); }
+.verif-table { width: 100%; border-collapse: collapse; text-align: left; }
+.verif-table th { padding: 16px 24px; font-size: 10px; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #222; background: #0a0a0a; }
+.verif-table td { padding: 16px 24px; font-size: 14px; border-bottom: 1px solid #1a1a1a; vertical-align: middle; }
+.verif-table tbody tr { background: #111; transition: 0.2s; }
+.verif-table tbody tr:hover { background: #161616; }
+
+.id-pill { background: #1a1a1a; border: 1px solid #333; padding: 6px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; }
+.team-avatar { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 11px; font-weight: 800; }
+.bukti-thumb { width: 60px; height: 36px; object-fit: cover; border-radius: 4px; border: 1px solid #333; cursor: pointer; transition: 0.2s; }
+.bukti-thumb:hover { border-color: var(--color-primary); opacity: 0.8; }
+
+.table-footer { padding: 16px 24px; background: #111; }
+.pagination-box { display: flex; gap: 8px; align-items: center; }
+.page-btn { background: transparent; border: 1px solid #333; color: #888; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+.page-btn:hover { background: #222; color: #fff; }
+.page-btn.active-page { border-color: var(--color-primary); color: var(--color-primary); background: rgba(204, 255, 0, 0.05); }
+
+/* ==========================================================================
+   MODAL & SPLIT LAYOUT (Mockup Baru)
+   ========================================================================== */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
+.modal-content { background: #141414; border: 1px solid #333; border-radius: 12px; padding: 32px; width: 100%; box-sizing: border-box; }
+.p-0 { padding: 0 !important; }
+
+/* Modal 1: Simple */
+.modal-close-simple { position: absolute; top: 16px; right: 16px; background: none; border: none; color: #888; font-size: 24px; cursor: pointer; }
+
+/* Modal 2: Split Layout (Detail) */
+.modal-close-split { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #666; font-size: 28px; cursor: pointer; z-index: 10; transition: 0.2s; }
+.modal-close-split:hover { color: #fff; }
+
+.split-modal-layout { display: flex; min-height: 500px; }
+.split-left { flex: 1; background: #0f1215; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #222; }
+.receipt-wrapper { width: 100%; max-width: 240px; height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6); border: 2px solid #222; background: #000; }
+.receipt-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+.split-right { flex: 1.2; background: #141414; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+.konfirmasi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.flex-grow-1 { flex-grow: 1; }
+
+/* Custom Divider Hijau Neon & Abu */
+.neon-divider { height: 2px; width: 100%; display: flex; border-radius: 2px; overflow: hidden; }
+.neon-line { width: 5%; background: var(--color-primary); }
+.dark-line { width: 95%; background: #333; }
+
+/* Utilities */
+.btn-outline-dark { background: transparent; border: 1px solid #444; color: #ccc; cursor: pointer; transition: 0.2s; border-radius: 6px; }
+.btn-outline-dark:hover { border-color: #666; background: #222; color: #fff; }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - SudutSatu</title>
+
+    <link rel="stylesheet" href="../../assets/css/pages/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="login-container">
+
+        <!-- LEFT SIDE -->
+        <section class="login-brand">
+
+            <h1>SUDUT SATU.</h1>
+
+            <p>
+                Precision booking for professional-grade facilities.
+                Join the elite network of active sports enthusiasts.
+            </p>
+
+        </section>
+
+        <!-- RIGHT SIDE -->
+        <section class="login-form-section">
+
+            <form id="loginForm" class="login-form">
+
+                <h2>MASUK</h2>
+
+                <div class="form-group">
+                    <label for="email">EMAIL</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label for="password">PASSWORD</label>
+
+                        <a href="forgot-password.html" class="forgot-link">
+                            LUPA PASSWORD?
+                        </a>
+                    </div>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    MASUK
+                </button>
+
+                <p class="bottom-link">
+                    Belum bergabung?
+                    <a href="register.html">
+                        DAFTAR SEKARANG
+                    </a>
+                </p>
+
+                <div id="message"></div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="../../assets/js/pages/auth.js"></script>
+    <script src="../../script.js"></script>
+</body>
+</html>

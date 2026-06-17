@@ -1,0 +1,114 @@
+/* ==========================================================================
+   CSS KHUSUS LAPORAN KEUANGAN ADMIN
+   ========================================================================== */
+.hidden { display: none !important; }
+
+/* PERBAIKAN: Kunci tinggi Top Bar agar tidak menyusut tertekan konten */
+.admin-topbar {
+  min-height: 70px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Memastikan dot notifikasi merah tampil benar di ikon lonceng */
+.notification-dot {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #ccff00;
+  border-radius: 50%;
+  border: 2px solid #0a0a0a;
+}
+
+
+.badge-red-icon { position: absolute; top: -6px; right: -8px; background: #ff3333; color: #fff; font-size: 9px; font-weight: 800; width: 14px; height: 14px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #0a0a0a; }
+.btn-outline-dark { background: transparent; border: 1px solid #333; color: #ccc; cursor: pointer; transition: 0.2s; border-radius: 6px; }
+.btn-outline-dark:hover { border-color: #555; background: #1a1a1a; color: #fff; }
+.content-box { background: #0f1215; border: 1px solid #222; border-radius: 12px; padding: 24px; }
+.p-0 { padding: 0 !important; }
+.p-24 { padding: 24px; }
+.border-bottom-dark { border-bottom: 1px solid #222; }
+.w-100 { width: 100%; }
+.btn-lihat-semua { background:none; border:none; cursor:pointer; transition: 0.2s; }
+.btn-lihat-semua:hover { opacity: 0.8; }
+
+/* KARTU STATISTIK */
+.finance-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.fin-card { background: #111; border: 1px solid #222; border-radius: 10px; padding: 24px; position: relative; overflow: hidden; }
+.fc-icon-wrapper { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; background: #1a1a1a; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #555; }
+.fc-label { font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 12px; }
+.fc-value { font-size: 32px; font-weight: 700; margin: 0 0 12px 0; color: var(--color-primary); }
+.fc-trend { font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; margin: 0; }
+.trend-up { color: var(--color-primary); }
+.trend-up-blue { color: #8cb0ff; }
+.fc-subtext { font-size: 13px; color: #888; margin: 0; }
+
+/* ==========================================================================
+   GRAFIK PERTUMBUHAN (INTERAKTIF CROSSHAIR)
+   ========================================================================== */
+.custom-chart-area { position: relative; display: flex; padding-top: 10px; width: 100%; }
+.chart-y-axis { display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; color: #666; width: 40px; padding-top: 10px; padding-bottom: 40px; flex-shrink: 0; }
+.chart-scroll-container { flex-grow: 1; overflow-x: auto; overflow-y: hidden; cursor: grab; padding-bottom: 45px; position: relative; }
+.chart-scroll-container:active { cursor: grabbing; }
+
+.chart-scroll-inner { width: 1200px; position: relative; height: 260px; border-bottom: 1px solid #333; }
+
+.chart-crosshair { position: absolute; top: 10px; bottom: 0; width: 2px; background: rgba(204, 255, 0, 0.4); pointer-events: none; opacity: 0; transition: opacity 0.2s ease, left 0.1s linear; z-index: 5; box-shadow: 0 0 10px rgba(204, 255, 0, 0.5); }
+.chart-scroll-inner:hover .chart-crosshair { opacity: 1; }
+
+.chart-grid { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0; z-index: 1; pointer-events: none; }
+.c-line { width: 100%; height: 1px; background: #222; }
+.chart-svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; padding: 10px 0; }
+
+.interactive-dot { fill: #111; stroke: var(--color-primary); stroke-width: 2; transition: 0.2s; pointer-events: none; }
+.interactive-dot.active { r: 7; fill: var(--color-primary); box-shadow: 0 0 10px var(--color-primary); }
+
+.chart-x-axis { position: absolute; bottom: -28px; left: 0; right: 0; display: flex; justify-content: space-between; font-size: 11px; color: #888; pointer-events: none; }
+.chart-x-axis span { width: 40px; text-align: center; }
+
+.chart-scroll-container::-webkit-scrollbar { height: 6px; }
+.chart-scroll-container::-webkit-scrollbar-track { background: #111; border-radius: 4px; }
+.chart-scroll-container::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+
+/* Tooltip Mengambang */
+.chart-tooltip { position: fixed; background: #1a1a1a; border: 1px solid #333; padding: 10px 14px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.8); pointer-events: none; z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.2s; transform: translate(-50%, -120%); display: flex; flex-direction: column; gap: 4px; }
+.chart-tooltip.show { opacity: 1; visibility: visible; }
+.chart-tooltip .tt-date { font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; }
+.chart-tooltip .tt-val { color: var(--color-primary); font-size: 16px; font-weight: 700; margin: 0; letter-spacing: -0.5px; }
+
+/* ==========================================================================
+   TABEL TRANSAKSI & MENU TITIK TIGA
+   ========================================================================== */
+.overflow-visible { overflow: visible !important; }
+.finance-table { border-collapse: collapse; text-align: left; }
+.finance-table th { padding: 16px 24px; font-size: 10px; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #222; }
+.finance-table td { padding: 18px 24px; font-size: 14px; border-bottom: 1px solid #1a1a1a; vertical-align: middle; color: #ccc; }
+.finance-table tbody tr { transition: 0.2s; }
+.finance-table tbody tr:hover { background: #161616; }
+
+.id-link { color: #8cb0ff; text-decoration: none; font-weight: 500; transition: 0.2s; cursor: pointer; }
+.id-link:hover { text-decoration: underline; color: #aaccff; }
+
+.f-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 4px; font-size: 9px; font-weight: 800; letter-spacing: 0.5px; }
+.f-badge-lunas { background: rgba(204,255,0,0.05); border: 1px solid rgba(204,255,0,0.2); color: var(--color-primary); }
+.f-badge-lunas .f-dot { width: 6px; height: 6px; background: var(--color-primary); border-radius: 50%; }
+.f-badge-tertunda { background: rgba(255, 204, 0, 0.05); border: 1px solid rgba(255, 204, 0, 0.2); color: #ffcc00; }
+.f-badge-tertunda .f-dot { width: 6px; height: 6px; background: #ffcc00; border-radius: 50%; }
+.f-badge-batal { background: rgba(255, 85, 85, 0.05); border: 1px solid rgba(255, 85, 85, 0.2); color: #ff5555; }
+.f-badge-batal .f-dot { width: 6px; height: 6px; background: #ff5555; border-radius: 50%; }
+
+.action-wrapper { position: relative; display: flex; justify-content: flex-end; }
+.btn-action-dots { background: none; border: none; color: #888; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; transition: 0.2s; }
+.btn-action-dots:hover { background: #222; color: #fff; }
+
+.action-dropdown-menu { position: absolute; right: 0; top: 100%; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; width: 140px; z-index: 100; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: 0.2s; }
+.action-dropdown-menu.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.action-dropdown-menu button { background: none; border: none; padding: 12px 16px; color: #ccc; text-align: left; font-size: 12px; cursor: pointer; transition: 0.2s; border-bottom: 1px solid #222; }
+.action-dropdown-menu button:last-child { border-bottom: none; }
+.action-dropdown-menu button:hover { background: #222; color: #fff; }
+.action-dropdown-menu button.text-red:hover { color: #ff5555; }
+
+/* MODAL INVOICE */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
+.modal-content { border: 1px solid #333; border-radius: 12px; width: 100%; box-sizing: border-box; position: relative; }

@@ -1,0 +1,50 @@
+/* assets/css/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Palette based on Mockup */
+  --primary: #ccff00; /* Neon Green/Yellow */
+  --primary-hover: #b3e600;
+  --bg-dark: #0a0a0a;
+  --bg-card: #1a1a1a;
+  --bg-input: #262626;
+  --text-light: #ffffff;
+  --text-muted: #a3a3a3;
+  --border-color: #333333;
+  --danger: #ef4444;
+  --success: #22c55e;
+  
+  /* Typography */
+  --font-main: 'Inter', sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

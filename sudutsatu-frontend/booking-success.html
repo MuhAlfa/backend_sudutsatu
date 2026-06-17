@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pembayaran Berhasil - SudutSatu</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages/success.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="container success-layout">
+    <div class="success-content">
+      
+      <div class="check-icon-wrapper">
+        <div class="check-box">
+          <div class="check-circle">&#10004;</div>
+        </div>
+      </div>
+      
+      <h1 class="success-title">Pembayaran Berhasil!</h1>
+      <p class="success-subtitle">Transaksi Anda telah diverifikasi. Siapkan diri Anda<br>untuk pertandingan terbaik!</p>
+
+      <div class="booking-receipt">
+        <div class="receipt-header">DETAIL BOOKING</div>
+        
+        <div class="receipt-row">
+          <span>Booking ID</span>
+          <strong id="bId" class="text-white">SS-98210</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Venue</span>
+          <strong id="bVenue" class="text-white">Sudutsatu Arena, Sumedang</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Tanggal</span>
+          <strong id="bDate" class="text-white">13 Mei 2026</strong>
+        </div>
+        <div class="receipt-row">
+          <span>Waktu</span>
+          <strong id="bTime" class="text-white">19:00 - 21:00 WIB</strong>
+        </div>
+        
+        <hr class="divider">
+        
+        <div class="receipt-row align-center mt-16">
+          <span>Total Dibayar</span>
+          <strong id="bPaid" class="text-primary text-xl">Rp 202.500</strong>
+        </div>
+      </div>
+
+      <div class="success-actions">
+        <button class="btn btn-primary btn-icon-text">
+          <span class="icon">&#127915;</span> Lihat Tiket
+        </button>
+        <button onclick="window.location.href='index.html'" class="btn btn-outline btn-icon-text">
+          <span class="icon">&#8962;</span> Kembali ke Beranda
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- <script src="assets/js/data/dummy-data.js"></script> --> <!-- Hapus comment kalau mau test menggunakan dummy-->
+  <script src="assets/js/pages/success.js"></script> 
+  <script src="../../script.js"></script>
+</body>
+</html>

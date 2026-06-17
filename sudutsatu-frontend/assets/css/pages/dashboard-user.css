@@ -1,0 +1,107 @@
+/* ==========================================================================
+   GLOBAL UTILITIES (Reset & Basic)
+   ========================================================================== */
+.m-0 { margin: 0; }
+.pt-40 { padding-top: 40px; } .pb-64 { padding-bottom: 64px; } .py-32 { padding-top: 32px; padding-bottom: 32px; }
+.mb-8 { margin-bottom: 8px; } .mb-12 { margin-bottom: 12px; } .mb-16 { margin-bottom: 16px; } .mb-24 { margin-bottom: 24px; } .mb-32 { margin-bottom: 32px; } .mb-40 { margin-bottom: 40px; }
+.mt-4 { margin-top: 4px; } .mt-8 { margin-top: 8px; } .mt-16 { margin-top: 16px; } .mt-24 { margin-top: 24px; } .mt-40 { margin-top: 40px; }
+.gap-12 { gap: 12px; }
+.tracking-wide { letter-spacing: 0.5px; } .uppercase { text-transform: uppercase; }
+.text-tiny { font-size: 10px; } .text-small { font-size: 13px; }
+.bold { font-weight: 700; } .font-normal { font-weight: 400; }
+.border-bottom-dark { border-bottom: 1px solid #1a1a1a; } .border-top-dark { border-top: 1px solid #1a1a1a; }
+.hover-white:hover { color: #fff; } .text-decoration-none { text-decoration: none; }
+.w-100 { width: 100%; }
+
+/* ==========================================================================
+   FLEXBOX KHUSUS (Mengunci Elemen agar tidak lari ke bawah)
+   ========================================================================== */
+/* Profil Navbar */
+.nav-profile-wrapper { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+.nav-profile-text { text-align: right; }
+.nav-avatar { position: relative; width: 32px; height: 32px; border: 2px solid var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-primary); }
+.avatar-dot { position: absolute; bottom: 0; right: -2px; width: 8px; height: 8px; background: var(--color-primary); border-radius: 50%; border: 2px solid #0a0a0a; }
+
+/* Header & Tombol Buat Booking */
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.greeting-title { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin: 0; }
+.btn-buat-booking { padding: 14px 28px; font-weight: 700; letter-spacing: 0.5px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+.btn-buat-booking:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(204,255,0,0.2); }
+
+/* Section Title dengan Garis Hijau & Tulisan "Lihat Semua" */
+.section-header-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.section-title-box { display: flex; align-items: center; gap: 12px; }
+.vertical-bar { width: 6px; height: 24px; background: var(--color-primary); border-radius: 2px; }
+
+/* ==========================================================================
+   STATS ROW (3 KOLOM)
+   ========================================================================== */
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.stat-card { background: #0f0f0f; border: 1px solid #1a1a1a; padding: 24px; border-radius: 12px; display: flex; flex-direction: column; }
+.stat-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.stat-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+.stat-value { font-size: 42px; font-weight: 700; line-height: 1.2; margin-top: auto; }
+.stat-desc { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; }
+
+/* Progress Bars */
+.stat-progress { display: flex; height: 4px; background: transparent; gap: 4px; }
+.progress-bar { background: #222; height: 100%; flex-grow: 1; border-radius: 2px; overflow: hidden; }
+.fill { background: var(--color-primary); height: 100%; }
+
+/* ==========================================================================
+   CONTENT GRID (2 KOLOM: Kiri Booking, Kanan Riwayat)
+   ========================================================================== */
+.content-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; align-items: start; }
+
+/* Booking Card (Horizontal) */
+.booking-card { background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 12px; display: flex; overflow: hidden; padding: 16px; gap: 24px; align-items: stretch; }
+.bc-image { width: 160px; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+.bc-image img { width: 100%; height: 100%; object-fit: cover; }
+.bc-content { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+.bc-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.badge-terkonfirmasi { background: rgba(204,255,0,0.1); border: 1px solid var(--color-primary); color: var(--color-primary); font-size: 9px; font-weight: 800; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+.flex-row { display: flex; align-items: center; }
+
+/* Tombol Aksi Kanan Card */
+.bc-actions { display: flex; flex-direction: column; justify-content: center; width: 110px; flex-shrink: 0; }
+.px-24 { padding-left: 24px; padding-right: 24px; } .py-12 { padding-top: 12px; padding-bottom: 12px; }
+.bc-actions .btn { font-weight: 700; letter-spacing: 0.5px; border-radius: 6px; }
+
+/* Rekomendasi Card */
+.recommendation-card { position: relative; width: 100%; height: 260px; border-radius: 12px; overflow: hidden; }
+.rc-image { width: 100%; height: 100%; object-fit: cover; }
+.rc-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%); padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; }
+.flex-row-between-end { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; }
+.badge-populer { background: var(--color-primary); color: #000; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 4px; display: inline-block; width: max-content; }
+
+/* Activity Card */
+.activity-card { background: #0f0f0f; border: 1px solid #1a1a1a; padding: 24px; border-radius: 12px; }
+.activity-item { display: flex; align-items: flex-start; gap: 16px; width: 100%; }
+.activity-icon { width: 40px; height: 40px; background: rgba(204,255,0,0.05); border: 1px solid rgba(204,255,0,0.3); color: var(--color-primary); display: flex; align-items: center; justify-content: center; border-radius: 8px; flex-shrink: 0; font-size: 16px; }
+.activity-text { flex-grow: 1; }
+
+.btn-lihat-semua { display: block; width: 100%; text-align: center; text-transform: uppercase; letter-spacing: 1px; border-top: 1px solid #1a1a1a; padding-top: 24px; color: var(--color-primary); font-size: 11px; font-weight: 800; text-decoration: none; transition: 0.2s; }
+.btn-lihat-semua:hover { color: #fff; }
+
+/* Footer Layout */
+.footer-layout { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.footer-links { display: flex; gap: 24px; }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Menjaga agar tidak rusak di layar kecil)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .btn-buat-booking { width: 100%; }
+  .stats-row { grid-template-columns: 1fr; }
+  .booking-card { flex-direction: column; padding: 16px; }
+  .bc-image { width: 100%; height: 180px; }
+  .bc-actions { width: 100%; flex-direction: row; gap: 12px; }
+  .bc-actions .btn { width: 100%; }
+  .footer-layout { flex-direction: column; gap: 16px; text-align: center; }
+}

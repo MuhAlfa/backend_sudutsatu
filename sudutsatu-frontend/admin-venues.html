@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelola Lapangan - Admin SudutSatu</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/pages/admin-dashboard.css">
+  <link rel="stylesheet" href="assets/css/pages/admin-venues.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--color-primary)" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </div>
+          <div>
+            <h2 class="brand-title text-primary">SUDUTSATU</h2>
+            <p class="brand-subtitle">Facility Manager</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-menus">
+        <ul class="menu-list">
+          <li>
+            <a href="admin-dashboard.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              Ringkasan
+            </a>
+          </li>
+          <li>
+            <a href="admin-schedule.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Manajemen Jadwal
+            </a>
+          </li>
+          <li>
+            <a href="admin-venues.html" class="menu-item active">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+              Kelola Lapangan
+            </a>
+          </li>
+          <li>
+            <a href="admin-payment-verification.html" class="menu-item d-flex align-center justify-between" style="width: 100%;">
+              <div class="d-flex align-center gap-16">
+                <div style="position: relative; display: flex; align-items: center;">
+                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                  <span class="badge-red-icon">3</span>
+                </div>
+                <span>Verifikasi Pembayaran</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="admin-finance.html" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              Laporan Keuangan
+            </a>
+          </li>
+        </ul>
+
+        <ul class="menu-list bottom-menu">
+          <li>
+            <a href="#" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              Pengaturan
+            </a>
+          </li>
+          <li>
+            <a href="#" class="menu-item">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              Bantuan
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      
+      <header class="admin-topbar">
+        <div class="topbar-search">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#888" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" placeholder="Pencarian cepat...">
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn position-relative">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="notification-dot"></span>
+          </button>
+          <div class="topbar-profile">
+            <img src="assets/images/admin.jpg" alt="Admin">
+          </div>
+        </div>
+      </header>
+
+      <main class="admin-content-area">
+        
+        <div class="flex-between align-center mb-32">
+          <div>
+            <h1 class="page-title text-white m-0 mb-8" style="font-size: 28px;">Kelola Lapangan</h1>
+            <p class="text-muted text-small m-0">Manage facilities, configure sports, and monitor operational status.</p>
+          </div>
+          <button class="btn btn-primary py-12 px-24 bold d-flex align-center gap-8" id="btnTambahLapangan">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="#000" stroke-width="2" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Tambah Lapangan Baru
+          </button>
+        </div>
+
+        <div class="venue-filters-card mb-32">
+          <div class="vf-search">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="#888" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="searchVenue" placeholder="Search venues by name or location...">
+          </div>
+          
+          <div class="vf-options d-flex align-center gap-24">
+            <div class="filter-group d-flex align-center gap-12">
+              <label class="text-muted text-tiny uppercase tracking-wide bold">OLAHRAGA:</label>
+              <div class="custom-select-wrapper">
+                <select id="filterSport">
+                  <option value="All Sports">All Sports</option>
+                  <option value="Futsal">Futsal</option>
+                  <option value="Biliard">Biliard</option>
+                </select>
+                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+
+            <div class="filter-group d-flex align-center gap-12 border-left-dark pl-24">
+              <label class="text-muted text-tiny uppercase tracking-wide bold">STATUS:</label>
+              <div class="custom-select-wrapper">
+                <select id="filterStatus">
+                  <option value="All Statuses">All Statuses</option>
+                  <option value="AKTIF">Aktif</option>
+                  <option value="PEMELIHARAAN">Pemeliharaan</option>
+                </select>
+                <svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="venue-grid" id="venueGridContainer"></div>
+
+        <div class="d-flex justify-center mt-40">
+          <button class="btn-load-more" id="btnLoadMore">Load More Venues</button>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <div id="modalVenueForm" class="modal-overlay hidden">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="flex-between align-center border-bottom-dark pb-16 mb-24">
+        <h3 class="text-white m-0" id="formModalTitle">Tambah Lapangan Baru</h3>
+        <button class="btn-close-modal" id="closeVenueForm">&times;</button>
+      </div>
+      
+      <div class="form-group mb-16">
+        <label class="form-label">Nama Lapangan</label>
+        <input type="text" id="inpNama" class="form-input" placeholder="Contoh: Lapangan Futsal A">
+      </div>
+      <div class="form-group mb-16">
+        <label class="form-label">Lokasi</label>
+        <input type="text" id="inpLokasi" class="form-input" placeholder="Contoh: Sumedang Selatan, Sumedang">
+      </div>
+      
+      <div class="d-flex gap-16 mb-16">
+        <div class="form-group w-100">
+          <label class="form-label">Harga Dasar (Rp)</label>
+          <input type="text" id="inpHarga" class="form-input" placeholder="Contoh: 150.000">
+        </div>
+        <div class="form-group w-100">
+          <label class="form-label">Detail Lapangan</label>
+          <input type="text" id="inpDetail" class="form-input" placeholder="Contoh: 1 Indoor (Vinyl)">
+        </div>
+      </div>
+
+      <div class="form-group mb-16">
+        <label class="form-label">Status Operasional</label>
+        <div class="custom-select-wrapper w-100">
+          <select id="inpStatus" class="form-input w-100">
+            <option value="AKTIF">AKTIF</option>
+            <option value="PEMELIHARAAN">PEMELIHARAAN</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group mb-24">
+        <label class="form-label">Olahraga Tersedia (Pisahkan dengan koma)</label>
+        <input type="text" id="inpOlahraga" class="form-input" placeholder="Contoh: Futsal, Biliard">
+      </div>
+      
+      <button class="btn btn-primary w-100 py-12 bold" id="btnSimpanVenue">Simpan Data Lapangan</button>
+    </div>
+  </div>
+
+  <div id="modalSchedule" class="modal-overlay hidden">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+      <button class="btn-close-modal" id="closeSchedule" style="position: absolute; right: 16px; top: 16px;">&times;</button>
+      <div class="mb-24 mt-16">
+        <svg viewBox="0 0 24 24" width="48" height="48" stroke="var(--color-primary)" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      </div>
+      <h3 class="text-white m-0 mb-8">Atur Operasional</h3>
+      <p class="text-muted text-small mb-24">Ubah status operasional untuk <strong class="text-white" id="schVenueName">Lapangan</strong>.</p>
+      
+      <div class="d-flex gap-12">
+        <button class="btn btn-primary w-100 bold" id="btnSetAktif">Set Aktif</button>
+        <button class="btn-outline-dark w-100 bold" style="color: #ffcc00; border-color: #ffcc00;" id="btnSetMaint">Maint.</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalAnalitik" class="modal-overlay hidden">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="flex-between align-center border-bottom-dark pb-16 mb-24">
+        <h3 class="text-white m-0">Analitik Lapangan</h3>
+        <button class="btn-close-modal" id="closeAnalitik">&times;</button>
+      </div>
+      <h4 class="text-primary m-0 mb-24" id="anaVenueName" style="font-size: 20px;">Nama Lapangan</h4>
+      
+      <div class="vc-details-grid mb-32">
+        <div style="background: #1a1a1a; padding: 16px; border-radius: 8px;">
+          <label class="vc-label">TOTAL BOOKING (BULAN INI)</label>
+          <p class="vc-value-text" style="font-size: 24px;">142 <span class="text-primary text-small">+12%</span></p>
+        </div>
+        <div style="background: #1a1a1a; padding: 16px; border-radius: 8px;">
+          <label class="vc-label">PENDAPATAN (ESTIMASI)</label>
+          <p class="vc-value-text" style="font-size: 24px;">Rp 21.3M</p>
+        </div>
+      </div>
+      
+      <div class="mb-24">
+        <label class="vc-label d-flex justify-between mb-8">RATA-RATA UTILITAS WAKTU <span class="text-primary">85%</span></label>
+        <div class="vc-progress-bg"><div class="vc-progress-fill" style="width: 85%;"></div></div>
+      </div>
+      
+      <button class="btn-outline-dark w-100 py-12" id="btnTutupAnalitik">Tutup Analitik</button>
+    </div>
+  </div>
+
+  <script src="assets/js/pages/admin-venues.js"></script>
+</body>
+</html>
