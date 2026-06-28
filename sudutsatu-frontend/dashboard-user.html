@@ -1,242 +1,202 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard User - SudutSatu</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/pages/dashboard-user.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <nav class="navbar border-bottom-dark">
-    <div class="container navbar-inner" style="display: flex; align-items: center; justify-content: space-between;">
-      
-      <a href="index.html" class="navbar-logo" style="text-decoration: none;">
-        <strong style="font-size: 20px;">
-          <span class="text-primary">SUDUT</span><span class="text-white">SATU</span>
-        </strong>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Dashboard User - SudutSatu
+  </title>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/dashboard-user.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="user-body">
+  <header class="user-navbar">
+   <div class="container flex-between align-center py-16">
+    <div class="brand-logo text-decoration-none">
+     <h2 class="m-0" style="font-weight: 700; font-size: 20px; letter-spacing: -0.5px;">
+      <span class="text-primary">
+       Sudut
+      </span>
+      <span class="text-white">
+       Satu
+      </span>
+     </h2>
+    </div>
+    <nav class="nav-links d-flex gap-32">
+     <a class="nav-item" href="search-venues.html">
+      Cari Lapangan
+     </a>
+     <a class="nav-item active" href="dashboard-user.html">
+      Dashboard
+     </a>
+     <a class="nav-item" href="profile.html">
+      Profil
+     </a>
+     <a class="nav-item" href="tentang-kami.html">
+      Tentang Kami
+     </a>
+     <a class="nav-item" href="hubungi-kami.html">
+      Hubungi Kami
+     </a>
+    </nav>
+    <div class="nav-actions d-flex align-center gap-16">
+     <div class="nav-profile-wrapper d-flex align-center gap-12">
+      <div class="nav-profile-text text-right" id="desktopProfileText">
+      </div>
+      <div class="nav-avatar position-relative">
+       <img alt="User" src="assets/images/avatar.jpg" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #ccff00;"/>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <main class="container py-32">
+   <header class="dashboard-header flex-between align-center mb-32 flex-wrap gap-16">
+    <div class="header-text">
+     <h1 class="greeting-title text-white m-0 mb-8" style="font-size: 28px;">
+      Halo, Selamat Datang di SudutSatu!
+     </h1>
+     <p class="text-muted m-0" style="font-size: 15px;">
+      Siap untuk sesi latihan hari ini di Sumedang?
+     </p>
+    </div>
+    <button class="btn btn-primary px-24 py-12 bold" onclick="window.location.href='search-venues.html'">
+     <span style="font-size: 18px; font-weight: 900; margin-right: 6px;">
+      +
+     </span>
+     BUAT BOOKING BARU
+    </button>
+   </header>
+   <section class="stats-row mb-40">
+    <div class="stat-card">
+     <div class="stat-card-header flex-between mb-16">
+      <span class="stat-label text-primary bold text-tiny uppercase tracking-wide">
+       STATISTIK
+      </span>
+      <span class="stat-icon text-primary">
+       ⚽
+      </span>
+     </div>
+     <h2 class="stat-value text-white m-0 mb-8" id="statTotalPemesanan" style="font-size: 28px;">
+      0
+     </h2>
+     <div class="stat-desc text-muted text-tiny uppercase tracking-wide">
+      TOTAL PEMESANAN
+     </div>
+     <div class="stat-progress mt-16">
+      <div class="progress-bar">
+       <div class="fill" style="width: 100%; background:#ccff00; height:4px;">
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="stat-card">
+     <div class="stat-card-header flex-between mb-16">
+      <span class="stat-label text-primary bold text-tiny uppercase tracking-wide">
+       JADWAL
+      </span>
+      <span class="stat-icon text-primary">
+       📅
+      </span>
+     </div>
+     <h2 class="stat-value text-white m-0 mb-8" id="statJadwalAktif" style="font-size: 28px;">
+      0
+     </h2>
+     <div class="stat-desc text-muted text-tiny uppercase tracking-wide">
+      SESI AKTIF
+     </div>
+     <div class="stat-progress mt-16">
+      <div class="progress-bar">
+       <div class="fill" style="width: 100%; background:#ccff00; height:4px;">
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="stat-card">
+     <div class="stat-card-header flex-between mb-16">
+      <span class="stat-label text-primary bold text-tiny uppercase tracking-wide">
+       Total Pengeluaran
+      </span>
+      <span style="font-size: 16px;">
+       💸
+      </span>
+     </div>
+     <h2 class="stat-value text-white m-0 mb-8" id="userTotalSpend" style="font-size: 28px;">
+      Rp 0
+     </h2>
+     <div class="stat-desc text-muted text-tiny uppercase tracking-wide">
+      AKUMULUASI SELURUH PEMBAYARAN
+     </div>
+     <div class="stat-progress mt-16">
+      <div class="progress-bar">
+       <div class="fill" style="width: 100%; background:#ccff00; height:4px;">
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="content-grid">
+    <div class="content-left">
+     <div class="section-title flex-between align-center mb-16">
+      <h3 class="m-0 text-white" style="border-left: 4px solid #ccff00; padding-left: 8px;">
+       Pemesanan Mendatang
+      </h3>
+      <a class="text-primary text-small text-decoration-none bold" href="booking-history.html">
+       Lihat Semua
       </a>
-      
-      <ul class="navbar-menu" style="display: flex; gap: 32px; list-style: none; margin: 0 auto 0 40px; padding: 0;">
-        <li><a href="index.html" class="nav-link active" style="text-decoration: none; color: #fff; border-bottom: 2px solid var(--color-primary); padding-bottom: 24px;">Beranda</a></li>
-        <li><a href="search-venues.html" class="nav-link" style="text-decoration: none; color: #888;">Cari Lapangan</a></li>
-        <li><a href="#" class="nav-link" style="text-decoration: none; color: #888;">Tentang Kami</a></li>
-        <li><a href="#" class="nav-link" style="text-decoration: none; color: #888;">Hubungi Kami</a></li>
-      </ul>
-      
-      <div class="nav-profile-wrapper">
-        <div class="nav-profile-text">
-          <div class="text-white" style="font-size: 14px; font-weight: 600;">Rizky Pratama</div>
-          <div class="text-primary" style="font-size: 10px; font-weight: 800; letter-spacing: 0.5px;">PRO MEMBER</div>
-        </div>
-        <div class="nav-avatar">
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <div class="avatar-dot"></div>
-        </div>
+     </div>
+     <div class="mb-40" id="upcomingBookingsContainer">
+     </div>
+     <div class="d-flex align-center gap-8 mb-24">
+      <div style="width: 4px; height: 20px; background: #ccff00; border-radius: 4px;">
       </div>
-
+      <h2 class="text-white m-0" style="font-size: 20px;">
+       Rekomendasi Untukmu
+      </h2>
+     </div>
+     <div class="recommendation-card">
+      <img alt="Rekomendasi" class="rc-image" onerror="this.src='#'" src="assets/images/meja1.png"/>
+      <div class="rc-overlay">
+       <span class="badge-premium mb-16 d-inline-block" style="width: max-content;">
+        POPULER
+       </span>
+       <div class="flex-between align-end">
+        <div>
+         <h3 class="text-white mb-4 m-0" style="font-size: 22px;">
+          Meja Biliard VIP
+         </h3>
+         <p class="text-muted text-small m-0">
+          Sudutsatu Arena
+         </p>
+        </div>
+        <div class="text-primary bold" style="font-size: 22px;">
+         Rp50.000
+         <span class="text-small text-muted" style="font-weight:400;">
+          /jam
+         </span>
+        </div>
+       </div>
+      </div>
+     </div>
     </div>
-  </nav>
-
-  <main class="container pt-40 pb-64">
-    
-    <header class="dashboard-header mb-40">
-      <div class="header-text">
-        <h1 class="greeting-title text-white">Halo, Rizky Pratama</h1>
-        <p class="text-muted mt-8" style="font-size: 15px; margin: 0;">Siap untuk sesi latihan hari ini di Sumedang?</p>
+    <aside class="content-right">
+     <div class="section-title flex-between align-center mb-16">
+      <h3 class="m-0 text-white" style="border-left: 4px solid #ccff00; padding-left: 8px;">
+       Riwayat Aktivitas
+      </h3>
+     </div>
+     <div class="activity-card">
+      <div id="historyBookingsContainer">
       </div>
-      
-      <button class="btn btn-primary btn-buat-booking" onclick="window.location.href='search-venues.html'">
-        <span style="font-size: 18px; font-weight: 900; margin-right: 6px;">+</span> BUAT BOOKING BARU
+      <button class="btn btn-outline w-100 py-12 text-small mt-16 text-white bold">
+       LIHAT SEMUA RIWAYAT
       </button>
-    </header>
-
-    <section class="stats-row mb-40">
-      
-      <div class="stat-card">
-        <div class="stat-card-header">
-          <span class="stat-icon text-primary">&#9917;</span>
-          <span class="stat-label text-primary">STATISTIK</span>
-        </div>
-        <div class="stat-value text-white">24</div>
-        <div class="stat-desc text-muted">TOTAL PEMESANAN</div>
-        <div class="stat-progress mt-24">
-          <div class="progress-bar"><div class="fill" style="width: 60%;"></div></div>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-card-header">
-          <span class="stat-icon text-primary">&#128197;</span>
-          <span class="stat-label text-primary">JADWAL</span>
-        </div>
-        <div class="stat-value text-white">03</div>
-        <div class="stat-desc text-muted">SESI AKTIF</div>
-        <div class="stat-progress segmented mt-24">
-          <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
-          <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
-          <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
-          <div class="progress-bar"><div class="fill" style="width: 0%;"></div></div>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-card-header">
-          <span class="stat-icon text-primary">&#11088;</span>
-          <span class="stat-label text-primary">PERFORMA</span>
-        </div>
-        <div class="stat-value text-white">1,250</div>
-        <div class="stat-desc text-muted">POIN PRESTASI</div>
-        <div class="text-primary text-small bold mt-24">+120 dari minggu lalu</div>
-      </div>
-
-    </section>
-
-    <section class="content-grid">
-      
-      <div class="content-left">
-        
-        <div class="section-header-wrapper mb-24">
-          <div class="section-title-box">
-            <div class="vertical-bar"></div>
-            <h2 class="text-white m-0" style="font-size: 20px;">Pemesanan Mendatang</h2>
-          </div>
-          <a href="booking-history.html" class="text-primary text-small bold text-decoration-none">Lihat Semua</a>
-        </div>
-
-        <div class="upcoming-list mb-40">
-          
-          <div class="booking-card mb-16">
-            <div class="bc-image">
-              <img src="assets/images/futsal-sintetis.png" alt="Futsal">
-            </div>
-            <div class="bc-content">
-              <div class="bc-header mb-8">
-                <span class="text-tiny text-muted uppercase tracking-wide">SESI FUTSAL • 120 MENIT</span>
-                <span class="badge-terkonfirmasi">TERKONFIRMASI</span>
-              </div>
-              <h3 class="text-white mb-12" style="font-size: 20px;">Lapangan Sintetis</h3>
-              <div class="text-small text-muted flex-row gap-12">
-                <span>&#128197; Sabtu, 24 April 2026</span> 
-                <span>&#8986; 19:00 - 21:00</span>
-              </div>
-            </div>
-            <div class="bc-actions">
-              <button class="btn btn-outline text-small mb-8 px-24 py-12 w-100">DETAIL</button>
-              <button class="btn btn-primary text-small px-24 py-12 w-100">KODE QR</button>
-            </div>
-          </div>
-
-          <div class="booking-card">
-            <div class="bc-image">
-              <img src="assets/images/meja1.png" alt="Billiard">
-            </div>
-            <div class="bc-content">
-              <div class="bc-header mb-8">
-                <span class="text-tiny text-muted uppercase tracking-wide">SESI BILLIARD • MEJA 1</span>
-                <span class="badge-terkonfirmasi">TERKONFIRMASI</span>
-              </div>
-              <h3 class="text-white mb-12" style="font-size: 20px;">Billiar Sudutsatu</h3>
-              <div class="text-small text-muted flex-row gap-12">
-                <span>&#128197; Senin, 26 April 2026</span> 
-                <span>&#8986; 20:00 - 22:00</span>
-              </div>
-            </div>
-            <div class="bc-actions">
-              <button class="btn btn-outline text-small mb-8 px-24 py-12 w-100">DETAIL</button>
-              <button class="btn btn-primary text-small px-24 py-12 w-100">KODE QR</button>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="section-title-box mb-24">
-          <div class="vertical-bar"></div>
-          <h2 class="text-white m-0" style="font-size: 20px;">Rekomendasi Untukmu</h2>
-        </div>
-
-        <div class="recommendation-card">
-          <img src="assets/images/meja2.png" class="rc-image" alt="Rekomendasi">
-          <div class="rc-overlay">
-            <span class="badge-populer mb-16">POPULER</span>
-            <div class="flex-row-between-end">
-              <div>
-                <h3 class="text-white mb-4 m-0" style="font-size: 22px;">Lapangan 2</h3>
-                <p class="text-muted text-small m-0">Sudutsatu</p>
-              </div>
-              <div class="text-primary bold" style="font-size: 22px;">Rp150k<span class="text-small text-muted font-normal">/jam</span></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <aside class="content-right">
-        
-        <div class="activity-wrapper">
-          <div class="section-title-box mb-24">
-            <div class="vertical-bar"></div>
-            <h2 class="text-white m-0" style="font-size: 20px;">Riwayat Aktivitas</h2>
-          </div>
-          
-          <div class="activity-card">
-            
-            <div class="activity-item mb-32">
-              <div class="activity-icon">&#128181;</div>
-              <div class="activity-text">
-                <h4 class="text-white mb-4 m-0" style="font-size: 14px;">Pembayaran Berhasil</h4>
-                <p class="text-muted text-small mb-8 m-0">Booking #SS-89210 • Billiard</p>
-                <span class="text-tiny text-muted uppercase tracking-wide">2 JAM YANG LALU</span>
-              </div>
-            </div>
-
-            <div class="activity-item mb-32">
-              <div class="activity-icon">&#127942;</div>
-              <div class="activity-text">
-                <h4 class="text-white mb-4 m-0" style="font-size: 14px;">Pencapaian Baru: "Hattrick Week"</h4>
-                <p class="text-muted text-small mb-8 m-0">Anda menyelesaikan 3 sesi dalam seminggu</p>
-                <span class="text-tiny text-muted uppercase tracking-wide">KEMARIN, 18:30</span>
-              </div>
-            </div>
-
-            <div class="activity-item mb-32">
-              <div class="activity-icon">&#128077;</div>
-              <div class="activity-text">
-                <h4 class="text-white mb-4 m-0" style="font-size: 14px;">Review Terkirim</h4>
-                <p class="text-muted text-small mb-8 m-0">5 Bintang untuk Lapangan 1</p>
-                <span class="text-tiny text-muted uppercase tracking-wide">20 MEI 2026</span>
-              </div>
-            </div>
-
-            <a href="booking-history.html" class="btn-lihat-semua mt-16">
-              LIHAT SEMUA RIWAYAT
-            </a>
-          </div>
-        </div>
-
-      </aside>
-
-    </section>
+     </div>
+    </aside>
+   </section>
   </main>
-
-  <footer class="border-top-dark py-32 mt-40">
-    <div class="container footer-layout">
-      <div class="footer-left text-small text-muted">
-        <strong style="font-size: 16px; margin-right: 12px;">
-          <span class="text-primary">SUDUT</span><span class="text-white">SATU</span>
-        </strong>
-        &copy; 2026 SudutSatu Performance. All rights reserved.
-      </div>
-      <div class="footer-links">
-        <a href="#" class="text-muted hover-white text-decoration-none">Ketentuan</a>
-        <a href="#" class="text-muted hover-white text-decoration-none">Privasi</a>
-        <a href="#" class="text-muted hover-white text-decoration-none">Bantuan</a>
-        <a href="#" class="text-muted hover-white text-decoration-none">Kontak</a>
-      </div>
-    </div>
-  </footer>
-
-</body>
+  <script src="assets/js/pages/dashboard-user.js">
+  </script>
+ </body>
 </html>

@@ -1,0 +1,123 @@
+/* ==========================================================================
+   CSS KHUSUS PENGATURAN (SETTINGS)
+   ========================================================================== */
+
+/* Layout Grid Pengaturan */
+.settings-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .settings-layout { grid-template-columns: 1fr; }
+}
+
+/* Sidebar Navigasi Settings */
+.settings-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #0f1215;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.set-tab-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.set-tab-btn:hover { background: #1a1a1a; color: #ccc; }
+.set-tab-btn.active { background: rgba(204, 255, 0, 0.1); color: var(--color-primary); }
+
+/* Area Konten Panel */
+.settings-content {
+  background: #0f1215;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 32px;
+  min-height: 500px;
+}
+
+.set-panel { display: none; animation: fadeIn 0.3s ease; }
+.set-panel.active-panel { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.panel-title { font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 24px 0; padding-bottom: 16px; border-bottom: 1px solid #222; }
+
+/* Form Elements */
+.form-group { display: flex; flex-direction: column; }
+.form-label { font-size: 12px; font-weight: 600; color: #888; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.form-input { background: #141414; border: 1px solid #333; color: #fff; border-radius: 8px; padding: 12px 16px; font-size: 14px; outline: none; transition: 0.2s; }
+.form-input:focus { border-color: var(--color-primary); background: #1a1a1a; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.profile-pic-large { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #333; }
+.bg-darker { background: #0a0a0a; }
+.border-dark { border: 1px solid #222; }
+.border-bottom-dark { border-bottom: 1px solid #222; }
+.rounded-8 { border-radius: 8px; }
+
+/* Toggle Switch Keren (Ala iOS/Android) */
+.toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; transition: .3s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; transition: .3s; border-radius: 50%; }
+.toggle-switch input:checked + .slider { background-color: var(--color-primary); }
+.toggle-switch input:checked + .slider:before { transform: translateX(20px); background-color: #000; }
+
+/* Styling Tabel Staf */
+.table-responsive { overflow-x: auto; }
+.staff-table { border-collapse: collapse; text-align: left; font-size: 14px; }
+.staff-table th { padding: 12px 16px; font-size: 10px; font-weight: 700; color: #666; text-transform: uppercase; border-bottom: 1px solid #222; }
+.staff-table td { padding: 16px; border-bottom: 1px solid #1a1a1a; color: #ccc; }
+.staff-table tbody tr:hover { background: #141414; }
+
+/* Mencegah teks turun ke bawah / patah di tengah kata */
+.role-badge { 
+  padding: 4px 10px; 
+  border-radius: 4px; 
+  font-size: 10px; 
+  font-weight: 700; 
+  letter-spacing: 0.5px; 
+  white-space: nowrap; /* Ini kunci agar teks tidak terpotong */
+  display: inline-block; 
+}
+
+/* Sedikit margin bawah tambahan untuk foto profil jika dibutuhkan */
+.mb-16 { margin-bottom: 16px !important; }
+.time-input { width: 120px; text-align: center; }
+
+/* ==========================================================================
+   TOMBOL KELUAR / DANGER
+   ========================================================================== */
+.btn-outline-danger {
+  background: transparent;
+  border: 1px solid #ff5555;
+  color: #ff5555;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-danger:hover {
+  background: #ff5555;
+  color: #fff;
+  border-color: #ff5555;
+  box-shadow: 0 4px 12px rgba(255, 85, 85, 0.3);
+}

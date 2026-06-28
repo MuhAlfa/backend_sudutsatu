@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'http://localhost:5000/api';
+    const API_BASE_URL = window.location.hostname === '127.0.0.1'
+        ? 'http://127.0.0.1:5000/api'
+        : 'http://localhost:5000/api';
 
     // ==========================================
     // 1. LOGIKA UNTUK HALAMAN REGISTER (DISESUAIKAN DENGAN HTML)
@@ -66,20 +68,23 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch(`${API_BASE_URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dataLogin)
+                body: JSON.stringify(dataLogin),
+                credentials: 'include'
             })
-            .then(res => res.json())
-            .then(result => {
-                if (result.token) {
-                    alert("Login Berhasil!");
-                    localStorage.setItem('token', result.token);
-                    localStorage.setItem('user_id', result.user.id);
-                    window.location.href = '../../dashboard-user.html'; // Sesuaikan arah foldernya
+            .then(async res => {
+                const result = await res.json();
+                if (res.ok) {
+                    alert(result.message || "Login Berhasil!");
+                    // Server sets HttpOnly cookie; do not store token client-side
+                    window.location.href = '../../dashboard-user.html';
                 } else {
                     alert(result.message || "Login Gagal!");
                 }
             })
-            .catch(err => console.error("Error Login:", err));
+            .catch(err => {
+                console.error("Error Login:", err);
+                alert("Login gagal, periksa koneksi server.");
+            });
         });
     }
 });

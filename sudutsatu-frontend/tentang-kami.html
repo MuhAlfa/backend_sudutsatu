@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Tentang Kami - SudutSatu
+  </title>
+  <!-- Menghubungkan ke CSS Utama (Asal) sesuai projekmu -->
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <!-- Font Inter (Sama seperti di search-venues.html) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- CSS Khusus Halaman Tentang Kami (Ditulis di sini langsung agar tidak repot bikin file CSS baru) -->
+  <style>
+   :root {
+            --bg-dark: #121212;         /* Background utama gelap */
+            --bg-card: #1e1e1e;         /* Background box/kartu */
+            --accent-lime: #b4f136;     /* Hijau kekuningan / Lime green khas SudutSatu */
+            --text-white: #ffffff;      /* Teks putih utama */
+            --text-muted: #a0a0a0;      /* Teks abu-abu untuk deskripsi */
+        }
+
+        .about-section {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            padding: 80px 4%;
+            font-family: 'Inter', sans-serif;
+            min-height: 80vh;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .about-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about-header .badge {
+            background-color: rgba(180, 241, 54, 0.1);
+            color: var(--accent-lime);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid rgba(180, 241, 54, 0.2);
+        }
+
+        .about-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .about-header .highlight {
+            color: var(--accent-lime);
+        }
+
+        .about-header .subtitle {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* Tata Letak Grid Konten */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        /* Teks Tentang Kami */
+        .about-text h3 {
+            font-size: 26px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .about-text strong {
+            color: var(--text-white);
+        }
+
+        /* Poin Keunggulan */
+        .features-list {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            background-color: var(--accent-lime);
+            color: var(--bg-dark);
+            font-weight: bold;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Bagian Gambar Kanan */
+        .about-image .image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            filter: brightness(0.85); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--bg-card);
+            border-left: 4px solid var(--accent-lime);
+            padding: 15px 25px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .experience-badge h4 {
+            color: var(--accent-lime);
+            font-size: 28px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .experience-badge p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--text-white);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-header h2 { font-size: 28px; }
+            .about-image { order: -1; }
+        }
+  </style>
+ </head>
+ <body class="user-body">
+  <header class="user-navbar">
+   <div class="container navbar-inner">
+    <div class="navbar-logo">
+     <span class="text-primary">
+      Sudut
+     </span>
+     Satu
+    </div>
+    <nav class="nav-links d-flex gap-32">
+     <a class="nav-item" href="search-venues.html">
+      Cari Lapangan
+     </a>
+     <a class="nav-item" href="dashboard-user.html">
+      Dashboard
+     </a>
+     <a class="nav-item" href="profile.html">
+      Profil
+     </a>
+     <a class="nav-item active" href="tentang-kami.html">
+      Tentang Kami
+     </a>
+     <a class="nav-item" href="hubungi-kami.html">
+      Hubungi Kami
+     </a>
+    </nav>
+    <div class="nav-actions d-flex align-center gap-16">
+     <div class="nav-profile-wrapper d-flex align-center gap-12">
+      <div class="nav-profile-text text-right" id="desktopProfileText">
+       <div class="text-white" style="font-size: 14px; font-weight: 600;">
+       </div>
+      </div>
+      <div class="nav-avatar position-relative">
+       <img alt="User" src="assets/images/avatar.jpg" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #ccff00;"/>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <!-- KONTEN TENTANG KAMI -->
+  <section class="about-section">
+   <div class="about-container">
+    <div class="about-header">
+     <span class="badge">
+      SIAPA KAMI
+     </span>
+     <h2>
+      Tentang
+      <span class="highlight">
+       SudutSatu
+      </span>
+     </h2>
+     <p class="subtitle">
+      Solusi digital terbaik untuk kemudahan olahraga Anda.
+     </p>
+    </div>
+    <div class="about-content">
+     <div class="about-text">
+      <h3>
+       Membawa Lapangan Lebih Dekat dengan Anda
+      </h3>
+      <p>
+       <strong>
+        SudutSatu
+       </strong>
+       hadir sebagai platform inovatif yang menjembatani para pencinta olahraga futsal dan billiard untuk menemukan serta memesan lapangan idaman secara instan. Kami memahami bahwa waktu Anda berharga, itulah mengapa kami menciptakan sistem booking yang paling efisien.
+      </p>
+      <p>
+       Bukan sekadar booking biasa, kami juga mendukung fitur interaktif seperti bayar patungan untuk mempermudah koordinasi bersama tim Anda. Bersama SudutSatu, mari buat olahraga jadi lebih mudah dan menyenangkan!
+      </p>
+      <div class="features-list">
+       <div class="feature-item">
+        <span class="feature-icon">
+         ✓
+        </span>
+        <div>
+         <strong>
+          Akses Ribuan Jam Lapangan
+         </strong>
+         <p>
+          Pilihan jadwal fleksibel sesuai waktu luang tim Anda.
+         </p>
+        </div>
+       </div>
+       <div class="feature-item">
+        <span class="feature-icon">
+         ✓
+        </span>
+        <div>
+         <strong>
+          Pemesanan Instan &amp; Praktis
+         </strong>
+         <p>
+          Tanpa ribet telpon sana-sini, semua selesai dalam hitungan detik.
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+  </section>
+ </body>
+</html>

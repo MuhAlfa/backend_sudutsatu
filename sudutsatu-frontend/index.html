@@ -1,137 +1,199 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SudutSatu - Booking Lapangan Olahraga</title>
-  <!-- Menghubungkan file CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <!-- Font Google (Inter) untuk tipografi yang bersih -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <!-- ==================== NAVBAR ==================== -->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   SudutSatu - Booking Lapangan Olahraga
+  </title>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body>
   <nav class="navbar">
-    <div class="container navbar-inner">
-      <!-- Logo -->
-      <a href="index.html" class="navbar-logo">
-        <span class="text-primary">Sudut</span>Satu
-      </a>
-
-      <!-- Menu Navigasi (Tengah) -->
-      <ul class="navbar-menu">
-        <li><a href="#" class="nav-link active">Beranda</a></li>
-        <li><a href="#" class="nav-link">Cari Lapangan</a></li>
-        <li><a href="#" class="nav-link">Tentang Kami</a></li>
-        <li><a href="#" class="nav-link">Hubungi Kami</a></li>
-      </ul>
-
-      <!-- Aksi Autentikasi (Kanan) -->
-      <div class="navbar-actions">
-        <a href="pages/auth/login.html" class="btn btn-text">Masuk</a>
-        <a href="pages/auth/register.html" class="btn btn-primary">Daftar</a>
-      </div>
+   <div class="container navbar-inner">
+    <a class="navbar-logo" href="index.html">
+     <span class="text-primary">
+      Sudut
+     </span>
+     Satu
+    </a>
+    <ul class="navbar-menu">
+    </ul>
+    <div class="navbar-actions">
+     <a class="btn btn-text" href="pages/auth/login.html" id="loginLink">
+      Masuk
+     </a>
+     <a class="btn btn-primary" href="pages/auth/register.html" id="registerLink">
+      Daftar
+     </a>
+     <button class="btn btn-primary" id="logoutBtn" style="display:none;">
+      Keluar
+     </button>
     </div>
+   </div>
   </nav>
-
-  <!-- ==================== HERO SECTION ==================== -->
   <header class="hero-section container">
-    <div class="hero-content">
-      <!-- Badge Status -->
-      <div class="badge badge-dark">
-        <span class="dot-indicator"></span> TERSEDIA SEKARANG
-      </div>
-      
-      <!-- Headline & Copywriting -->
-      <h1 class="hero-title">
-        Booking Lapangan Futsal dan Billiard Kini Lebih <span class="text-primary">Mudah</span>
-      </h1>
-      <p class="hero-subtitle">
-        Pesan Instan, Bayar Patungan. Akses ribuan jam lapangan berkualitas tinggi dengan sistem booking paling efisien.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="hero-cta">
-        <a href="search-venues.html" class="btn btn-primary">
-          Pesan Lapangan Sekarang <span class="icon-arrow">&rarr;</span>
-        </a>
-        <button class="btn btn-outline">
-          <span class="icon-play">&#9658;</span> Cara Kerja
-        </button>
-      </div>
+   <div class="hero-content">
+    <div class="badge badge-dark">
+     <span class="dot-indicator">
+     </span>
+     TERSEDIA SEKARANG
     </div>
-
-    <div class="hero-image-wrapper">
-      <!-- Dummy Image Placeholder, gunakan tag img dengan alt yang relevan -->
-      <img src="assets/images/futsal-bl ss.png" alt="Arena Futsal dan Billiard" class="hero-image">"
-      
-      <!-- Floating Card: Live Score -->
-      <div class="floating-card live-score">
-        <span class="live-score-label">Live Score</span>
-        <div class="live-score-numbers">
-          FUTSAL <span class="score-highlight">4 - 2</span>
-        </div>
-      </div>
+    <h1 class="hero-title">
+     Booking Lapangan Futsal dan Billiard Kini Lebih
+     <span class="text-primary">
+      Mudah
+     </span>
+    </h1>
+    <p class="hero-subtitle">
+     Pesan Instan, Bayar Patungan. Akses ribuan jam lapangan berkualitas tinggi dengan sistem booking paling efisien.
+    </p>
+    <div class="hero-cta">
+     <a class="btn btn-primary text-decoration-none" href="pages/auth/login.html">
+      Pesan Lapangan Sekarang
+      <span class="icon-arrow">
+       →
+      </span>
+     </a>
+     <button class="btn btn-outline" onclick="window.location.href='pages/auth/login.html'">
+      <span class="icon-play">
+       ►
+      </span>
+      Cara Kerja
+     </button>
     </div>
+   </div>
+   <div class="hero-image-wrapper">
+    <img alt="Arena Futsal dan Billiard" class="hero-image" src="assets/images/futsal-bl ss.png"/>
+   </div>
   </header>
-
-  <!-- ==================== CATEGORIES SECTION ==================== -->
-  <section class="categories-section container">
-    <div class="section-header">
-      <div>
-        <h2 class="section-title">Kategori Olahraga</h2>
-        <p class="section-subtitle">Pilih arena sesuai dengan passion Anda.</p>
-      </div>
-      <a href="#" class="link-primary">Lihat Semua Kategori &nearr;</a>
+  <section class="categories-section container" style="margin-bottom: 80px;">
+   <div class="section-header">
+    <div>
+     <h2 class="section-title">
+      Kategori Olahraga
+     </h2>
+     <p class="section-subtitle">
+      Pilih arena sesuai dengan passion Anda.
+     </p>
     </div>
-
-    <div class="categories-grid">
-      <!-- Card Kategori 1: Futsal -->
-      <div class="category-card card-futsal">
-        <div class="card-badge">2 Lapangan Tersedia</div>
-        <div class="category-icon box-primary">
-          <!-- Icon Bola Futsal (Bisa diganti SVG) -->
-          <span class="icon">&#9917;</span> 
-        </div>
-        <h3 class="category-title">Futsal Pro</h3>
-        <p class="category-desc">
-          Lantai vinyl standar internasional & rumput sintetis premium untuk performa maksimal.
-        </p>
-      </div>
-
-      <!-- Card Kategori 2: Billiard -->
-      <div class="category-card card-billiard">
-        <div class="card-badge">2 Meja Tersedia</div>
-        <div class="category-icon box-dark">
-          <!-- Icon Billiard (Bisa diganti SVG) -->
-          <span class="icon">&#127921;</span>
-        </div>
-        <h3 class="category-title">Billiard Lounge</h3>
-        <p class="category-desc">
-          Meja turnamen 9-ft dengan pencahayaan presisi tinggi untuk akurasi setiap pukulan.
-        </p>
-      </div>
-    </div>
+    <a class="link-primary text-decoration-none" href="search-venues.html" style="cursor: pointer;">
+     Lihat Semua Kategori ↗
+    </a>
+   </div>
+   <div class="categories-grid">
+    <a class="category-card card-futsal text-decoration-none" href="pages/auth/login.html" style="display: block;">
+     <div class="card-badge">
+      1 Lapangan Tersedia
+     </div>
+     <div class="category-icon box-primary">
+      <span class="icon">
+       ⚽
+      </span>
+     </div>
+     <h3 class="category-title">
+      Futsal Pro
+     </h3>
+     <p class="category-desc">
+      Lantai vinyl standar internasional &amp; rumput sintetis premium untuk performa maksimal.
+     </p>
+    </a>
+    <a class="category-card card-billiard text-decoration-none" href="pages/auth/login.html" style="display: block;">
+     <div class="card-badge">
+      1 Meja Tersedia
+     </div>
+     <div class="category-icon box-dark">
+      <span class="icon">
+       🎱
+      </span>
+     </div>
+     <h3 class="category-title">
+      Billiard Lounge
+     </h3>
+     <p class="category-desc">
+      Meja turnamen 9-ft dengan pencahayaan presisi tinggi untuk akurasi setiap pukulan.
+     </p>
+    </a>
+   </div>
   </section>
-
-  <!-- ==================== FOOTER ==================== -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-logo">
-        <span class="text-primary">Sudut</span>Satu
-      </div>
-      <ul class="footer-links">
-        <li><a href="#">Kebijakan Privasi</a></li>
-        <li><a href="#">Syarat & Ketentuan</a></li>
-        <li><a href="#">Bantuan</a></li>
-        <li><a href="#">Karir</a></li>
-      </ul>
-      <div class="footer-copyright">
-        &copy; 2026 SudutSatu. All Rights Reserved.
-      </div>
+   <div class="container footer-inner">
+    <div class="footer-logo">
+     <span class="text-primary">
+      Sudut
+     </span>
+     Satu
     </div>
+    <ul class="footer-links">
+     <li>
+      <a href="pages/auth/login.html">
+       Kebijakan Privasi
+      </a>
+     </li>
+     <li>
+      <a href="pages/auth/login.html">
+       Syarat &amp; Ketentuan
+      </a>
+     </li>
+     <li>
+      <a href="pages/auth/login.html">
+       Bantuan
+      </a>
+     </li>
+     <li>
+      <a href="pages/auth/login.html">
+       Karir
+      </a>
+     </li>
+    </ul>
+    <div class="footer-copyright">
+     © 2026 SudutSatu. All Rights Reserved.
+    </div>
+   </div>
   </footer>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      const menuDashboard = document.getElementById('menuDashboard');
+      const menuProfile = document.getElementById('menuProfile');
+      const loginLink = document.getElementById('loginLink');
+      const registerLink = document.getElementById('registerLink');
+      const logoutBtn = document.getElementById('logoutBtn');
 
-</body>
+      // Check session via server-side cookie
+      fetch('/api/auth/me', { method: 'GET', credentials: 'include' })
+        .then(async res => {
+          if (!res.ok) throw new Error('no-session');
+          const payload = await res.json();
+          const user = payload.user || null;
+          if (user) {
+            if (menuDashboard) menuDashboard.innerHTML = '<a href="dashboard-user.html" class="nav-link">Dashboard</a>';
+            if (menuProfile) menuProfile.innerHTML = '<a href="profile.html" class="nav-link">Profil</a>';
+            if (menuDashboard) menuDashboard.style.display = 'inline-block';
+            if (menuProfile) menuProfile.style.display = 'inline-block';
+            if (loginLink) loginLink.style.display = 'none';
+            if (registerLink) registerLink.style.display = 'none';
+            if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+
+            if (logoutBtn) {
+              logoutBtn.addEventListener('click', function() {
+                fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
+                  .catch(() => null)
+                  .then(() => window.location.reload());
+              });
+            }
+          } else {
+            if (loginLink) loginLink.style.display = 'inline-flex';
+            if (registerLink) registerLink.style.display = 'inline-flex';
+            if (logoutBtn) logoutBtn.style.display = 'none';
+          }
+        })
+        .catch(() => {
+          if (loginLink) loginLink.style.display = 'inline-flex';
+          if (registerLink) registerLink.style.display = 'inline-flex';
+          if (logoutBtn) logoutBtn.style.display = 'none';
+        });
+    });
+  </script>
+ </body>
 </html>

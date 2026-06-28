@@ -1,0 +1,113 @@
+/* ==========================================================================
+   CSS KHUSUS PUSAT BANTUAN (HELP & SUPPORT)
+   ========================================================================== */
+
+.help-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .help-layout { grid-template-columns: 1fr; }
+}
+
+.help-box {
+  background: #0f1215;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.box-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 20px 0;
+}
+
+/* Video Placeholder */
+.video-placeholder {
+  width: 100%;
+  height: 250px;
+  background: #141414;
+  border: 1px dashed #333;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.video-placeholder:hover { background: #1a1a1a; border-color: var(--color-primary); }
+
+/* FAQ Accordion Styling */
+.faq-item {
+  border-bottom: 1px solid #222;
+  margin-bottom: 12px;
+}
+.faq-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  padding: 16px 0;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: #fff; }
+.faq-question::after {
+  content: '+';
+  font-size: 18px;
+  color: var(--color-primary);
+  transition: transform 0.3s;
+}
+.faq-item.active .faq-question { color: var(--color-primary); }
+.faq-item.active .faq-question::after { transform: rotate(45deg); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+.faq-answer p {
+  margin: 0 0 16px 0;
+  font-size: 13px;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* Contact Sidebar */
+.contact-icon-circle {
+  width: 56px;
+  height: 56px;
+  background: rgba(204, 255, 0, 0.1);
+  color: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mx-auto { margin-left: auto; margin-right: auto; }
+.text-center { text-align: center; }
+
+/* Form Bug Report */
+.form-group { display: flex; flex-direction: column; }
+.form-label { font-size: 12px; font-weight: 600; color: #888; margin-bottom: 8px; }
+.form-input {
+  background: #141414; border: 1px solid #333; color: #fff;
+  border-radius: 8px; padding: 12px 16px; font-size: 13px;
+  outline: none; transition: 0.2s; resize: vertical;
+}
+.form-input:focus { border-color: var(--color-primary); }

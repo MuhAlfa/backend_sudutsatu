@@ -463,3 +463,208 @@ ul {
     align-items: center;
   }
 }
+
+/* ==========================================================================
+   GLOBAL USER NAVBAR & UTILITIES (Beranda, Cari Lapangan, Detail, dll)
+   ========================================================================== */
+
+/* Pastikan lebar konten seragam di semua halaman */
+.container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 24px; 
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+/* Flexbox Utilities */
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.align-center { display: flex; align-items: center; }
+.d-flex { display: flex; }
+.gap-16 { gap: 16px; }
+.gap-32 { gap: 32px; }
+.py-16 { padding-top: 16px; padding-bottom: 16px; }
+.m-0 { margin: 0; }
+.px-24 { padding-left: 24px; padding-right: 24px; }
+.py-12 { padding-top: 12px; padding-bottom: 12px; }
+
+/* Text Utilities */
+.text-primary { color: #ccff00; }
+.text-white { color: #fff; }
+.text-muted { color: #888; }
+.bold { font-weight: 700; }
+.text-decoration-none { text-decoration: none; }
+
+/* =======================================================
+   NAVBAR MENU - GLOBAL (DIKEMBALIKAN KE NORMAL)
+   ======================================================= */
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body.user-body {
+  margin: 0;
+  /* PADDING-TOP DIHAPUS DARI SINI AGAR HALAMAN LAIN TIDAK RUSAK */
+}
+
+.user-navbar { 
+  background: #0a0a0a; 
+  border-bottom: 1px solid #1a1a1a; 
+  position: -webkit-sticky !important;
+  position: sticky !important; /* Kembali menggunakan Sticky untuk halaman biasa */
+  top: 0 !important; 
+  z-index: 9999 !important; 
+  height: 80px; 
+}
+
+/* 4. Container mengikuti tinggi 80px */
+.user-navbar .container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 5. Menu membentang dari ujung atas ke ujung bawah navbar */
+.nav-links { 
+  display: flex; 
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0; 
+  transform: translateX(-50%);
+  gap: 32px;
+  white-space: nowrap; 
+  margin: 0;
+  padding: 0;
+}
+
+/* 6. Teks otomatis di tengah, Garis otomatis di dasar */
+.nav-item { 
+  color: #888; 
+  text-decoration: none; 
+  font-size: 14px; 
+  font-weight: 600; 
+  display: flex;
+  align-items: center; 
+  height: 100%; 
+  border-bottom: 3px solid transparent; 
+  box-sizing: border-box;
+  transition: 0.2s; 
+  padding: 0; 
+}
+
+.nav-item:hover { color: #fff; }
+.nav-item.active { color: #fff; border-bottom-color: #ccff00; }
+
+@media (max-width: 992px) {
+  .nav-links {
+    position: static;
+    transform: none;
+    display: none; 
+  }
+}
+
+/* =======================================================
+   SWEETALERT2 OVERRIDE (ANTI-GESER/ANTI-LOMPAT)
+   ======================================================= */
+/* Melarang SweetAlert menambahkan padding dan menyembunyikan scrollbar */
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+    padding-right: 0 !important;
+    overflow-y: scroll !important; 
+}
+
+/* Memastikan tinggi halaman tidak diubah secara paksa oleh SweetAlert */
+html.swal2-shown, 
+body.swal2-shown {
+    height: auto !important;
+}
+
+/* =======================================================
+   TEMA SWEETALERT MINIMALIS & KECIL (GLOBAL)
+   ======================================================= */
+
+/* 1. Mengecilkan Kotak Utama */
+div:where(.swal2-container) div:where(.swal2-popup) {
+    width: 320px !important; /* Lebar lebih langsing (bawaannya lebar banget) */
+    padding: 20px 16px !important; /* Kurangi ruang kosong di dalam kotak */
+    border-radius: 16px !important; /* Sudut lebih mulus */
+    border: 1px solid #2a2a2a !important; /* Garis batas tipis elegan */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important; /* Efek melayang */
+}
+
+div:where(.swal2-icon) {
+    transform: scale(0.75) !important; /* Mengecilkan seluruh icon 25% dengan aman */
+    margin: 0 auto -0px auto !important;
+}
+div:where(.swal2-icon) .swal2-icon-content {
+    font-size: 36px !important; /* Ukuran gambar di dalam icon */
+}
+
+/* 3. Merapikan Teks Judul */
+div:where(.swal2-container) h2:where(.swal2-title) {
+    font-size: 18px !important; /* Judul lebih kecil dan tidak lebay */
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+}
+
+/* 4. Merapikan Teks Deskripsi */
+div:where(.swal2-container) div:where(.swal2-html-container) {
+    font-size: 14px !important;
+    margin: 0 0 16px 0 !important;
+    color: #a0a0a0 !important; /* Warna teks agak abu-abu agar elegan */
+}
+
+/* 5. Merapikan Tombol */
+div:where(.swal2-container) .swal2-actions {
+    margin-top: 0 !important;
+    gap: 8px !important; /* Jarak antar tombol */
+}
+div:where(.swal2-container) .swal2-styled {
+    margin: 0 !important;
+    padding: 8px 24px !important; /* Tombol tidak terlalu gembul */
+    font-size: 14px !important;
+    border-radius: 8px !important;
+}
+
+/* 6. Merapikan Kolom Input (Untuk Form Alasan) */
+    div:where(.swal2-container) input:where(.swal2-input) {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 10px 0 20px 0 !important;
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+        background: #1a1a1a !important; /* Latar input gelap */
+        border: 1px solid #333 !important; /* Garis batas halus */
+        color: #ffffff !important; /* Teks putih */
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    /* Efek Glow Neon saat input di-klik (Focus) */
+    div:where(.swal2-container) input:where(.swal2-input):focus {
+        border-color: #ccff00 !important; /* Garis berubah hijau neon */
+        box-shadow: 0 0 0 2px rgba(204, 255, 0, 0.15) !important;
+        outline: none !important;
+    }
+
+    /* 7. Merapikan Pesan Peringatan Wajib Diisi (Validation Message) */
+    div:where(.swal2-container) div:where(.swal2-validation-message) {
+        background: rgba(255, 85, 85, 0.1) !important; /* Latar merah samar/elegan */
+        color: #ff5555 !important; /* Teks warna merah */
+        border: 1px solid rgba(255, 85, 85, 0.3) !important;
+        border-radius: 8px !important;
+        padding: 10px 12px !important;
+        margin: -10px 0 15px 0 !important;
+        font-size: 13px !important;
+        font-weight: normal !important;
+        justify-content: center !important;
+    }
+
+    /* Mengubah warna icon [!] bawaan error message */
+    div:where(.swal2-container) div:where(.swal2-validation-message)::before {
+        background-color: #ff5555 !important; 
+        color: #fff !important;
+    }

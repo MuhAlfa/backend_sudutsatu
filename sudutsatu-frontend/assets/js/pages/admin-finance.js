@@ -1,14 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
-  // 1. DATA TRANSAKSI
+  // KONFIGURASI UMUM SWEETALERT
   // ==========================================
-  let transactionsData = [
-    { date: "Mei 24, 2026", id: "#BK-8829", team: "Sumedang FC", amount: "Rp 250.000", status: "LUNAS" },
-    { date: "Mei 24, 2026", id: "#BK-8830", team: "Garuda FC", amount: "Rp 150.000", status: "TERTUNDA" },
-    { date: "Mei 23, 2026", id: "#BK-8825", team: "Sumedang All Stars", amount: "Rp 350.000", status: "LUNAS" },
-    { date: "Mei 23, 2026", id: "#BK-8826", team: "Corporate League", amount: "Rp 500.000", status: "LUNAS" }
-  ];
+  const swalConfig = {
+    background: '#141414',
+    color: '#ffffff',
+    confirmButtonColor: '#ccff00',
+    cancelButtonColor: '#333',
+    backdrop: `rgba(0,0,0,0.8)`,
+    heightAuto: false
+  };
+
+  const API_BASE = 'http://localhost:5000/api';
+  // Cookie-based auth: use credentials: 'include' on fetch calls
+
+  // DATA TRANSAKSI: akan diisi dari server (booking dengan status confirmed)
+  let transactionsData = [];
 
   // ==========================================
   // 2. DATA CHART DINAMIS (Nilai Real untuk Interpolasi)
@@ -150,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pathEl = document.getElementById('chartPathLine');
     const pathLen = pathEl.getTotalLength();
     let minL = 0; let maxL = pathLen;
-    // Binary Search untuk mencari titik di kurva SVG
     for(let i=0; i < 15; i++) {
       let mid = (minL + maxL) / 2;
       let pt = pathEl.getPointAtLength(mid);
@@ -170,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
        hoverDot.style.opacity = '1';
     }
 
-    // C. Kalkulasi / Interpolasi Tanggal dan Nilai (Misal: 19/05/2026)
+    // C. Kalkulasi / Interpolasi Tanggal dan Nilai
     let p1 = activeDataset.points[0];
     let p2 = activeDataset.points[activeDataset.points.length-1];
     
@@ -185,10 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let t = (mouseX - p1.x) / (p2.x - p1.x);
     if(isNaN(t)) t = 0;
 
-    // Kalkulasi Pendapatan
     let currentVal = p1.val + t * (p2.val - p1.val);
-    
-    // Kalkulasi Tanggal (Hari demi hari)
     let d1 = new Date(p1.date).getTime();
     let d2 = new Date(p2.date).getTime();
     let currTime = d1 + t * (d2 - d1);
@@ -198,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let mm = String(currDate.getMonth() + 1).padStart(2, '0');
     let yy = currDate.getFullYear();
 
-    // Tampilkan di Tooltip
     tooltip.innerHTML = `<span class="tt-date" style="color:#aaa;">${dd}/${mm}/${yy}</span><p class="tt-val" style="color:#fff;">Rp ${currentVal.toFixed(1)}M</p>`;
     tooltip.style.left = e.clientX + 'px';
     tooltip.style.top = (e.clientY - 60) + 'px'; 
@@ -213,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 4. DRAG TO SCROLL (Bisa ditarik ke samping)
+  // 4. DRAG TO SCROLL
   // ==========================================
   const slider = document.getElementById('chartScrollContainer');
   let isDown = false;
@@ -283,6 +286,28 @@ document.addEventListener('DOMContentLoaded', () => {
     attachActionListeners();
   };
 
+  const loadTransactionsFromServer = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/booking`, { method: 'GET', credentials: 'include' });
+      if (!res.ok) throw new Error('Gagal memuat data booking');
+      const result = await res.json();
+      const bookings = result.data || [];
+      // Map bookings yang sudah dikonfirmasi menjadi transactions
+      transactionsData = bookings.filter(b => b.status === 'confirmed' || b.status === 'paid').map(b => ({
+        date: new Date(b.booking_date).toLocaleDateString('id-ID'),
+        id: `#BK-${b.id}`,
+        team: b.team_name || b.user_name || 'Tim',
+        amount: `Rp ${Number(b.total_price || 0).toLocaleString('id-ID')}`,
+        status: 'LUNAS'
+      }));
+      renderTable(transactionsData);
+    } catch (err) {
+      console.error('loadTransactionsFromServer', err);
+      // fallback ke data statis jika gagal
+      renderTable(transactionsData);
+    }
+  };
+
   const modalInvoice = document.getElementById('modalInvoice');
   
   const attachActionListeners = () => {
@@ -307,26 +332,58 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // UX UPGRADE: POP-UP KONFIRMASI BATALKAN TRANSAKSI
     document.querySelectorAll('.btn-batalkan').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const id = e.target.getAttribute('data-id');
-        const index = transactionsData.findIndex(t => t.id === id);
-        if(index > -1) {
-          transactionsData[index].status = 'DIBATALKAN';
-          alert(`Transaksi ${id} telah dibatalkan.`);
-          renderTable(transactionsData); 
-        }
+        
+        Swal.fire({
+          ...swalConfig,
+          icon: 'warning',
+          title: 'Batalkan Transaksi?',
+          text: `Anda yakin ingin membatalkan transaksi ${id}?`,
+          showCancelButton: true,
+          confirmButtonColor: '#ff5555',
+          confirmButtonText: 'Ya, Batalkan',
+          cancelButtonText: 'Kembali'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const index = transactionsData.findIndex(t => t.id === id);
+            if(index > -1) {
+              transactionsData[index].status = 'DIBATALKAN';
+              renderTable(transactionsData); 
+              
+              Swal.fire({
+                ...swalConfig,
+                icon: 'success',
+                title: 'Dibatalkan',
+                text: `Transaksi ${id} telah dibatalkan.`,
+                timer: 2000,
+                showConfirmButton: false
+              });
+            }
+          }
+        });
       });
     });
 
+    // UX UPGRADE: POP-UP SUKSES UNDUH PDF
     document.querySelectorAll('.btn-unduh-pdf').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const id = e.target.getAttribute('data-id');
         const originalText = e.target.textContent;
         e.target.textContent = "Menyiapkan...";
+        
         setTimeout(() => {
           e.target.textContent = originalText;
-          alert(`File Invoice_${id}.pdf berhasil diunduh!`);
+          Swal.fire({
+            ...swalConfig,
+            icon: 'success',
+            title: 'Berhasil Diunduh!',
+            text: `File Invoice_${id}.pdf telah tersimpan ke perangkat Anda.`,
+            timer: 2000,
+            showConfirmButton: false
+          });
         }, 1000);
       });
     });
@@ -364,8 +421,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('closeInvoice').addEventListener('click', () => {
     modalInvoice.classList.add('hidden');
   });
+
+  // UX UPGRADE: MENGAKTIFKAN WINDOW.PRINT NATIVE
   document.getElementById('btnCetakInvoice').addEventListener('click', () => {
-    alert('Membuka dialog print...');
+    window.print(); // Ini akan memanggil dialog print bawaan komputer (Ctrl+P)
   });
 
   // ==========================================
@@ -396,8 +455,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================
+  // 7. FITUR BARU: EKSPOR LAPORAN
+  // ==========================================
+  const btnEkspor = document.getElementById('btnEkspor') || document.getElementById('btnExportLaporan');
+  if (btnEkspor) {
+    btnEkspor.addEventListener('click', () => {
+      Swal.fire({
+        ...swalConfig,
+        icon: 'question',
+        title: 'Ekspor Laporan',
+        text: 'Pilih format laporan yang ingin diunduh:',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonColor: '#ff4b4b', // Warna merah untuk PDF
+        denyButtonColor: '#107c41',    // Warna hijau khas Excel
+        confirmButtonText: 'Format PDF',
+        denyButtonText: 'Format Excel',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            ...swalConfig, 
+            icon: 'success', 
+            title: 'Mengekspor PDF...', 
+            text: 'Laporan PDF berhasil diunduh.', 
+            timer: 2000, 
+            showConfirmButton: false
+          });
+        } else if (result.isDenied) {
+          Swal.fire({
+            ...swalConfig, 
+            icon: 'success', 
+            title: 'Mengekspor Excel...', 
+            text: 'Laporan Excel berhasil diunduh.', 
+            timer: 2000, 
+            showConfirmButton: false
+          });
+        }
+      });
+    });
+  }
+
   // INITIAL RENDER
   renderChart('6'); 
   renderTable(transactionsData);
+  loadTransactionsFromServer();
 
 });

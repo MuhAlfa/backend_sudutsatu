@@ -1,172 +1,72 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Riwayat Booking - SudutSatu</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/pages/booking-history.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <nav class="navbar border-bottom-dark">
-    <div class="container navbar-inner nav-flex-between">
-      <div class="nav-left">
-        <a href="index.html" class="navbar-logo mr-32 text-decoration-none">
-          <strong style="font-size: 20px;"><span class="text-primary">Sudut</span><span class="text-white">Satu</span></strong>
-        </a>
-        <ul class="navbar-menu nav-links-custom">
-          <li><a href="#">Eksplorasi</a></li>
-          <li><a href="#">Turnamen</a></li>
-          <li><a href="#">Komunitas</a></li>
-        </ul>
-      </div>
-      
-      <div class="nav-right">
-        <div class="search-box-custom">
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#888" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" placeholder="Cari venue atau olahraga...">
-        </div>
-        <div class="profile-pill">
-          <img src="assets/images/profile.jpg" alt="Avatar">
-          <span>Profile</span>
-        </div>
-      </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Riwayat Booking - SudutSatu
+  </title>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <style>
+   .history-card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: 0.3s;
+    }
+    .history-card:hover { border-color: #ccff00; }
+    .badge-done { background: rgba(255,255,255,0.1); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 800; letter-spacing: 1px; }
+  </style>
+ </head>
+ <body class="user-body">
+  <header class="user-navbar">
+   <div class="container flex-between align-center py-16">
+    <div class="brand-logo text-decoration-none">
+     <h2 class="m-0 text-primary" style="font-weight: 800; font-size: 24px; letter-spacing: -0.5px;">
+      Sudut
+      <span class="text-white">
+       Satu
+      </span>
+     </h2>
     </div>
-  </nav>
-
-  <main class="container history-layout pt-40 pb-64">
-    
-    <aside class="history-sidebar">
-      <div class="mb-32">
-        <h1 class="sidebar-title text-primary mb-8">Profil Saya</h1>
-        <div class="sidebar-subtitle uppercase">MANAGE ACCOUNT</div>
-      </div>
-
-      <ul class="sidebar-menu mb-40">
-        <li>
-          <a href="booking-history.html" class="active-menu">
-            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            Riwayat Booking
-          </a>
-        </li>
-        <li class="mt-24">
-          <a href="index.html" class="logout-menu">
-            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-            Keluar
-          </a>
-        </li>
-      </ul>
-
-      <div class="member-pro-card">
-        <h4 class="text-primary mb-8" style="font-size: 11px; font-weight: 800; letter-spacing: 0.5px;">MEMBER PRO</h4>
-        <p class="text-muted m-0" style="font-size: 11px;">Berlaku hingga 12 Des 2026</p>
-      </div>
-    </aside>
-
-    <section class="history-content">
-      
-      <div class="flex-between-center mb-40">
-        <div>
-          <h2 class="text-white m-0 mb-8" style="font-size: 28px;">Riwayat Booking Saya</h2>
-          <p class="text-muted m-0" style="font-size: 14px;">Kelola dan pantau seluruh aktivitas olahraga Anda di satu tempat.</p>
-        </div>
-        
-        <div class="tabs-wrapper">
-          <button class="tab-btn active" data-filter="all">Semua</button>
-          <button class="tab-btn" data-filter="aktif">Aktif</button>
-          <button class="tab-btn" data-filter="selesai">Selesai</button>
-        </div>
-      </div>
-
-      <div class="booking-list">
-        
-        <div class="history-card mb-24" data-status="selesai">
-          <div class="hc-image">
-            <img src="assets/images/futsal-sintetis.png" alt="Futsal">
-            <div class="hc-icon-badge badge-neon">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="#000" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="M12 12l3.5-2m-3.5 2l-3.5-2m3.5 2v4m7.5-6a5 5 0 00-7.5 0m-4 0a5 5 0 00-7.5 0"></path></svg>
-            </div>
-          </div>
-          
-          <div class="hc-body">
-            <div class="flex-between-start mb-16">
-              <div>
-                <div class="hc-meta mb-8 text-small">
-                  <span class="text-primary bold tracking-wide">FUTSAL</span>
-                  <span class="text-muted mx-8">•</span>
-                  <span class="text-muted">Booking ID: #SS-89210</span>
-                </div>
-                <h3 class="text-white m-0 mb-16" style="font-size: 22px;">Lapangan sintetis- COURT A</h3>
-                <div class="text-muted text-small d-flex gap-16">
-                  <span class="d-flex align-center gap-8"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 24 Mei 2026</span>
-                  <span class="d-flex align-center gap-8"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 19:00 - 21:00</span>
-                </div>
-              </div>
-              
-              <div class="hc-actions text-right d-flex-col align-end">
-                <div class="status-pill status-selesai mb-16">
-                  <span class="dot-green"></span> SELESAI
-                </div>
-                <div class="text-white bold mb-16" style="font-size: 22px;">Rp 150.000</div>
-                <button class="btn-outline-gray text-small py-8 px-24">Lihat Detail</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="history-card" data-status="dibatalkan">
-          <div class="hc-image">
-            <img src="assets/images/meja2.png" alt="Biliar">
-            <div class="hc-icon-badge badge-dark">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="#ff5555" stroke-width="2" fill="none"><circle cx="8" cy="12" r="4"></circle><circle cx="16" cy="12" r="4"></circle></svg>
-            </div>
-          </div>
-          
-          <div class="hc-body">
-            <div class="flex-between-start mb-16">
-              <div>
-                <div class="hc-meta mb-8 text-small">
-                  <span class="text-muted bold tracking-wide">BILIAR</span>
-                  <span class="text-muted mx-8">•</span>
-                  <span class="text-muted">Booking ID: #SS-89104</span>
-                </div>
-                <h3 class="text-white m-0 mb-16" style="font-size: 22px;">SUDUTSATU BILLIARD - TABLE 2</h3>
-                <div class="text-muted text-small d-flex gap-16">
-                  <span class="d-flex align-center gap-8"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 20 Mei 2026</span>
-                  <span class="d-flex align-center gap-8"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 15:00 - 17:00</span>
-                </div>
-              </div>
-              
-              <div class="hc-actions text-right d-flex-col align-end">
-                <div class="status-pill status-batal mb-16">
-                  DIBATALKAN
-                </div>
-                <div class="text-strike bold mb-16" style="font-size: 22px;">Rp 80.000</div>
-                <button class="btn-outline-gray text-small py-8 px-24">Refunded</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="flex-between-center mt-40 pt-32 border-top-dark">
-        <span class="text-muted text-small tracking-wide">Menampilkan 2 dari 12 booking</span>
-        
-        <div class="pagination">
-          <button class="page-btn nav-btn"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn">3</button>
-          <button class="page-btn nav-btn"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
-        </div>
-      </div>
-
-    </section>
+    <nav class="nav-links d-flex gap-32">
+     <a class="nav-item" href="search-venues.html">
+      Cari Lapangan
+     </a>
+     <a class="nav-item" href="dashboard-user.html">
+      Dashboard
+     </a>
+     <a class="nav-item" href="profile.html">
+      Profil
+     </a>
+     <a class="nav-item" href="tentang-kami.html">
+      Tentang Kami
+     </a>
+     <a class="nav-item" href="hubungi-kami.html">
+      Hubungi Kami
+     </a>
+    </nav>
+   </div>
+  </header>
+  <main class="container py-32" style="max-width: 800px;">
+   <div class="mb-32">
+    <h1 class="text-white m-0 mb-8" style="font-size: 28px;">
+     Semua Riwayat Booking
+    </h1>
+    <p class="text-muted m-0">
+     Seluruh transaksi Anda dari masa lalu hingga saat ini tersimpan di sini.
+    </p>
+   </div>
+   <div id="fullHistoryContainer">
+    <p class="text-muted text-center py-32">
+     Memuat data riwayat...
+    </p>
+   </div>
   </main>
-
-  <script src="assets/js/pages/booking-history.js"></script>
-</body>
+  <script src="assets/js/pages/booking-history.js">
+  </script>
+ </body>
 </html>

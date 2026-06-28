@@ -66,8 +66,12 @@
 /* ==========================================================================
    BOOKING CARD COMPONENT
    ========================================================================== */
-.sch-card { background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 10px; cursor: pointer; transition: 0.2s; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }
-.sch-card:hover { border-color: #555; background: #222; }
+.sch-card { background: #1a1a1a; border: 1px solid #333; border-radius: 6px; padding: 10px; cursor: pointer; transition: 0.2s; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02); }
+.sch-card:hover { border-color: #555; background: #222; transform: translateY(-1px); }
+.sch-card.status-paid { border-color: rgba(204,255,0,0.35); background: linear-gradient(135deg, rgba(204,255,0,0.12), rgba(204,255,0,0.04)); }
+.sch-card.status-partial { border-color: rgba(0, 230, 118, 0.35); background: linear-gradient(135deg, rgba(0, 230, 118, 0.12), rgba(0, 230, 118, 0.04)); }
+.sch-card.status-pending { border-color: rgba(255, 193, 7, 0.35); background: linear-gradient(135deg, rgba(255, 193, 7, 0.12), rgba(255, 193, 7, 0.04)); }
+.sch-card.status-cancelled { border-color: rgba(255, 85, 85, 0.35); background: linear-gradient(135deg, rgba(255, 85, 85, 0.12), rgba(255, 85, 85, 0.04)); }
 
 .sch-team-name { font-size: 11px; font-weight: 600; color: #fff; margin: 0 0 8px 0; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 

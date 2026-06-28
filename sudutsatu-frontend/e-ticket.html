@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   E-Ticket Anda - SudutSatu
+  </title>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/ticket.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="user-body">
+  <header class="user-navbar no-print">
+   <div class="container flex-between align-center py-16">
+    <div class="brand-logo text-decoration-none">
+     <h2 class="m-0 text-primary" style="font-weight: 800; font-size: 24px; letter-spacing: -0.5px;">
+      Sudut
+      <span class="text-white">
+       Satu
+      </span>
+     </h2>
+    </div>
+    <nav class="nav-links d-flex gap-32">
+     <a class="nav-item" href="search-venues.html">
+      Cari Lapangan
+     </a>
+     <a class="nav-item" href="dashboard-user.html">
+      Dashboard
+     </a>
+     <a class="nav-item" href="venues-detail.html">
+      Booking Jadwal
+     </a>
+    </nav>
+    <div>
+    </div>
+   </div>
+  </header>
+  <main class="container ticket-layout py-32">
+   <div class="text-center mb-32 no-print">
+    <h1 class="text-white m-0 mb-8" style="font-size: 28px;">
+     Tiket Elektronik Anda
+    </h1>
+    <p class="text-muted m-0">
+     Tunjukkan QR Code ini kepada admin lapangan saat Anda tiba.
+    </p>
+   </div>
+   <div class="ticket-card" id="printableTicket">
+    <div class="ticket-header flex-between align-center">
+     <div>
+      <h2 class="m-0 text-primary" style="font-weight: 800; font-size: 20px; letter-spacing: -0.5px;">
+       Sudut
+       <span class="text-white">
+        Satu
+       </span>
+      </h2>
+      <span class="badge-premium mt-8 d-inline-block">
+       OFFICIAL ENTRY PASS
+      </span>
+     </div>
+     <div class="text-right">
+      <p class="text-muted text-tiny uppercase tracking-wide m-0 mb-4">
+       BOOKING ID
+      </p>
+      <h3 class="text-white m-0" id="ticketId" style="letter-spacing: 1px;">
+       SS-00000
+      </h3>
+     </div>
+    </div>
+    <div class="ticket-divider">
+    </div>
+    <div class="ticket-body">
+     <div class="ticket-info-grid">
+      <div class="info-box">
+       <label>
+        VENUE
+       </label>
+       <p id="tVenue">
+        Memuat Venue...
+       </p>
+      </div>
+      <div class="info-box text-right">
+       <label>
+        NAMA TIM
+       </label>
+       <p id="tTeam">
+        Tim Anda
+       </p>
+      </div>
+      <div class="info-box">
+       <label>
+        TANGGAL
+       </label>
+       <p id="tDate">
+        Memuat Tanggal...
+       </p>
+      </div>
+      <div class="info-box text-right">
+       <label>
+        WAKTU / JAM
+       </label>
+       <p class="text-primary bold" id="tTime">
+        Memuat Waktu...
+       </p>
+      </div>
+     </div>
+     <div class="qr-code-wrapper text-center mt-24">
+      <div class="qr-bg">
+       <img alt="QR Code Ticket" id="qrCodeImg" src=""/>
+      </div>
+      <p class="text-muted text-tiny mt-12 tracking-wide uppercase">
+       Scan at Entrance
+      </p>
+     </div>
+    </div>
+    <div class="ticket-divider">
+    </div>
+    <div class="ticket-footer flex-between align-center">
+     <div>
+      <label class="text-muted text-tiny uppercase tracking-wide d-block mb-4">
+       STATUS PEMBAYARAN
+      </label>
+      <div class="d-flex align-center gap-8">
+       <span class="status-dot">
+       </span>
+       <span class="text-white bold">
+        LUNAS / DP DITERIMA
+       </span>
+      </div>
+     </div>
+     <div class="text-right">
+      <label class="text-muted text-tiny uppercase tracking-wide d-block mb-4">
+       TOTAL DIBAYAR
+      </label>
+      <div class="d-flex align-center gap-8 justify-end">
+       <span class="status-dot">
+       </span>
+       <span class="text-primary bold" id="tPaid" style="font-size: 18px;">
+        Rp 0
+       </span>
+      </div>
+     </div>
+    </div>
+    <div class="ticket-actions mt-32 d-flex gap-16 justify-center no-print">
+     <button class="btn btn-outline py-12 px-24 bold d-flex align-center gap-8" id="btnDownload">
+      <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4">
+       </path>
+       <polyline points="7 10 12 15 17 10">
+       </polyline>
+       <line x1="12" x2="12" y1="15" y2="3">
+       </line>
+      </svg>
+      Simpan PDF / Cetak
+     </button>
+     <button class="btn btn-primary py-12 px-24 bold d-flex align-center gap-8" onclick="window.location.href='booking-history.html'">
+      Lihat Riwayat Booking
+     </button>
+    </div>
+   </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js">
+  </script>
+  <script src="assets/js/pages/ticket.js">
+  </script>
+ </body>
+</html>

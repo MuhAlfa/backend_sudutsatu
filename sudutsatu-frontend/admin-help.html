@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Bantuan - Admin SudutSatu
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-dashboard.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-help.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <style>
+   /* Melarang SweetAlert menambahkan padding dan menyembunyikan scrollbar */
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+        padding-right: 0 !important;
+        overflow-y: auto !important; 
+    }
+
+    /* Melarang SweetAlert mengutak-atik tinggi halaman */
+    html.swal2-shown, 
+    body.swal2-shown {
+        height: auto !important;
+    }
+
+    /* Kunci lebar body 100% */
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+  </style>
+ </head>
+ <body class="admin-body">
+  <div class="admin-layout">
+   <aside class="admin-sidebar">
+    <div class="sidebar-header">
+     <div class="brand-logo">
+      <div class="brand-icon">
+       <svg fill="none" height="18" stroke="var(--color-primary)" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+        </rect>
+        <circle cx="8.5" cy="8.5" r="1.5">
+        </circle>
+        <polyline points="21 15 16 10 5 21">
+        </polyline>
+       </svg>
+      </div>
+      <div>
+       <h2 class="brand-title text-primary">
+        SUDUTSATU
+       </h2>
+       <p class="brand-subtitle">
+        Facility Manager
+       </p>
+      </div>
+     </div>
+    </div>
+    <div class="sidebar-menus">
+     <ul class="menu-list">
+      <li>
+       <a class="menu-item" href="admin-dashboard.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <rect height="7" width="7" x="3" y="3">
+         </rect>
+         <rect height="7" width="7" x="14" y="3">
+         </rect>
+         <rect height="7" width="7" x="14" y="14">
+         </rect>
+         <rect height="7" width="7" x="3" y="14">
+         </rect>
+        </svg>
+        Ringkasan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-schedule.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <rect height="18" rx="2" ry="2" width="18" x="3" y="4">
+         </rect>
+         <line x1="16" x2="16" y1="2" y2="6">
+         </line>
+         <line x1="8" x2="8" y1="2" y2="6">
+         </line>
+         <line x1="3" x2="21" y1="10" y2="10">
+         </line>
+        </svg>
+        Manajemen Jadwal
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-venues.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <path d="M22 12h-4l-3 9L9 3l-3 9H2">
+         </path>
+        </svg>
+        Kelola Lapangan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item d-flex align-center justify-between" href="admin-payment-verification.html" style="width: 100%;">
+        <div class="d-flex align-center gap-16">
+         <div style="position: relative; display: flex; align-items: center;">
+          <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+           <rect height="14" rx="2" width="20" x="2" y="5">
+           </rect>
+           <line x1="2" x2="22" y1="10" y2="10">
+           </line>
+          </svg>
+          <span class="badge-red-icon" id="badgeVerifikasiSide" style="display: none;">
+           0
+          </span>
+         </div>
+         <span>
+          Verifikasi Pembayaran
+         </span>
+        </div>
+       </a>
+      </li>
+      <a class="menu-item" href="admin-finance.html">
+       <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <line x1="18" x2="18" y1="20" y2="10">
+        </line>
+        <line x1="12" x2="12" y1="20" y2="4">
+        </line>
+        <line x1="6" x2="6" y1="20" y2="14">
+        </line>
+       </svg>
+       Laporan Keuangan
+      </a>
+      <li>
+       <a class="menu-item d-flex align-center justify-between" href="admin-messages.html" style="width: 100%;">
+        <div class="d-flex align-center gap-16">
+         <div style="position: relative; display: flex; align-items: center;">
+          <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+           </path>
+           <polyline points="22,6 12,13 2,6">
+           </polyline>
+          </svg>
+          <span class="badge-red-icon" id="badgePesanSide" style="display: none;">
+           0
+          </span>
+         </div>
+         <span>
+          Pesan Masuk
+         </span>
+        </div>
+       </a>
+      </li>
+     </ul>
+     <ul class="menu-list bottom-menu">
+      <li>
+       <a class="menu-item" href="admin-settings.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <circle cx="12" cy="12" r="3">
+         </circle>
+         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+         </path>
+        </svg>
+        Pengaturan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item active" href="admin-help.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <circle cx="12" cy="12" r="10">
+         </circle>
+         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3">
+         </path>
+         <line x1="12" x2="12.01" y1="17" y2="17">
+         </line>
+        </svg>
+        Bantuan
+       </a>
+      </li>
+      <a class="menu-item" href="#" id="btnLogoutSidebar" style="color: #ff5555; margin-top: 8px;">
+       <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4">
+        </path>
+        <polyline points="16 17 21 12 16 7">
+        </polyline>
+        <line x1="21" x2="9" y1="12" y2="12">
+        </line>
+       </svg>
+       Keluar Akun
+      </a>
+     </ul>
+    </div>
+   </aside>
+   <div class="admin-main">
+    <header class="admin-topbar flex-between align-center">
+     <div class="topbar-search">
+      <svg fill="none" height="16" stroke="#888" stroke-width="2" viewBox="0 0 24 24" width="16">
+       <circle cx="11" cy="11" r="8">
+       </circle>
+       <line x1="21" x2="16.65" y1="21" y2="16.65">
+       </line>
+      </svg>
+      <input placeholder="Pencarian cepat..." type="text"/>
+     </div>
+     <div class="topbar-actions" style="display: flex; align-items: center; gap: 24px;">
+      <button class="icon-btn position-relative" style="background: none; border: none; cursor: pointer;">
+       <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9">
+        </path>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0">
+        </path>
+       </svg>
+       <span class="notification-dot">
+       </span>
+      </button>
+      <div class="topbar-profile">
+       <img alt="Admin" src="assets/images/admin.jpg"/>
+      </div>
+     </div>
+    </header>
+    <main class="admin-content-area">
+     <div class="content-header mb-32">
+      <h1 class="page-title text-white mb-8">
+       Pusat Bantuan
+      </h1>
+      <p class="text-muted text-small m-0">
+       Panduan sistem, FAQ, dan formulir pelaporan kendala teknis.
+      </p>
+     </div>
+     <div class="help-layout">
+      <div class="help-main-content">
+       <div class="help-box mb-24">
+        <h3 class="box-title">
+         Video Panduan Dasar
+        </h3>
+        <div class="video-placeholder flex-center">
+         <svg fill="none" height="48" stroke="currentColor" stroke-width="1.5" style="color: rgba(204,255,0,0.5);" viewBox="0 0 24 24" width="48">
+          <circle cx="12" cy="12" r="10">
+          </circle>
+          <polygon fill="currentColor" points="10 8 16 12 10 16 10 8">
+          </polygon>
+         </svg>
+         <p class="mt-12 text-muted text-small m-0">
+          Tutorial: Mengelola Booking &amp; Verifikasi (03:45)
+         </p>
+        </div>
+       </div>
+       <div class="help-box">
+        <h3 class="box-title mb-16">
+         Pertanyaan Sering Diajukan (FAQ)
+        </h3>
+        <div class="faq-item">
+         <button class="faq-question">
+          Bagaimana cara membatalkan pesanan lapangan?
+         </button>
+         <div class="faq-answer">
+          <p>
+           Buka menu
+           <strong>
+            Manajemen Jadwal
+           </strong>
+           , temukan jadwal yang ingin dibatalkan. Klik ikon tiga titik (opsi), lalu pilih "Batalkan Pesanan". Sistem akan otomatis mengirim notifikasi pembatalan ke pelanggan terkait.
+          </p>
+         </div>
+        </div>
+        <div class="faq-item">
+         <button class="faq-question">
+          Apa yang harus dilakukan jika uang pelanggan perlu di-refund?
+         </button>
+         <div class="faq-answer">
+          <p>
+           Refund uang dilakukan secara manual oleh pihak manajemen keuangan. Sebagai admin lapangan, ubah status pesanan menjadi "Batal", lalu hubungi manajer Anda atau pelanggan untuk meminta nomor rekening pencairan dana.
+          </p>
+         </div>
+        </div>
+        <div class="faq-item">
+         <button class="faq-question">
+          Bagaimana jika lapangan tiba-tiba harus ditutup untuk maintenance?
+         </button>
+         <div class="faq-answer">
+          <p>
+           Buka menu
+           <strong>
+            Kelola Lapangan
+           </strong>
+           , klik lapangan yang bersangkutan, dan ubah status operasionalnya dari "AKTIF" menjadi "PEMELIHARAAN". Pelanggan tidak akan bisa memesan lapangan ini sampai Anda mengubahnya kembali.
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="help-sidebar">
+       <div class="help-box mb-24 text-center">
+        <div class="contact-icon-circle mx-auto mb-16">
+         <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+          </path>
+         </svg>
+        </div>
+        <h4 class="text-white m-0 mb-8">
+         Dukungan Darurat IT
+        </h4>
+        <p class="text-small text-muted mb-24">
+         Server down atau sistem error parah? Langsung hubungi Developer.
+        </p>
+        <button class="btn btn-primary w-100 bold" id="btnWhatsapp">
+         Hubungi via WhatsApp
+        </button>
+       </div>
+       <div class="help-box">
+        <h4 class="text-white m-0 mb-16">
+         Laporkan Kendala / Bug
+        </h4>
+        <form id="formBugReport">
+         <div class="form-group mb-16">
+          <label class="form-label">
+           Jenis Masalah
+          </label>
+          <select class="form-input custom-select" required="">
+           <option disabled="" selected="" value="">
+            Pilih kategori...
+           </option>
+           <option value="Hitungan Error">
+            Perhitungan Uang Salah
+           </option>
+           <option value="Jadwal Bentrok">
+            Jadwal Bentrok/Ganda
+           </option>
+           <option value="Sistem Lambat">
+            Web Lambat / Tidak Bisa Dibuka
+           </option>
+           <option value="Lainnya">
+            Lainnya
+           </option>
+          </select>
+         </div>
+         <div class="form-group mb-24">
+          <label class="form-label">
+           Detail Kejadian
+          </label>
+          <textarea class="form-input" placeholder="Jelaskan secara singkat apa yang terjadi..." required="" rows="4"></textarea>
+         </div>
+         <button class="btn-outline-dark w-100 text-white" id="btnKirimLaporan" style="border-color: #333;" type="submit">
+          Kirim Laporan
+         </button>
+        </form>
+       </div>
+      </div>
+     </div>
+    </main>
+   </div>
+  </div>
+  <script src="assets/js/global.js">
+  </script>
+  <script src="assets/js/pages/admin-help.js">
+  </script>
+  <script src="assets/js/pages/admin-guard.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Kelola Booking - Admin SudutSatu
+  </title>
+  <link href="assets/css/global.css" rel="stylesheet"/>
+  <link href="assets/css/layout.css" rel="stylesheet"/>
+  <link href="assets/css/components.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-dashboard.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet"/>
+  <style>
+   .table-row {
+        border-bottom: 1px solid #222;
+        transition: background 0.2s;
+      }
+      .table-row:hover {
+        background: rgba(204, 255, 0, 0.05);
+      }
+      .id-pill {
+        background: #333;
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .btn-action {
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: all 0.2s;
+        border: 1px solid #555;
+      }
+      .btn-action:hover {
+        border-color: #ccff00;
+        color: #ccff00;
+      }
+      .modal-detail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      .modal-detail.hidden {
+        display: none !important;
+      }
+      .modal-content {
+        background: #141414;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 24px;
+        max-width: 500px;
+        width: 90%;
+        color: #fff;
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 12px;
+      }
+      .modal-header h2 {
+        font-size: 18px;
+        margin: 0;
+      }
+      .close-btn {
+        background: none;
+        border: none;
+        color: #888;
+        font-size: 24px;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .close-btn:hover {
+        color: #fff;
+      }
+      .modal-detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #222;
+        font-size: 14px;
+      }
+      .modal-detail-row label {
+        color: #888;
+      }
+      .modal-detail-row .value {
+        color: #fff;
+        font-weight: bold;
+      }
+      .modal-detail-row.total {
+        background: rgba(204, 255, 0, 0.1);
+        padding: 12px;
+        border-radius: 4px;
+        border: none;
+        margin-top: 12px;
+      }
+      .modal-detail-row.total .value {
+        color: #ccff00;
+        font-size: 16px;
+      }
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        justify-content: flex-end;
+      }
+      .btn-modal {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.2s;
+      }
+      .btn-confirm {
+        background: #ccff00;
+        color: #000;
+      }
+      .btn-confirm:hover {
+        background: #e6ff33;
+      }
+      .btn-reject {
+        background: #ff5555;
+        color: #fff;
+      }
+      .btn-reject:hover {
+        background: #ff7777;
+      }
+      .btn-close {
+        background: #333;
+        color: #aaa;
+      }
+      .btn-close:hover {
+        background: #444;
+        color: #fff;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+      th {
+        background: #222;
+        padding: 12px;
+        text-align: left;
+        color: #aaa;
+        font-weight: bold;
+        border-bottom: 1px solid #333;
+      }
+      td {
+        padding: 12px;
+        vertical-align: middle;
+      }
+      .text-small {
+        font-size: 12px;
+      }
+      .text-muted {
+        color: #888;
+      }
+      .text-white {
+        color: #fff;
+      }
+      .text-primary {
+        color: #ccff00;
+      }
+  </style>
+ </head>
+ <body>
+  <div class="wrapper">
+   <!-- NAVBAR -->
+   <nav class="navbar navbar-dark">
+    <div class="nav-left">
+     <h2 style="margin: 0; color: #ccff00;">
+      SUDUTSATU
+     </h2>
+    </div>
+    <div class="nav-right">
+     <img alt="Avatar" class="nav-avatar" src="assets/images/avatar.jpg"/>
+     <span class="nav-logout" id="logoutBtn" style="cursor:pointer;">
+      LOGOUT
+     </span>
+    </div>
+   </nav>
+   <!-- MAIN CONTENT -->
+   <div class="main-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+     <ul class="sidebar-menu">
+      <li>
+       <a href="admin-dashboard.html">
+        📊 Dashboard
+       </a>
+      </li>
+      <li>
+       <a href="admin-venues.html">
+        🏟️ Lapangan
+       </a>
+      </li>
+      <li>
+       <a href="admin-schedule.html">
+        📅 Jadwal
+       </a>
+      </li>
+      <li>
+       <a class="active" href="admin-bookings.html">
+        📋 Kelola Booking
+       </a>
+      </li>
+      <li>
+       <a href="admin-payment-verification.html">
+        💳 Verifikasi Pembayaran
+       </a>
+      </li>
+      <li>
+       <a href="admin-messages.html">
+        💬 Pesan
+       </a>
+      </li>
+      <li>
+       <a href="admin-help.html">
+        ❓ Bantuan
+       </a>
+      </li>
+      <li>
+       <a href="admin-settings.html">
+        ⚙️ Pengaturan
+       </a>
+      </li>
+     </ul>
+    </aside>
+    <!-- CONTENT -->
+    <section class="content">
+     <header class="content-header">
+      <h1>
+       📋 Kelola Booking
+      </h1>
+      <p>
+       Konfirmasi atau tolak booking dari pengguna
+      </p>
+     </header>
+     <!-- STAT CARD -->
+     <div class="stat-card" style="background: rgba(204, 255, 0, 0.1); border: 1px solid #333; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+      <span style="color: #888; font-size: 12px;">
+       PENDING BOOKING
+      </span>
+      <h3 id="headerStatusAngka" style="margin: 8px 0 0 0; font-size: 28px; color: #ccff00;">
+       0
+      </h3>
+     </div>
+     <!-- TABLE -->
+     <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 8px; overflow: hidden;">
+      <table>
+       <thead>
+        <tr>
+         <th>
+          ID
+         </th>
+         <th>
+          Lapangan
+         </th>
+         <th>
+          Tim
+         </th>
+         <th>
+          Waktu
+         </th>
+         <th>
+          Total
+         </th>
+         <th>
+          Tanggal
+         </th>
+         <th>
+          Aksi
+         </th>
+        </tr>
+       </thead>
+       <tbody id="tableBody">
+        <!-- Data akan diisi oleh JS -->
+       </tbody>
+      </table>
+     </div>
+    </section>
+   </div>
+  </div>
+  <!-- MODAL DETAIL BOOKING -->
+  <div class="modal-detail hidden" id="modalDetail">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h2>
+      Detail Booking
+     </h2>
+     <button class="close-btn" id="closeModal">
+      ×
+     </button>
+    </div>
+    <div class="modal-detail-row">
+     <label>
+      Lapangan:
+     </label>
+     <span class="value" id="detailVenue">
+      -
+     </span>
+    </div>
+    <div class="modal-detail-row">
+     <label>
+      Lapangan/Meja:
+     </label>
+     <span class="value" id="detailCourt">
+      -
+     </span>
+    </div>
+    <div class="modal-detail-row">
+     <label>
+      Tanggal:
+     </label>
+     <span class="value" id="detailDate">
+      -
+     </span>
+    </div>
+    <div class="modal-detail-row">
+     <label>
+      Waktu:
+     </label>
+     <span class="value" id="detailTime">
+      -
+     </span>
+    </div>
+    <div class="modal-detail-row">
+     <label>
+      Nama Tim:
+     </label>
+     <span class="value" id="detailTeam">
+      -
+     </span>
+    </div>
+    <div class="modal-detail-row">
+     <label>
+      Nama User:
+     </label>
+     <span class="value" id="detailUser">
+      -
+     </span>
+    </div>
+    <div class="modal-detail-row">
+     <label>
+      Harga Lapangan:
+     </label>
+     <span class="value" id="detailPrice">
+      Rp 0
+     </span>
+    </div>
+    <div class="modal-detail-row">
+     <label>
+      Admin Fee:
+     </label>
+     <span class="value" id="detailAdminFee">
+      Rp 2.500
+     </span>
+    </div>
+    <div class="modal-detail-row total">
+     <label>
+      Total:
+     </label>
+     <span class="value" id="detailTotal">
+      Rp 0
+     </span>
+    </div>
+    <div class="modal-actions">
+     <button class="btn-modal btn-reject" id="btnReject">
+      Tolak
+     </button>
+     <button class="btn-modal btn-confirm" id="btnConfirm">
+      Konfirmasi
+     </button>
+     <button class="btn-modal btn-close" id="btnCloseModal">
+      Tutup
+     </button>
+    </div>
+   </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <script src="assets/js/global.js">
+  </script>
+  <script src="assets/js/pages/admin-guard.js">
+  </script>
+  <script src="assets/js/pages/admin-bookings.js">
+  </script>
+ </body>
+</html>

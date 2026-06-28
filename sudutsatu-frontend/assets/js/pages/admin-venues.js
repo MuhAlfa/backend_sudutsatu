@@ -1,61 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
-  // 1. DATA DUMMY 
+  // KONFIGURASI UMUM SWEETALERT (ANTI-GESER)
   // ==========================================
-  let venueData = [
-    {
-      id: 1,
-      name: "Lapangan Sintetis",
-      status: "AKTIF",
-      image: "assets/images/futsal-sintetis.png",
-      location: "Sumedang Selatan, Sumedang",
-      sports: ["Futsal", "Biliard"],
-      price: "Rp 150.000",
-      fields: "Indoor",
-      utility: 78,
-      nextAvailable: null
-    },
-    {
-      id: 2,
-      name: "Lapangan Vinyl",
-      status: "PEMELIHARAAN",
-      image: "assets/images/futsal-vinyl.png",
-      location: "Sumedang Selatan, Sumedang",
-      sports: ["Futsal", "Biliard"],
-      price: "Rp 100.000",
-      fields: "Indoor (Turf)",
-      utility: null,
-      nextAvailable: "Tomorrow"
-    },
-    {
-      id: 3,
-      name: "Biliard Meja 1",
-      status: "AKTIF",
-      image: "assets/images/meja1.png",
-      location: "Sumedang Selatan, Sumedang",
-      sports: ["Futsal", "Biliard"],
-      price: "Rp 100.000",
-      fields: "Indoor (Turf)",
-      utility: 85,
-      nextAvailable: null
-    },
-    {
-      id: 4,
-      name: "Biliard Meja 2",
-      status: "AKTIF",
-      image: "assets/images/meja2.png",
-      location: "Sumedang Selatan, Sumedang",
-      sports: ["Futsal", "Biliard"],
-      price: "Rp 100.000",
-      fields: "Indoor (Turf)",
-      utility: 90,
-      nextAvailable: null
+  const swalConfig = {
+    background: '#141414',
+    color: '#ffffff',
+    confirmButtonColor: '#ccff00',
+    cancelButtonColor: '#333',
+    backdrop: `rgba(0,0,0,0.8)`,
+    heightAuto: false
+  };
+
+  // ==========================================
+  // 1. DATA VENUE - ambil dari server, fallback ke localStorage
+  // ==========================================
+  const STORAGE_KEY = 'sudutsatu_venues';
+  const API_BASE = 'http://localhost:5000/api';
+  // Cookie-based auth: use credentials: 'include' on fetch calls
+
+  let venueData = [];
+
+  const persistVenueData = () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(venueData));
+  };
+
+  const loadVenuesFromServer = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/venues`, { method: 'GET', credentials: 'include' });
+      if (!res.ok) throw new Error('Gagal memuat venues dari server');
+      const result = await res.json();
+      venueData = result.data || [];
+      renderVenues(venueData);
+    } catch (err) {
+      console.warn('loadVenuesFromServer failed, falling back to localStorage', err);
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          venueData = JSON.parse(stored);
+        } catch (e) {
+          console.warn('Invalid venue data in localStorage, resetting to default.', e);
+          venueData = [];
+        }
+      } else {
+        // fallback hard-coded minimal data
+        venueData = [
+          { id: 2, name: "Lapangan Futsal Sintetis", status: "AKTIF", image: "assets/images/futsal-sintetis.png", location: "Sumedang Selatan, Sumedang", sports: ["Futsal"], price: "Rp 100.000", fields: "Indoor (Sintetis)", utility: 78, nextAvailable: null },
+          { id: 3, name: "Biliard Meja 1", status: "AKTIF", image: "assets/images/meja1.png", location: "Sumedang Selatan, Sumedang", sports: ["Biliard"], price: "Rp 50.000", fields: "Indoor", utility: 85, nextAvailable: null }
+        ];
+        persistVenueData();
+      }
+      renderVenues(venueData);
     }
-  ];
+  };
 
   let currentEditId = null; 
   let currentTargetId = null; 
+  let currentUploadedImage = null; 
 
   // ==========================================
   // 2. ELEMENTS UTAMA
@@ -82,6 +83,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnTutupAnalitik = document.getElementById('btnTutupAnalitik');
   const anaVenueName = document.getElementById('anaVenueName');
 
+  const inpFoto = document.getElementById('inpFoto');
+  const previewFoto = document.getElementById('previewFoto');
+
+  // ==========================================
+  // FITUR BACA GAMBAR (FILE READER BASE64)
+  // ==========================================
+  if (inpFoto) {
+    inpFoto.addEventListener('change', function(e) {
+      if(e.target.files.length > 0) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+          currentUploadedImage = event.target.result; 
+          previewFoto.src = currentUploadedImage; 
+          previewFoto.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
   // ==========================================
   // 3. FUNGSI RENDER KARTU (CARD)
   // ==========================================
@@ -99,8 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
         : `<div class="vc-status-badge"><span class="dot-yellow"></span> PEMELIHARAAN</div>`;
 
       let imageHtml = venue.image 
-        ? `<img src="${venue.image}" alt="${venue.name}">`
-        : `<svg viewBox="0 0 24 24" width="64" height="64" stroke="currentColor" stroke-width="1.5" fill="none" class="vc-icon-placeholder"><circle cx="12" cy="12" r="10"></circle><path d="M12 12l3.5-2m-3.5 2l-3.5-2m3.5 2v4m7.5-6a5 5 0 00-7.5 0m-4 0a5 5 0 00-7.5 0"></path></svg>`;
+        ? `<img src="${venue.image}" alt="${venue.name}" style="width: 100%; height: 100%; object-fit: cover;">`
+        : `<div style="width:100%; height:100%; background:#222; display:flex; align-items:center; justify-content:center;"><span style="color:#555;">No Image</span></div>`;
 
       const sportsHtml = venue.sports.map(s => `<span class="sport-pill">${s}</span>`).join('');
 
@@ -170,6 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('inpDetail').value = '';
     document.getElementById('inpStatus').value = 'AKTIF';
     document.getElementById('inpOlahraga').value = '';
+    
+    currentUploadedImage = null;
+    if(inpFoto) inpFoto.value = '';
+    if(previewFoto) previewFoto.style.display = 'none';
+
     currentEditId = null;
     formModalTitle.textContent = "Tambah Lapangan Baru";
   };
@@ -189,50 +218,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const status = document.getElementById('inpStatus').value;
     const olahragaTxt = document.getElementById('inpOlahraga').value;
     
-    if(!nama || !lokasi) { alert('Nama dan Lokasi wajib diisi!'); return; }
+    if(!nama || !lokasi) { 
+      Swal.fire({
+        ...swalConfig,
+        icon: 'error',
+        title: 'Form Tidak Lengkap!',
+        text: 'Nama dan Lokasi wajib diisi.',
+        confirmButtonText: '<span style="color: #000; font-weight: bold;">Mengerti</span>'
+      });
+      return; 
+    }
 
     const arrOlahraga = olahragaTxt ? olahragaTxt.split(',').map(s => s.trim()) : ['Umum'];
 
     if(currentEditId !== null) {
-      // EDIT MODE
       const targetObj = venueData.find(v => v.id === currentEditId);
       if(targetObj) {
+        const originalName = targetObj.name;
         targetObj.name = nama;
         targetObj.location = lokasi;
         targetObj.price = "Rp " + harga;
         targetObj.fields = detail;
         targetObj.status = status;
         targetObj.sports = arrOlahraga;
+        
+        if (currentUploadedImage) {
+          targetObj.image = currentUploadedImage;
+        }
+
+        if (originalName !== nama) {
+          // Venue rename: bookings are persisted on the server. Do not update local booking storage.
+          console.warn('Venue renamed; booking records should be updated on the server instead of localStorage.');
+        }
       }
-      alert('Data lapangan berhasil diperbarui!');
+      persistVenueData();
+      
+      Swal.fire({
+        ...swalConfig,
+        icon: 'success',
+        title: 'Diperbarui!',
+        text: 'Data lapangan berhasil diperbarui.',
+        confirmButtonText: '<span style="color: #000; font-weight: bold;">Tutup</span>',
+        timer: 2000
+      });
+
     } else {
-      // ADD NEW MODE
-      let autoAssignedImage = "assets/images/futsal-sintetis.png"; // Gambar Default
-      
-      const checkText = (nama + " " + olahragaTxt).toLowerCase();
-      
-      // PERBAIKAN LOGIKA: Cek kata 'futsal' lebih dulu, jangan dipersulit.
-      if (checkText.includes('futsal')) {
-        if (checkText.includes('vinyl')) {
-          autoAssignedImage = "assets/images/futsal-vinyl.png"; 
-        } else {
-          autoAssignedImage = "assets/images/futsal-sintetis.png"; 
-        }
-      } 
-      // Jika bukan futsal, baru cek apakah itu biliard
-      else if (checkText.includes('biliard') || checkText.includes('biliar')) {
-        if (checkText.includes('meja 2')) {
-          autoAssignedImage = "assets/images/meja2.png";
-        } else {
-          autoAssignedImage = "assets/images/meja1.png"; 
-        }
-      }
+      const finalImage = currentUploadedImage ? currentUploadedImage : "assets/images/futsal-sintetis.png";
 
       const newVenue = {
         id: Date.now(),
         name: nama,
         status: status,
-        image: autoAssignedImage, 
+        image: finalImage, 
         location: lokasi,
         sports: arrOlahraga,
         price: "Rp " + harga,
@@ -241,7 +278,16 @@ document.addEventListener('DOMContentLoaded', () => {
         nextAvailable: "Hari Ini"
       };
       venueData.unshift(newVenue); 
-      alert('Lapangan baru berhasil ditambahkan!');
+      persistVenueData();
+      
+      Swal.fire({
+        ...swalConfig,
+        icon: 'success',
+        title: 'Berhasil!',
+        text: 'Lapangan baru beserta fotonya berhasil ditambahkan.',
+        confirmButtonText: '<span style="color: #000; font-weight: bold;">Mantap</span>',
+        timer: 2000
+      });
     }
 
     modalVenueForm.classList.add('hidden');
@@ -266,6 +312,16 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('inpDetail').value = targetVenue.fields;
           document.getElementById('inpStatus').value = targetVenue.status;
           document.getElementById('inpOlahraga').value = targetVenue.sports.join(', ');
+          
+          currentUploadedImage = null;
+          if(inpFoto) inpFoto.value = '';
+
+          if (previewFoto && targetVenue.image) {
+            previewFoto.src = targetVenue.image;
+            previewFoto.style.display = 'block';
+          } else if (previewFoto) {
+            previewFoto.style.display = 'none';
+          }
           
           modalVenueForm.classList.remove('hidden');
         }
@@ -305,23 +361,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnSetAktif.addEventListener('click', () => {
     const targetObj = venueData.find(v => v.id === currentTargetId);
-    if(targetObj) targetObj.status = 'AKTIF';
-    modalSchedule.classList.add('hidden');
-    applyFilters();
-    alert(`${targetObj.name} di-set menjadi AKTIF.`);
+    if (!targetObj) return;
+    
+    Swal.fire({
+      ...swalConfig,
+      icon: 'question',
+      title: 'Ubah ke Aktif?',
+      text: `Anda yakin ingin mengaktifkan kembali ${targetObj.name}?`,
+      showCancelButton: true,
+      confirmButtonText: '<span style="color: #000; font-weight: bold;">Ya, Aktifkan</span>',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if(result.isConfirmed) {
+        targetObj.status = 'AKTIF';
+        persistVenueData();
+        modalSchedule.classList.add('hidden');
+        applyFilters();
+        
+        Swal.fire({
+          ...swalConfig,
+          icon: 'success',
+          title: 'Berhasil',
+          text: `${targetObj.name} telah berstatus AKTIF.`,
+          confirmButtonText: '<span style="color: #000; font-weight: bold;">Tutup</span>',
+          timer: 2000
+        });
+      }
+    });
   });
 
   btnSetMaint.addEventListener('click', () => {
     const targetObj = venueData.find(v => v.id === currentTargetId);
-    if(targetObj) targetObj.status = 'PEMELIHARAAN';
-    modalSchedule.classList.add('hidden');
-    applyFilters();
-    alert(`${targetObj.name} masuk masa PEMELIHARAAN.`);
+    if (!targetObj) return;
+    
+    Swal.fire({
+      ...swalConfig,
+      icon: 'warning',
+      title: 'Pemeliharaan?',
+      text: `Jadwal ${targetObj.name} akan ditutup untuk pengunjung. Yakin?`,
+      showCancelButton: true,
+      confirmButtonColor: '#ff5555', 
+      confirmButtonText: 'Ya, Tutup Lapangan',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if(result.isConfirmed) {
+        targetObj.status = 'PEMELIHARAAN';
+        persistVenueData();
+        modalSchedule.classList.add('hidden');
+        applyFilters();
+        
+        Swal.fire({
+          ...swalConfig,
+          icon: 'success',
+          title: 'Mode Pemeliharaan',
+          text: `${targetObj.name} masuk masa PEMELIHARAAN.`,
+          confirmButtonText: '<span style="color: #000; font-weight: bold;">Tutup</span>',
+          timer: 2000
+        });
+      }
+    });
   });
 
   // ==========================================
-  // INITIAL RENDER
+  // INITIAL RENDER: muat dari server (fallback ke localStorage)
   // ==========================================
-  renderVenues(venueData);
-
+  loadVenuesFromServer();
 });

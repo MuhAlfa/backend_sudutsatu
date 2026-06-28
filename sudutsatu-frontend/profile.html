@@ -1,224 +1,310 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil Saya - SudutSatu</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/pages/profile.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <nav class="navbar border-bottom-dark">
-    <div class="container navbar-inner nav-flex-between">
-      
-      <div class="nav-left">
-        <a href="index.html" class="navbar-logo mr-32 text-decoration-none">
-          <strong style="font-size: 20px;"><span class="text-primary">SUDUT</span><span class="text-white">SATU</span></strong>
-        </a>
-        <ul class="navbar-menu nav-links-custom">
-          <li><a href="#">Eksplorasi</a></li>
-          <li><a href="#">Turnamen</a></li>
-          <li><a href="#">Komunitas</a></li>
-        </ul>
-      </div>
-      
-      <div class="nav-right">
-        <div class="search-box-custom">
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#888" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" placeholder="Cari venue atau olahraga...">
-        </div>
-        <div class="profile-pill">
-          <img src="assets/images/profile.jpg" alt="Avatar">
-          <span>Profile</span>
-        </div>
-      </div>
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Profil Saya - SudutSatu
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/profile.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="user-body">
+  <header class="user-navbar">
+   <div class="container flex-between align-center">
+    <div class="brand-logo text-decoration-none">
+     <h2 class="m-0" style="font-weight: 700; font-size: 20px; letter-spacing: -0.5px;">
+      <span class="text-primary">
+       Sudut
+      </span>
+      <span class="text-white">
+       Satu
+      </span>
+     </h2>
     </div>
-  </nav>
-
+    <nav class="nav-links d-flex gap-32">
+     <a class="nav-item" href="search-venues.html">
+      Cari Lapangan
+     </a>
+     <a class="nav-item" href="dashboard-user.html">
+      Dashboard
+     </a>
+     <a class="nav-item active" href="profile.html">
+      Profil
+     </a>
+     <a class="nav-item" href="tentang-kami.html">
+      Tentang Kami
+     </a>
+     <a class="nav-item" href="hubungi-kami.html">
+      Hubungi Kami
+     </a>
+    </nav>
+    <div class="nav-actions d-flex align-center gap-16">
+    </div>
+   </div>
+  </header>
   <main class="container profile-layout pt-40 pb-64">
-    
-    <aside class="profile-sidebar">
-      
-      <div class="mb-32">
-        <h1 class="sidebar-title text-primary mb-8">Profil Saya</h1>
-        <div class="sidebar-subtitle uppercase">MANAGE ACCOUNT</div>
-      </div>
-
-      <ul class="sidebar-menu mb-40">
-        <li>
-          <a href="booking-history.html" class="active-menu">
-            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            Riwayat Booking
-          </a>
-        </li>
-        <li class="mt-24">
-          <a href="index.html" class="logout-menu">
-            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-            Keluar
-          </a>
-        </li>
-      </ul>
-
-      <div class="member-pro-card">
-        <h4 class="text-primary mb-8" style="font-size: 11px; font-weight: 800; letter-spacing: 0.5px;">MEMBER PRO</h4>
-        <p class="text-muted m-0" style="font-size: 11px;">Berlaku hingga 12 Des 2026</p>
-      </div>
-
-    </aside>
-
-   <section class="profile-content">
-      
-      <div class="content-card header-profile-card mb-24 flex-between-center">
-        <div class="d-flex align-center gap-24">
-          <div class="avatar-wrapper">
-            <img src="assets/images/avatar.jpg" id="avatarImage" alt="Rizky Pratama">
-            
-            <input type="file" id="fileInputAvatar" accept="image/*" style="display: none;">
-
-            <button class="btn-edit-avatar" id="btnChangePhoto" type="button">
-              <svg viewBox="0 0 24 24" width="12" height="12" stroke="#fff" stroke-width="2" fill="none"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-            </button>
-          </div>
-          <div>
-           <h2 id="displayNamaProfil" class="text-white mb-8" style="font-size: 28px; font-weight: 700;">RIZKY PRATAMA</h2>
-            
-            <div class="text-muted text-small d-flex align-center gap-8 mb-16">
-              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" class="icon-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              <span id="displayLokasiHeader" class="text-muted">Sumedang, Indonesia</span>
-            </div>
-            <div class="d-flex gap-12">
-              <span class="badge-custom badge-neon">ANGGOTA PRO</span>
-              <span class="badge-custom badge-dark">SEJAK 2025</span>
-            </div>
-          </div>
-        </div>
-        <button id="btnEditPublik" class="btn-outline-gray">Edit Profil Publik</button>
-      </div>
-
-      <div class="profile-middle-grid mb-24">
-        
-        <div class="content-card">
-          <div class="flex-between-center border-bottom-dark pb-16 mb-24">
-            <h3 class="text-white m-0" style="font-size: 18px;">Detail Pribadi</h3>
-            <a href="#" id="btnEditSemua" class="text-primary text-small bold text-decoration-none">EDIT SEMUA</a>
-          </div>
-
-          <div class="detail-grid mb-24">
-            <div>
-              <label class="detail-label">NAMA LENGKAP</label>
-              <div class="detail-box">
-                <span class="detail-text text-white">Rizky Pratama</span>
-                <input type="text" class="detail-input" value="Rizky Pratama">
-                <span class="edit-icon-green">&#9998;</span>
-              </div>
-            </div>
-            <div>
-              <label class="detail-label">NAMA TAMPILAN</label>
-              <div class="detail-box">
-                <span class="detail-text text-white">Rizky_Velocity</span>
-                <input type="text" class="detail-input" value="Rizky_Velocity">
-                <span class="edit-icon-green">&#9998;</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-24">
-            <label class="detail-label">ALAMAT EMAIL</label>
-            <div class="detail-box">
-              <span class="detail-text text-white">rizky.pratama@velocity.id</span>
-              <input type="email" class="detail-input" value="rizky.pratama@velocity.id">
-              <div class="d-flex align-center gap-12 box-actions">
-                <span class="badge-verified">Terverifikasi</span>
-                <span class="edit-icon-green">&#9998;</span>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label class="detail-label">NOMOR TELEPON</label>
-            <div class="detail-box">
-              <span class="detail-text text-white">+62 812 3456 7890</span>
-              <input type="text" class="detail-input" value="+62 812 3456 7890">
-              <span class="edit-icon-green">&#9998;</span>
-            </div>
-          </div>
-
-          <button id="btnSimpanDetail" class="btn btn-primary w-100 mt-24 hidden py-12" style="font-weight: bold;">Simpan Perubahan</button>
-        </div>
-
-        <div class="content-card d-flex-col">
-          <div class="flex-between-center border-bottom-dark pb-16 mb-24">
-            <h3 class="text-white m-0" style="font-size: 18px;">Olahraga Pilihan</h3>
-            <button class="btn-icon-plus">+</button>
-          </div>
-          <div class="sports-list mb-24">
-            <div class="sport-item">
-              <div class="d-flex align-center gap-16">
-                <div class="sport-icon-box text-primary">
-                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><path d="M12 12l3.5-2m-3.5 2l-3.5-2m3.5 2v4m7.5-6a5 5 0 00-7.5 0m-4 0a5 5 0 00-7.5 0"></path></svg>
-                </div>
-                <strong class="text-white" style="letter-spacing: 1px;">FUTSAL</strong>
-              </div>
-              <span class="badge-utama text-primary">Utama</span>
-            </div>
-            <div class="sport-item" id="sportBiliar">
-              <div class="d-flex align-center gap-16">
-                <div class="sport-icon-box text-muted">
-                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><circle cx="8" cy="12" r="4"></circle><circle cx="16" cy="12" r="4"></circle></svg>
-                </div>
-                <strong class="text-white" style="letter-spacing: 1px;">BILIAR</strong>
-              </div>
-              <button class="btn-remove-cross" onclick="document.getElementById('sportBiliar').style.display='none'">&times;</button>
-            </div>
-          </div>
-          <div class="mt-auto">
-            <p class="text-muted text-small m-0 mb-16" style="line-height: 1.6;">Menyesuaikan olahraga Anda membantu kami merekomendasikan venue.</p>
-            <button class="btn-outline-gray w-100 py-12">Kelola Preferensi</button>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="danger-zone-card flex-between-center">
-        <div>
-          <h3 class="text-red m-0 mb-8" style="font-size: 18px;">Zona Bahaya</h3>
-          <p class="text-muted text-small m-0">Setelah Anda menghapus akun, tidak ada jalan kembali.</p>
-        </div>
-        <button class="btn-hapus-akun" onclick="confirm('Yakin ingin menghapus akun permanen?')">Hapus Akun</button>
-      </div>
-
-    </section>
-
-    <div id="modalProfilPublik" class="modal-overlay hidden">
-    <div class="modal-content" style="max-width: 450px;">
-      <div class="flex-between-center border-bottom-dark pb-16 mb-24">
-        <h3 class="text-white m-0">Edit Profil Publik</h3>
-        <button id="closeModalPublik" style="background:none; border:none; color:#888; font-size:24px; cursor:pointer;">&times;</button>
-      </div>
-      
-      <div style="margin-bottom: 16px;">
-        <label class="detail-label">NAMA TAMPILAN PUBLIK</label>
-        <input type="text" id="inputNamaPublik" class="modal-input-field w-100" value="RIZKY PRATAMA">
-      </div>
-
-      <div style="margin-bottom: 24px;">
-        <label class="detail-label">LOKASI / ALAMAT</label>
-        <input type="text" id="inputLokasiPublik" class="modal-input-field w-100" value="Sumedang, Indonesia">
-      </div>
-      
-      <button id="btnSimpanPublik" class="btn btn-primary w-100 py-12 bold">Simpan Profil Publik</button>
+   <aside class="profile-sidebar">
+    <div class="mb-32">
+     <h1 class="sidebar-title text-primary mb-8">
+      Profil Saya
+     </h1>
+     <div class="sidebar-subtitle uppercase">
+      MANAGE ACCOUNT
+     </div>
     </div>
-  </div>
-    </section>
-
+    <ul class="sidebar-menu mb-40">
+     <li>
+      <a class="active-menu" href="#">
+       <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2">
+        </path>
+        <circle cx="12" cy="7" r="4">
+        </circle>
+       </svg>
+       Edit Profil
+      </a>
+     </li>
+     <li class="mt-24">
+      <a href="booking-history.html">
+       <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+        <circle cx="12" cy="12" r="10">
+        </circle>
+        <polyline points="12 6 12 12 16 14">
+        </polyline>
+       </svg>
+       Riwayat Booking
+      </a>
+     </li>
+     <li class="mt-24">
+      <a class="logout-menu" href="#" id="btnLogout">
+       <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4">
+        </path>
+        <polyline points="16 17 21 12 16 7">
+        </polyline>
+        <line x1="21" x2="9" y1="12" y2="12">
+        </line>
+       </svg>
+       Keluar
+      </a>
+     </li>
+    </ul>
+    
+     </p>
+    </div>
+   </aside>
+   <section class="profile-content">
+    <div class="content-card header-profile-card mb-24 flex-between-center flex-wrap gap-16">
+     <div class="d-flex align-center gap-24 flex-wrap">
+      <div class="avatar-wrapper">
+       <img alt="User" id="avatarImage" src="#"/>
+       <input accept="image/*" id="fileInputAvatar" style="display: none;" type="file"/>
+       <button class="btn-edit-avatar" id="btnChangePhoto" type="button">
+        <svg fill="none" height="12" stroke="#fff" stroke-width="2" viewBox="0 0 24 24" width="12">
+         <path d="M12 20h9">
+         </path>
+         <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z">
+         </path>
+        </svg>
+       </button>
+      </div>
+      <div>
+       <h2 class="text-white m-0 mb-8 uppercase" id="displayNamaProfil" style="font-size: 28px; font-weight: 700;">
+        RIZKY PRATAMA
+       </h2>
+       <div class="text-muted text-small d-flex align-center gap-8 mb-16">
+        <svg class="icon-pin" fill="none" height="14" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14">
+         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
+         </path>
+         <circle cx="12" cy="10" r="3">
+         </circle>
+        </svg>
+        <span class="text-muted" id="displayLokasiHeader">
+         Sumedang, Indonesia
+        </span>
+       </div>
+       
+        </span>
+        <span class="badge-custom badge-dark">
+         SEJAK 2026
+        </span>
+       </div>
+      </div>
+     </div>
+     <button class="btn-outline-gray text-small bold px-24 py-12" id="btnEditPublik">
+      Edit Profil Publik
+     </button>
+    </div>
+    <div class="profile-middle-grid mb-24">
+     <div class="content-card">
+      <div class="flex-between-center border-bottom-dark pb-16 mb-24">
+       <h3 class="text-white m-0" style="font-size: 18px;">
+        Detail Pribadi
+       </h3>
+       <button class="btn-text-primary text-small bold" id="btnEditSemua">
+        EDIT SEMUA
+       </button>
+      </div>
+      <div class="detail-grid mb-24">
+       <div>
+        <label class="detail-label">
+         NAMA LENGKAP
+        </label>
+        <div class="detail-box">
+         <span class="detail-text text-white" id="txtNamaLengkap">
+          Rizky Pratama
+         </span>
+         <input class="detail-input" id="inpNamaLengkap" type="text" value="Rizky Pratama"/>
+        </div>
+       </div>
+      </div>
+      <div class="mb-24">
+       <label class="detail-label">
+        ALAMAT EMAIL
+       </label>
+       <div class="detail-box">
+        <span class="detail-text text-white" id="txtEmail">
+         rizky.pratama@velocity.id
+        </span>
+        <input class="detail-input" id="inpEmail" type="email" value="rizky.pratama@velocity.id"/>
+        <div class="box-actions">
+         <span class="badge-verified">
+          Terverifikasi
+         </span>
+        </div>
+       </div>
+      </div>
+      <div>
+       <label class="detail-label">
+        NOMOR TELEPON
+       </label>
+       <div class="detail-box">
+        <span class="detail-text text-white" id="txtTelepon">
+         +62 812 3456 7890
+        </span>
+        <input class="detail-input" id="inpTelepon" type="text" value="+62 812 3456 7890"/>
+       </div>
+      </div>
+      <button class="btn btn-primary w-100 mt-24 py-12 bold" id="btnSimpanDetail" style="display: none;">
+       Simpan Perubahan
+      </button>
+     </div>
+     <div class="content-card d-flex-col">
+      <div class="flex-between-center border-bottom-dark pb-16 mb-24">
+       <h3 class="text-white m-0" style="font-size: 18px;">
+        Olahraga Pilihan
+       </h3>
+       <button class="btn-icon-plus" id="btnAddSport">
+        +
+       </button>
+      </div>
+      <div class="sports-list mb-24" id="sportsContainer">
+       <div class="sport-item" style="border-color: #333;">
+        <div class="d-flex align-center gap-16">
+         <div class="sport-icon-box text-primary">
+          ⚽
+         </div>
+         <strong class="text-white uppercase tracking-wide">
+          FUTSAL
+         </strong>
+        </div>
+        <button class="btn-remove-cross" id="btnRemoveFutsal">
+         ×
+        </button>
+       </div>
+       <div class="sport-item" id="sportBiliard" style="border-color: #333;">
+        <div class="d-flex align-center gap-16">
+         <div class="sport-icon-box text-muted">
+          🎱
+         </div>
+         <strong class="text-white uppercase tracking-wide">
+          BILIARD
+         </strong>
+        </div>
+        <button class="btn-remove-cross" id="btnRemoveBiliard">
+         ×
+        </button>
+       </div>
+      </div>
+      <div class="mt-auto">
+       <p class="text-muted text-small m-0 mb-16" style="line-height: 1.5;">
+        Menyesuaikan olahraga Anda membantu kami merekomendasikan venue.
+       </p>
+       <button class="btn-outline-gray w-100 py-12" id="btnKelolaPreferensi">
+        Kelola Preferensi
+       </button>
+      </div>
+     </div>
+    </div>
+    <div class="danger-zone-card flex-between-center flex-wrap gap-16">
+     <div>
+      <h3 class="text-red m-0 mb-8" style="font-size: 18px; color: #ff3333;">
+       Zona Bahaya
+      </h3>
+      <p class="text-muted text-small m-0">
+       Setelah Anda menghapus akun, tidak ada jalan kembali.
+      </p>
+     </div>
+     <button class="btn-hapus-akun" id="btnDeleteAccount">
+      Hapus Akun
+     </button>
+    </div>
+   </section>
+   <div class="modal-overlay" id="modalProfilPublik" style="display: none;">
+    <div class="modal-content">
+     <div class="flex-between-center border-bottom-dark pb-16 mb-24">
+      <h3 class="text-white m-0">
+       Edit Profil Publik
+      </h3>
+      <button class="bg-transparent border-none text-muted" id="closeModalPublik" style="font-size:24px; cursor:pointer;">
+       ×
+      </button>
+     </div>
+     <div class="mb-16">
+      <label class="detail-label">
+       NAMA TAMPILAN PUBLIK
+      </label>
+      <input class="modal-input-field w-100" id="inputNamaPublik" type="text"/>
+     </div>
+     <div class="mb-24">
+      <label class="detail-label">
+       LOKASI / ALAMAT
+      </label>
+      <input class="modal-input-field w-100" id="inputLokasiPublik" type="text"/>
+     </div>
+     <button class="btn btn-primary w-100 py-12 bold" id="btnSimpanPublik">
+      Simpan Profil Publik
+     </button>
+    </div>
+   </div>
+   <div class="modal-overlay" id="modalOTP" style="display: none;">
+    <div class="modal-content text-center" style="max-width: 400px; padding: 32px;">
+     <h3 class="text-white m-0 mb-16" style="font-size: 20px;">
+      Verifikasi Email Gmail
+     </h3>
+     <p class="text-muted text-small mb-24" style="line-height: 1.6;">
+      Kami telah mengirimkan 4 digit kode verifikasi ke kotak masuk Gmail Anda:
+      <br/>
+      <strong class="text-white" id="otpEmailTarget" style="font-size: 14px;">
+      </strong>
+     </p>
+     <input class="modal-input-field w-100 text-center mb-24" id="inputOTP" maxlength="4" placeholder="Ketik 4 Digit Kode" style="font-size: 20px; letter-spacing: 4px; padding: 16px;" type="text"/>
+     <button class="btn btn-primary w-100 py-16 bold mb-16" id="btnVerifikasiOTP" style="border-radius: 8px;">
+      Verifikasi &amp; Simpan
+     </button>
+     <button class="bg-transparent border-none text-muted bold" id="btnBatalOTP" style="cursor: pointer; padding: 8px;">
+      Batalkan
+     </button>
+    </div>
+   </div>
   </main>
- 
-  <script src="assets/js/pages/profile.js"></script>
-</body>
-</html>
-
-</body>
+  <script src="assets/js/global.js">
+  </script>
+  <script src="assets/js/pages/profile.js">
+  </script>
+ </body>
 </html>

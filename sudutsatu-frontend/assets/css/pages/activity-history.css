@@ -1,0 +1,110 @@
+/* ==========================================================================
+   CSS HALAMAN RIWAYAT AKTIVITAS (TIMELINE STYLE) - 100% RESPONSIVE
+   ========================================================================== */
+
+.history-layout { max-width: 800px; margin: 0 auto; }
+
+/* Tombol Kembali */
+.btn-back { transition: 0.2s; }
+.btn-back:hover { color: #ccff00; transform: translateX(-4px); }
+
+/* Tombol Filter */
+.filter-btn { 
+  background: transparent; 
+  border: 1px solid #333; 
+  color: #888; 
+  padding: 8px 16px; 
+  border-radius: 20px; 
+  font-size: 13px; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: 0.2s; 
+}
+.filter-btn:hover { border-color: #666; color: #fff; }
+.filter-btn.active { background: rgba(204, 255, 0, 0.1); border-color: #ccff00; color: #ccff00; }
+
+/* Timeline Wrapper */
+.timeline-wrapper { position: relative; padding-left: 12px; }
+
+/* Label Tanggal */
+.timeline-date { 
+  font-size: 11px; 
+  font-weight: 800; 
+  color: #666; 
+  letter-spacing: 1px; 
+  margin-bottom: 16px; 
+  position: relative; 
+}
+
+/* Item Timeline (Satu Baris Aktivitas) */
+.timeline-item { 
+  position: relative; 
+  padding-left: 40px; 
+  padding-bottom: 32px; 
+  border-left: 2px solid #222; /* Garis vertikal timeline */
+}
+
+/* Hilangkan garis di item paling bawah */
+.timeline-group:last-child .timeline-item:last-child { border-left-color: transparent; }
+
+/* Ikon Timeline */
+.timeline-icon { 
+  position: absolute; 
+  left: -20px; /* Menaruh ikon tepat di atas garis vertikal */
+  top: 0; 
+  width: 38px; 
+  height: 38px; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 16px; 
+  border: 4px solid #0a0a0a; /* Warna outline sama dengan background body */
+}
+
+/* Warna Khusus per Kategori */
+.timeline-icon.transaction { background: rgba(204, 255, 0, 0.15); color: #ccff00; }
+.timeline-icon.achievement { background: rgba(255, 170, 0, 0.15); color: #ffaa00; }
+.timeline-icon.review { background: rgba(0, 204, 255, 0.15); color: #00ccff; }
+.timeline-icon.system { background: #1a1a1a; color: #fff; }
+
+/* Kotak Konten */
+.timeline-content { 
+  background: #111; 
+  border: 1px solid #222; 
+  padding: 16px 20px; 
+  border-radius: 12px; 
+  transition: 0.2s; 
+}
+.timeline-content:hover { border-color: #333; background: #141414; }
+
+/* Responsif untuk Layar HP */
+@media (max-width: 576px) {
+  .flex-between.flex-wrap { flex-direction: column; }
+  .timeline-time { margin-top: 8px; align-self: flex-start; }
+  .history-layout { padding-left: 16px; padding-right: 16px; }
+}
+
+/* =======================================================
+   PERBAIKAN JARAK PROFIL NAVBAR (GLOBAL)
+   ======================================================= */
+
+/* Memastikan elemen flex dan jarak (gap) berfungsi di semua halaman */
+.d-flex { display: flex; }
+.align-center { display: flex; align-items: center; }
+.gap-8 { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-32 { gap: 32px; }
+
+/* Mengunci jarak aman antara Teks Nama dan Foto Profil */
+.nav-profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px !important; /* Memaksa jarak 16px agar tidak dempet */
+}
+
+.nav-profile-text {
+  text-align: right;
+  margin-right: 0px; /* Tambahan jarak napas ekstra */
+}

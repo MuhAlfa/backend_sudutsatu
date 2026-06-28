@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Riwayat Aktivitas - SudutSatu
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/activity-history.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <style>
+   /* Melarang SweetAlert menambahkan padding dan menyembunyikan scrollbar */
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+        padding-right: 0 !important;
+        overflow-y: auto !important; 
+    }
+
+    /* Melarang SweetAlert mengutak-atik tinggi halaman */
+    html.swal2-shown, 
+    body.swal2-shown {
+        height: auto !important;
+    }
+
+    /* kunci lebar body 100% */
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+  </style>
+ </head>
+ <body class="user-body">
+  <header class="user-navbar">
+   <div class="container flex-between align-center">
+    <div class="brand-logo text-decoration-none">
+     <h2 class="m-0" style="font-weight: 700; font-size: 20px; letter-spacing: -0.5px;">
+      <span class="text-primary">
+       Sudut
+      </span>
+      <span class="text-white">
+       Satu
+      </span>
+     </h2>
+    </div>
+    <nav class="nav-links d-flex gap-32">
+     <a class="nav-item" href="search-venues.html">
+      Cari Lapangan
+     </a>
+     <a class="nav-item active" href="dashboard-user.html">
+      Dashboard
+     </a>
+     <a class="nav-item" href="tentang-kami.html">
+      Tentang Kami
+     </a>
+     <a class="nav-item" href="hubungi-kami.html">
+      Hubungi Kami
+     </a>
+    </nav>
+    <div class="nav-actions d-flex align-center gap-16">
+     <div class="nav-profile-wrapper d-flex align-center gap-12">
+      <div class="nav-profile-text text-right" id="desktopProfileText">
+       <div class="text-white" style="font-size: 14px; font-weight: 600;">
+        Rizky Pratama
+       </div>
+       <div class="text-primary" style="font-size: 10px; font-weight: 800; letter-spacing: 0.5px;">
+        PRO MEMBER
+       </div>
+      </div>
+      <div class="nav-avatar position-relative">
+       <img alt="User" src="assets/images/avatar.jpg" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #ccff00;"/>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <main class="container py-32 history-layout">
+   <div class="mb-32">
+    <a class="btn-back text-muted text-decoration-none text-small bold d-inline-flex align-center gap-8 mb-16" href="dashboard-user.html">
+     <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16">
+      <polyline points="15 18 9 12 15 6">
+      </polyline>
+     </svg>
+     Kembali ke Dashboard
+    </a>
+    <h1 class="text-white m-0" style="font-size: 32px;">
+     Semua Aktivitas
+    </h1>
+    <p class="text-muted mt-8 mb-24">
+     Lacak semua transaksi, pencapaian, dan pembaruan akun Anda di sini.
+    </p>
+   </div>
+   <div class="history-filters mb-40 d-flex gap-12 flex-wrap">
+    <button class="filter-btn active" data-filter="all">
+     Semua
+    </button>
+    <button class="filter-btn" data-filter="transaction">
+     Transaksi
+    </button>
+    <button class="filter-btn" data-filter="achievement">
+     Pencapaian
+    </button>
+    <button class="filter-btn" data-filter="system">
+     Sistem
+    </button>
+   </div>
+   <div class="timeline-wrapper" id="timelineContainer">
+    <div class="timeline-group mt-32">
+     <div class="timeline-date">
+      KEMARIN
+     </div>
+     <div class="timeline-item" data-category="achievement">
+      <div class="timeline-icon achievement">
+       🏆
+      </div>
+      <div class="timeline-content">
+       <div class="flex-between align-start flex-wrap gap-8">
+        <div>
+         <h4 class="m-0 text-white text-base">
+          Pencapaian Baru: "Hattrick Week"
+         </h4>
+         <p class="m-0 text-muted text-small mt-4">
+          Luar biasa! Anda telah menyelesaikan 3 sesi latihan dalam satu minggu.
+         </p>
+        </div>
+        <span class="timeline-time text-tiny text-muted uppercase tracking-wide">
+         18:30 WIB
+        </span>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="timeline-group mt-32">
+     <div class="timeline-date">
+      MEI 2026
+     </div>
+     <div class="timeline-item" data-category="achievement">
+      <div class="timeline-icon review">
+       👍
+      </div>
+      <div class="timeline-content">
+       <div class="flex-between align-start flex-wrap gap-8">
+        <div>
+         <h4 class="m-0 text-white text-base">
+          Review Terkirim
+         </h4>
+         <p class="m-0 text-muted text-small mt-4">
+          Anda memberikan 5 Bintang untuk "Lapangan Futsal Vinyl A". Terima kasih atas masukannya!
+         </p>
+        </div>
+        <span class="timeline-time text-tiny text-muted uppercase tracking-wide">
+         20 MEI, 10:15 WIB
+        </span>
+       </div>
+      </div>
+     </div>
+     <div class="timeline-item" data-category="system">
+      <div class="timeline-icon system">
+       ⚙️
+      </div>
+      <div class="timeline-content">
+       <div class="flex-between align-start flex-wrap gap-8">
+        <div>
+         <h4 class="m-0 text-white text-base">
+          Akun Ditingkatkan ke PRO
+         </h4>
+         <p class="m-0 text-muted text-small mt-4">
+          Selamat datang di keanggotaan PRO! Nikmati bebas biaya admin dan diskon khusus.
+         </p>
+        </div>
+        <span class="timeline-time text-tiny text-muted uppercase tracking-wide">
+         01 MEI, 08:00 WIB
+        </span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </main>
+  <script src="assets/js/pages/activity-history.js">
+  </script>
+ </body>
+</html>

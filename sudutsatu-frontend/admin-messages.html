@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Pesan Masuk - Admin SudutSatu
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-dashboard.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-messages.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <style>
+   /* Melarang SweetAlert menambahkan padding dan menyembunyikan scrollbar */
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+        padding-right: 0 !important;
+        overflow-y: auto !important; 
+    }
+
+    /* Melarang SweetAlert mengutak-atik tinggi halaman */
+    html.swal2-shown, 
+    body.swal2-shown {
+        height: auto !important;
+    }
+
+    /* kunci lebar body 100% */
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    /* Memastikan seluruh Pop-up SweetAlert selalu berada di lapisan paling depan */
+    div:where(.swal2-container) {
+        z-index: 99999 !important;
+    }
+  </style>
+ </head>
+ <body class="admin-body">
+  <div class="admin-layout">
+   <aside class="admin-sidebar">
+    <div class="sidebar-header">
+     <div class="brand-logo">
+      <div class="brand-icon">
+       <svg fill="none" height="18" stroke="var(--color-primary)" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+        </rect>
+        <circle cx="8.5" cy="8.5" r="1.5">
+        </circle>
+        <polyline points="21 15 16 10 5 21">
+        </polyline>
+       </svg>
+      </div>
+      <div>
+       <h2 class="brand-title text-primary">
+        SUDUTSATU
+       </h2>
+       <p class="brand-subtitle">
+        Facility Manager
+       </p>
+      </div>
+     </div>
+    </div>
+    <div class="sidebar-menus">
+     <ul class="menu-list">
+      <li>
+       <a class="menu-item" href="admin-dashboard.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <rect height="7" width="7" x="3" y="3">
+         </rect>
+         <rect height="7" width="7" x="14" y="3">
+         </rect>
+         <rect height="7" width="7" x="14" y="14">
+         </rect>
+         <rect height="7" width="7" x="3" y="14">
+         </rect>
+        </svg>
+        Ringkasan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-schedule.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <rect height="18" rx="2" ry="2" width="18" x="3" y="4">
+         </rect>
+         <line x1="16" x2="16" y1="2" y2="6">
+         </line>
+         <line x1="8" x2="8" y1="2" y2="6">
+         </line>
+         <line x1="3" x2="21" y1="10" y2="10">
+         </line>
+        </svg>
+        Manajemen Jadwal
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-venues.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <path d="M22 12h-4l-3 9L9 3l-3 9H2">
+         </path>
+        </svg>
+        Kelola Lapangan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item d-flex align-center justify-between" href="admin-payment-verification.html" style="width: 100%;">
+        <div class="d-flex align-center gap-16">
+         <div style="position: relative; display: flex; align-items: center;">
+          <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+           <rect height="14" rx="2" width="20" x="2" y="5">
+           </rect>
+           <line x1="2" x2="22" y1="10" y2="10">
+           </line>
+          </svg>
+          <span class="badge-red-icon" id="badgeVerifikasiSide" style="display: none;">
+           0
+          </span>
+         </div>
+         <span>
+          Verifikasi Pembayaran
+         </span>
+        </div>
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-finance.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <line x1="18" x2="18" y1="20" y2="10">
+         </line>
+         <line x1="12" x2="12" y1="20" y2="4">
+         </line>
+         <line x1="6" x2="6" y1="20" y2="14">
+         </line>
+        </svg>
+        Laporan Keuangan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item active d-flex align-center justify-between" href="admin-messages.html" style="width: 100%;">
+        <div class="d-flex align-center gap-16">
+         <div style="position: relative; display: flex; align-items: center;">
+          <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+           </path>
+           <polyline points="22,6 12,13 2,6">
+           </polyline>
+          </svg>
+          <span class="badge-red-icon" id="badgePesanSide" style="display: none;">
+           0
+          </span>
+         </div>
+         <span>
+          Pesan Masuk
+         </span>
+        </div>
+       </a>
+      </li>
+     </ul>
+     <ul class="menu-list bottom-menu">
+      <li>
+       <a class="menu-item" href="admin-settings.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <circle cx="12" cy="12" r="3">
+         </circle>
+         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+         </path>
+        </svg>
+        Pengaturan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-help.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <circle cx="12" cy="12" r="10">
+         </circle>
+         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3">
+         </path>
+         <line x1="12" x2="12.01" y1="17" y2="17">
+         </line>
+        </svg>
+        Bantuan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="#" id="btnLogoutSidebar" style="color: #ff5555; margin-top: 8px;">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4">
+         </path>
+         <polyline points="16 17 21 12 16 7">
+         </polyline>
+         <line x1="21" x2="9" y1="12" y2="12">
+         </line>
+        </svg>
+        Keluar Akun
+       </a>
+      </li>
+     </ul>
+    </div>
+   </aside>
+   <div class="admin-main">
+    <header class="admin-topbar">
+     <div class="topbar-search">
+      <svg fill="none" height="16" stroke="#888" stroke-width="2" viewBox="0 0 24 24" width="16">
+       <circle cx="11" cy="11" r="8">
+       </circle>
+       <line x1="21" x2="16.65" y1="21" y2="16.65">
+       </line>
+      </svg>
+      <input id="searchMessages" placeholder="Cari Berdasarkan Kata Kunci..." type="text"/>
+     </div>
+     <div class="topbar-actions">
+      <button class="icon-btn position-relative">
+       <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9">
+        </path>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0">
+        </path>
+       </svg>
+       <span class="notification-dot">
+       </span>
+      </button>
+      <div class="topbar-profile">
+       <img alt="Admin" src="#"/>
+      </div>
+     </div>
+    </header>
+    <main class="admin-content-area">
+     <div class="content-header flex-between align-center mb-32">
+      <div>
+       <h1 class="page-title text-white m-0 mb-8" style="font-size: 28px;">
+        Hubungi Kami / Masukan
+       </h1>
+       <p class="text-muted text-small m-0">
+        Kelola pesan, feedback, dan keluhan yang dikirimkan oleh pengguna.
+       </p>
+      </div>
+     </div>
+     <div class="msg-filter-row mb-24">
+      <div class="msg-tabs">
+       <button class="msg-tab-btn active" data-filter="semua">
+        Semua Pesan
+       </button>
+       <button class="msg-tab-btn" data-filter="unread">
+        Belum Dibaca
+        <span class="tab-badge" id="badgePesanTab" style="display:none;">
+         0
+        </span>
+       </button>
+       <button class="msg-tab-btn" data-filter="read">
+        Sudah Dibaca
+       </button>
+      </div>
+      <div style="position: relative; display: flex; align-items: center;">
+       <select id="filterKategori" style="appearance: none; background-color: #141414; color: #fff; border: 1px solid #333; padding: 10px 32px 10px 16px; border-radius: 6px; outline: none; cursor: pointer; font-size: 13px; font-weight: 600;">
+        <option value="semua">
+         Semua Kategori
+        </option>
+        <option value="Keluhan">
+         Keluhan Layanan
+        </option>
+        <option value="Pertanyaan">
+         Pertanyaan Jadwal
+        </option>
+        <option value="Kerjasama">
+         Kemitraan / Bisnis
+        </option>
+       </select>
+       <svg fill="none" height="14" stroke="currentColor" stroke-width="2" style="position: absolute; right: 12px; pointer-events: none; color: #888;" viewBox="0 0 24 24" width="14">
+        <polyline points="6 9 12 15 18 9">
+        </polyline>
+       </svg>
+      </div>
+     </div>
+     <div class="msg-table-card">
+      <div class="table-responsive">
+       <table class="msg-table w-100">
+        <thead>
+         <tr>
+          <th>
+           PENGIRIM
+          </th>
+          <th>
+           KATEGORI
+          </th>
+          <th>
+           ISI PESAN
+          </th>
+          <th>
+           TANGGAL
+          </th>
+          <th>
+           STATUS
+          </th>
+          <th style="text-align: center;">
+           AKSI
+          </th>
+         </tr>
+        </thead>
+        <tbody id="msgTableBody">
+        </tbody>
+       </table>
+      </div>
+     </div>
+    </main>
+   </div>
+  </div>
+  <div class="modal-overlay hidden" id="modalReadMessage" style="position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+   <div class="modal-content" style="background: #0f1215; border: 1px solid #333; padding: 32px; border-radius: 12px; width: 100%; max-width: 550px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
+    <div class="flex-between align-center mb-24 pb-16" style="border-bottom: 1px solid #222;">
+     <h3 class="text-white m-0" id="mdlTitle" style="font-size: 18px;">
+      Detail Pesan Masuk
+     </h3>
+     <button class="btn-close-modal" id="btnCloseMdl" style="background:none; border:none; color:#888; font-size: 24px; cursor:pointer;">
+      ×
+     </button>
+    </div>
+    <div class="mdl-meta-grid mb-24">
+     <div>
+      <label class="form-label">
+       Nama Pengirim
+      </label>
+      <p class="text-white bold m-0" id="mdlSender">
+       Nama
+      </p>
+     </div>
+     <div>
+      <label class="form-label">
+       Tanggal Masuk
+      </label>
+      <p class="text-muted m-0" id="mdlDate">
+       Tanggal
+      </p>
+     </div>
+     <div style="grid-column: 1 / -1;">
+      <label class="form-label">
+       Kontak Email / WhatsApp
+      </label>
+      <p class="text-primary m-0" id="mdlContact">
+       Email
+      </p>
+     </div>
+    </div>
+    <div class="mb-32">
+     <label class="form-label">
+      Isi Pesan Lengkap
+     </label>
+     <div id="mdlBody" style="background: #141414; border: 1px solid #222; padding: 16px; border-radius: 8px; color: #ddd; font-size: 14px; line-height: 1.6; max-height: 180px; overflow-y: auto;">
+      Konten pesan...
+     </div>
+    </div>
+    <div class="d-flex gap-12">
+     <button class="btn btn-primary w-100 bold" id="btnReplyWA">
+      Balas Via WhatsApp
+     </button>
+     <button class="btn-outline-dark w-100 bold" id="btnArchiveMsg" style="color: #fff; border-color: #333;">
+      Tandai Selesai
+     </button>
+    </div>
+   </div>
+  </div>
+  <script src="assets/js/global.js">
+  </script>
+  <script src="assets/js/pages/admin-messages.js">
+  </script>
+  <script src="assets/js/pages/admin-guard.js">
+  </script>
+ </body>
+</html>

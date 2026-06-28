@@ -1,259 +1,188 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cari Lapangan Terbaik - SudutSatu</title>
-  
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/pages/search-venues.css">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<nav class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="navbar-logo"><span class="text-primary">Sudut</span>Satu</a>
-      
-      <div class="nav-search-bar">
-        <span class="icon-search">&#128269;</span>
-        <input type="text" value="" placeholder="Cari venue...">
-      </div>
-
-      <ul class="navbar-menu">
-        <li><a href="index.html" class="nav-link">Beranda</a></li>
-        <li><a href="#" class="nav-link active">Cari Lapangan</a></li>
-        <li><a href="#" class="nav-link">Tentang Kami</a></li>
-        <li><a href="#" class="nav-link">Hubungi Kami</a></li>
-      </ul>
-
-      <div class="navbar-actions">
-        <a href="pages/auth/login.html" class="btn btn-text">Masuk</a>
-        <a href="pages/auth/register.html" class="btn btn-primary">Daftar &rarr;</a>
-      </div>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Cari Lapangan - SudutSatu
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/search-venues.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="user-body">
+  <header class="user-navbar">
+   <div class="container navbar-inner">
+    <div class="navbar-logo">
+     <span class="text-primary">
+      Sudut
+     </span>
+     Satu
     </div>
-  </nav>
-
-  <main class="container">
-    <div class="search-container">
-      
-      <aside class="filter-sidebar">
-        <h2 class="filter-title">Filter Pencarian</h2>
-        
-        <div class="filter-group">
-          <label for="filterSport" class="filter-label">Tipe Olahraga</label>
-          <select id="filterSport" class="form-select">
-            <option value="All">Semua Olahraga</option>
-            <option value="Futsal">Futsal Pro</option>
-            <option value="Billiard">Billiard Lounge</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="filterLocation" class="filter-label">Lokasi</label>
-          <input type="text" id="filterLocation" class="form-input" placeholder="Masukkan kota (misal: Mataram)">
-        </div>
-
-        <div class="filter-group">
-          <label for="filterDate" class="filter-label">Pilih Tanggal</label>
-          <input type="date" id="filterDate" class="form-input">
-        </div>
-
-        <button id="btnApplyFilter" class="btn btn-primary btn-block">Terapkan Filter</button>
-      </aside>
-
-      <section class="venue-listing">
-        <header class="listing-header">
-          <p id="resultsCount" class="results-count">Menampilkan lapangan terbaik</p>
-          </header>
-
-        <div id="venueGrid" class="venue-grid">
-          </div>
-      </section>
-
-    </div>
-  </main>
-
-  <script src="assets/js/data/venues.js"></script>
-
-  <script src="assets/js/pages/search-venues.js"></script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cari Lapangan - SudutSatu</title>
-  <link rel="stylesheet" href="assets/css/global.css">
-  <link rel="stylesheet" href="assets/css/layout.css">
-  <link rel="stylesheet" href="assets/css/pages/search-venues.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <main class="container search-layout">
+    <nav class="nav-links d-flex gap-32">
+     <a class="nav-item active" href="search-venues.html">
+      Cari Lapangan
+     </a>
+     <a class="nav-item" href="dashboard-user.html">
+      Dashboard
+     </a>
+     <a class="nav-item" href="profile.html">
+      Profil
+     </a>
+     <a class="nav-item" href="tentang-kami.html">
+      Tentang Kami
+     </a>
+     <a class="nav-item" href="hubungi-kami.html">
+      Hubungi Kami
+     </a>
+    </nav>
+    <div class="nav-actions d-flex align-center gap-16">
+     <div class="nav-profile-wrapper d-flex align-center gap-12">
+      <div class="nav-profile-text text-right" id="desktopProfileText">
+       <div class="text-white" style="font-size: 14px; font-weight: 600;">
     
-    <aside class="sidebar-filter">
-      <div class="filter-header">
-        <h3><span class="icon">&#9776;</span> Filters</h3>
-        <button class="btn-reset">RESET</button>
+       </div>
       </div>
-
-      <div class="filter-group">
-        <h4>JENIS OLAHRAGA</h4>
-        <label class="checkbox-label">
-          <input type="checkbox" checked>
-          <span class="checkmark"></span>
-          Futsal <span class="count">24</span>
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox">
-          <span class="checkmark"></span>
-          Billiard <span class="count">12</span>
-        </label>
+      <div class="nav-avatar position-relative">
+       <img alt="User" src="assets/images/avatar.jpg" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #ccff00;"/>
       </div>
-
-      <div class="filter-group">
-        <h4>RENTANG HARGA <span class="text-primary value">RP 50K - RP 250K</span></h4>
-        <div class="price-slider-mockup">
-          <div class="slider-track"><div class="slider-fill"></div></div>
-        </div>
-        <div class="price-labels">
-          <span>Rp 0</span>
-          <span>Rp 500k+</span>
-        </div>
-      </div>
-
-      <div class="filter-group">
-        <h4>KETERSEDIAAN WAKTU</h4>
-        <div class="time-grid">
-          <button class="btn-time active">Pagi</button>
-          <button class="btn-time">Siang</button>
-          <button class="btn-time active">Sore</button>
-          <button class="btn-time">Malam</button>
-        </div>
-      </div>
-
-      <div class="filter-group">
-        <h4>FASILITAS</h4>
-        <label class="checkbox-label"><input type="checkbox" checked><span class="checkmark"></span>Parkir Luas</label>
-        <label class="checkbox-label"><input type="checkbox" checked><span class="checkmark"></span>Kantin / Cafe</label>
-        <label class="checkbox-label"><input type="checkbox"><span class="checkmark"></span>Ruang Ganti AC</label>
-        <label class="checkbox-label"><input type="checkbox"><span class="checkmark"></span>Sewa Sepatu</label>
-      </div>
-    </aside>
-
-    <section class="search-results">
-      <div class="results-header">
-        <div>
-          <h1 class="results-title">Hasil Pencarian</h1>
-          <p class="results-subtitle"><span class="text-primary">Futsal</span> Hari Ini</p>
-        </div>
-        <div class="sort-by">
-          <span>SORT BY:</span>
-          <select class="sort-select">
-            <option>Rekomendasi</option>
-            <option>Harga Terendah</option>
-            <option>Rating Tertinggi</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="active-filters">
-        <span class="label">ACTIVE:</span>
-        <span class="pill outline">Sumedang &times;</span>
-        <span class="pill outline">Futsal &times;</span>
-        <span class="pill outline">Pagi & Sore &times;</span>
-        <a href="#" class="clear-all">Clear All</a>
-      </div>
-
-      <div class="venues-grid">
-        
-        <div class="venue-card">
-          <div class="card-image-wrapper">
-            <img src="assets/images/landingpages.jpg" alt="Lapangan 1">
-            <div class="badge-top-left badge-green">TERSEDIA</div>
-            <button class="btn-heart">&#9825;</button>
-            <div class="badge-bottom-left">&#11088; 4.8 <span class="review-count">(124)</span></div>
-            <div class="badge-bottom-right">&#128506;</div>
-          </div>
-          <div class="card-content">
-            <h3>Lapangan 1</h3>
-            <p>Vinyl Court &bull; Indoor</p>
-          </div>
-          <div class="card-footer">
-            <div class="price-info">
-              <span class="label">MULAI DARI</span>
-              <div class="price"><span class="text-primary">Rp 200.000</span>/jam</div>
-            </div>
-            <button class="btn-arrow">&rarr;</button>
-          </div>
-        </div>
-
-        <div class="venue-card">
-          <div class="card-image-wrapper">
-            <div class="image-placeholder">IMAGE PLACEHOLDER</div>
-            <div class="badge-stack">
-              <div class="badge-top-left badge-green">TERSEDIA</div>
-              <div class="badge-top-left badge-dark">PROMO</div>
-            </div>
-            <button class="btn-heart">&#9825;</button>
-            <div class="badge-bottom-left">&#11088; 4.5 <span class="review-count">(89)</span></div>
-            <div class="badge-bottom-right">&#128506;</div>
-          </div>
-          <div class="card-content">
-            <h3>Lapangan 2</h3>
-            <p>Rumput Sintetis &bull; Semi-Indoor</p>
-          </div>
-          <div class="card-footer">
-            <div class="price-info">
-              <span class="label">MULAI DARI</span>
-              <div class="price"><span class="text-primary">Rp 150.000</span>/jam <span class="price-strike">Rp 130k</span></div>
-            </div>
-            <button class="btn-arrow">&rarr;</button>
-          </div>
-        </div>
-
-        <div class="venue-card">
-          <div class="card-image-wrapper">
-            <div class="image-placeholder">IMAGE PLACEHOLDER</div>
-            <div class="badge-top-left badge-red">SISA 1 SLOT</div>
-            <button class="btn-heart">&#9825;</button>
-            <div class="badge-bottom-left">&#11088; 4.2 <span class="review-count">(45)</span></div>
-            <div class="badge-bottom-right">&#128506;</div>
-          </div>
-          <div class="card-content">
-            <h3>Lapangan 3</h3>
-            <p>Vinyl Court &bull; Indoor</p>
-          </div>
-          <div class="card-footer">
-            <div class="price-info">
-              <span class="label">MULAI DARI</span>
-              <div class="price">Rp 100.000<span class="text-muted">/jam</span></div>
-            </div>
-            <button class="btn-arrow">&rarr;</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-    <div class="sub-navbar">
-    <div class="container sub-navbar-inner">
-      <div class="sub-brand">SudutSatu</div>
-      <ul class="sub-links">
-        <li><a href="#">PRIVACY POLICY</a></li>
-        <li><a href="#">TERMS OF SERVICE</a></li>
-        <li><a href="#">VENUE PARTNERS</a></li>
-        <li><a href="#">CAREER</a></li>
-      </ul>
-      <div class="sub-copyright">&copy; 2026 SudutSatu Performance Labs. All rights reserved.</div>
+     </div>
     </div>
-  </div>
-
-</body>
+   </div>
+  </header>
+  <main class="container py-32 search-layout">
+   <aside class="filter-sidebar">
+    <div class="flex-between align-center mb-24">
+     <h3 class="text-white m-0 d-flex align-center gap-8">
+      <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+       <line x1="4" x2="4" y1="21" y2="14">
+       </line>
+       <line x1="4" x2="4" y1="10" y2="3">
+       </line>
+       <line x1="12" x2="12" y1="21" y2="12">
+       </line>
+       <line x1="12" x2="12" y1="8" y2="3">
+       </line>
+       <line x1="20" x2="20" y1="21" y2="16">
+       </line>
+       <line x1="20" x2="20" y1="12" y2="3">
+       </line>
+       <line x1="1" x2="7" y1="14" y2="14">
+       </line>
+       <line x1="9" x2="15" y1="8" y2="8">
+       </line>
+       <line x1="17" x2="23" y1="16" y2="16">
+       </line>
+      </svg>
+      Filters
+     </h3>
+     <button class="btn-text text-muted text-tiny uppercase tracking-wide" id="btnResetFilter">
+      RESET
+     </button>
+    </div>
+    <div class="filter-group mb-24">
+     <label class="filter-title">
+      JENIS OLAHRAGA
+     </label>
+     <label class="custom-checkbox">
+      <input class="filter-olahraga" type="checkbox" value="Futsal"/>
+      <span class="checkmark">
+      </span>
+      <span class="text-white">
+       Futsal
+      </span>
+      <span class="text-muted ml-auto text-small">
+       1
+      </span>
+     </label>
+     <label class="custom-checkbox">
+      <input class="filter-olahraga" type="checkbox" value="Biliard"/>
+      <span class="checkmark">
+      </span>
+      <span class="text-white">
+       Biliard
+      </span>
+      <span class="text-muted ml-auto text-small">
+       1
+      </span>
+     </label>
+    </div>
+    <div class="filter-group mb-24">
+     <label class="filter-title">
+      KETERSEDIAAN WAKTU
+     </label>
+     <div class="time-pills">
+      <button class="time-pill" data-waktu="Pagi">
+       Pagi
+      </button>
+      <button class="time-pill" data-waktu="Siang">
+       Siang
+      </button>
+      <button class="time-pill" data-waktu="Sore">
+       Sore
+      </button>
+      <button class="time-pill" data-waktu="Malam">
+       Malam
+      </button>
+     </div>
+    </div>
+   </aside>
+   <section class="search-content">
+    <div class="search-header-box mb-24">
+     <div class="flex-between align-center mb-16">
+      <div>
+       <h1 class="text-white m-0 mb-4" style="font-size: 28px;">
+        Hasil Pencarian
+       </h1>
+       <p class="text-muted m-0 text-small">
+        Menampilkan
+        <span class="text-primary bold" id="countHasil">
+         0
+        </span>
+        lapangan ditemukan
+       </p>
+      </div>
+      <div class="d-flex align-center gap-12">
+       <span class="text-muted text-small uppercase tracking-wide">
+        SORT BY:
+       </span>
+       <select class="custom-select-dark" id="sortLapangan">
+        <option value="rekomendasi">
+         Rekomendasi
+        </option>
+        <option value="termurah">
+         Harga: Termurah
+        </option>
+        <option value="termahal">
+         Harga: Termahal
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="search-bar-dark">
+      <svg fill="none" height="18" stroke="#888" stroke-width="2" viewBox="0 0 24 24" width="18">
+       <circle cx="11" cy="11" r="8">
+       </circle>
+       <line x1="21" x2="16.65" y1="21" y2="16.65">
+       </line>
+      </svg>
+      <input id="inputCariNama" placeholder="Cari nama lapangan (misal: Court A, Sintetis)..." type="text"/>
+     </div>
+    </div>
+    <div class="active-filters d-flex align-center gap-8 mb-24 flex-wrap" id="activeFilterContainer">
+     <span class="text-muted text-tiny uppercase tracking-wide mr-8">
+      ACTIVE:
+     </span>
+    </div>
+    <div class="venue-grid" id="venueGrid">
+    </div>
+   </section>
+  </main>
+  <script src="assets/js/global.js">
+  </script>
+  <script src="assets/js/pages/search-venues.js">
+  </script>
+ </body>
 </html>

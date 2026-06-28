@@ -1,0 +1,44 @@
+<html>
+ <head>
+ </head>
+ <body>
+  // ==================================================
+// PAGE: AUTH.JS (Simulasi Login &amp; Register)
+// ==================================================
+
+document.addEventListener('DOMContentLoaded', () =&gt; {
+  
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const forgotForm = document.getElementById('forgotForm');
+
+  // --- Simulasi login lama dihapus. Gunakan halaman login asli ---
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Forward to real auth page which uses backend (/api/auth/login)
+      window.location.href = 'login.html';
+    });
+  }
+
+  // --- Handle Register ---
+  if (registerForm) {
+    registerForm.addEventListener('submit', (e) =&gt; {
+      e.preventDefault();
+      alert('Pendaftaran berhasil! Silakan masuk dengan akun baru Anda.');
+      window.location.href = 'login.html';
+    });
+  }
+
+  // --- Handle Forgot Password ---
+  if (forgotForm) {
+    forgotForm.addEventListener('submit', (e) =&gt; {
+      e.preventDefault();
+      alert('Tautan reset password telah dikirim ke email Anda.');
+      window.location.href = 'login.html';
+    });
+  }
+
+});
+ </body>
+</html>

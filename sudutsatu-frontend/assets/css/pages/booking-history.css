@@ -1,106 +1,284 @@
 /* ==========================================================================
-   GLOBAL UTILITIES & RESET
+   CSS HALAMAN RIWAYAT BOOKING (GOD MODE FIX - PIXEL PERFECT HORIZONTAL)
    ========================================================================== */
-body { background-color: #0A0A0A; color: #ccc; font-family: 'Inter', sans-serif; }
-.m-0 { margin: 0; }
-.pt-40 { padding-top: 40px; } .pb-64 { padding-bottom: 64px; } .pt-32 { padding-top: 32px; } .py-8 { padding-top: 8px; padding-bottom: 8px; } .px-24 { padding-left: 24px; padding-right: 24px; }
-.mb-8 { margin-bottom: 8px; } .mb-12 { margin-bottom: 12px; } .mb-16 { margin-bottom: 16px; } .mb-24 { margin-bottom: 24px; } .mb-32 { margin-bottom: 32px; } .mb-40 { margin-bottom: 40px; }
-.mt-24 { margin-top: 24px; } .mt-40 { margin-top: 40px; }
-.mx-8 { margin-left: 8px; margin-right: 8px; }
-.gap-8 { gap: 8px; } .gap-16 { gap: 16px; }
-.uppercase { text-transform: uppercase; } .tracking-wide { letter-spacing: 0.5px; }
-.text-small { font-size: 12px; } .bold { font-weight: 700; }
-.text-decoration-none { text-decoration: none; }
-.d-flex { display: flex; } .d-flex-col { display: flex; flex-direction: column; } .align-center { align-items: center; } .align-end { align-items: flex-end; }
-.flex-between-center { display: flex; justify-content: space-between; align-items: center; }
-.flex-between-start { display: flex; justify-content: space-between; align-items: flex-start; }
-.text-right { text-align: right; }
-.border-bottom-dark { border-bottom: 1px solid #1a1a1a; } .border-top-dark { border-top: 1px solid #1a1a1a; }
+
+/* Isolasi Navbar & Layout Dasar (Samakan dengan Profil) */
+body.user-body { padding-top: 80px !important; }
+.user-navbar { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 80px; }
+.navbar-inner-fix { display: flex; justify-content: space-between; align-items: center; height: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
+.SS-logo { font-weight: 800; font-size: 24px; margin: 0; }
+.nav-actions-empty { width: 100px; } /* Jaga keseimbangan */
+
+/* Layout Grid Profil */
+.profile-layout { display: flex; gap: 32px; align-items: flex-start; }
+.profile-sidebar { width: 250px; flex-shrink: 0; position: sticky; top: 100px; }
+.profile-content { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+
+/* === AREA FILTER TABS (PAKSA HORIZONTAL DI KANAN) === */
+.history-header-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #222;
+}
+
+.filter-tabs {
+    background: #111;
+    padding: 4px;
+    border-radius: 8px;
+    display: flex; /* Force horizontal */
+    border: 1px solid #222;
+    gap: 4px;
+}
+
+.filter-tab {
+    background: transparent;
+    border: none;
+    color: #888;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.filter-tab:hover { color: #fff; }
+.filter-tab.active { background: #ccff00; color: #000; }
+
+/* === DAFTAR BOOKING & KARTU HORIZONTAL (THE BIG FIX) === */
+#bookingListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.history-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    display: flex; /* FORCE HORIZONTAL */
+    flex-direction: row; /* FORCE HORIZONTAL */
+    gap: 24px;
+    padding: 16px;
+    transition: 0.2s;
+    position: relative;
+    overflow: hidden;
+    align-items: stretch; /* Sejajarkan tinggi kiri & kanan */
+}
+
+.history-card:hover { border-color: #333; background: #141414; }
+
+/* Indikator Garis Kiri Sesuai Status */
+.history-card.aktif { border-left: 4px solid #ccff00; }
+.history-card.selesai { border-left: 4px solid #4caf50; }
+.history-card.dibatalkan { border-left: 4px solid #f44336; }
+
+/* Bagian Kiri (Foto) - DIPAKU UKURANNYA */
+.hc-img-wrap {
+    width: 220px;
+    height: 140px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.hc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Bagian Tengah (Informasi) */
+.hc-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 24px;
+    border-right: 1px solid #222;
+}
+
+.hc-type-id {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hc-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 8px 0 12px 0;
+}
+
+.hc-datetime {
+    color: #aaa;
+    font-size: 13px;
+    display: flex;
+    gap: 16px;
+}
+
+/* Bagian Kanan (Harga & Aksi) */
+.hc-price-action {
+    width: 180px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.hc-price {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+}
+
+.status-badge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #333;
+    color: #aaa;
+    margin-bottom: auto; /* Push down */
+}
+
+.status-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+.status-badge.aktif { border-color: #ccff00; color: #ccff00; background: rgba(204,255,0,0.05); }
+.status-badge.aktif::before { box-shadow: 0 0 5px #ccff00; }
+.status-badge.selesai { border-color: #333; color: #aaa; }
+.status-badge.selesai::before { background: #4caf50; }
+.status-badge.dibatalkan { border-color: #f44336; color: #f44336; background: rgba(244,67,54,0.05); }
+
+.hc-action-btn-wrap {
+    width: 100%;
+    margin-top: auto; /* Push to bottom */
+}
+
+.btn-detail { background: transparent; border: 1px solid #444; color: #fff; width: 100%; padding: 8px 0; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; text-align: center; font-family: 'Inter', sans-serif;}
+.btn-detail:hover { border-color: #ccff00; color: #ccff00; }
+.btn-detail.disabled { opacity: 0.5; pointer-events: none; border-color: #333; color: #666;}
+
+.btn-qr { background: #ccff00; border: none; color: #000; width: 100%; padding: 8px 0; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; text-align: center; font-family: 'Inter', sans-serif;}
+.btn-qr:hover { background: #b3e600; }
+
+.strike-through { text-decoration: line-through; color: #666; font-size: 18px !important; font-weight: 700;}
+
+/* === PAGINATION FOOTER (PAKSA HORIZONTAL DI BAWAH) === */
+.pagination-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #222;
+    padding-top: 24px;
+    margin-top: 40px;
+}
+
+.pagination-controls {
+    display: flex; /* Force horizontal */
+    gap: 8px;
+}
+
+.page-btn {
+    background: #111;
+    border: 1px solid #222;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.page-btn:hover:not(.text-muted) { background: #1a1a1a; border-color: #444; }
+.page-btn.active-page { background: #ccff00; color: #000; border-color: #ccff00; pointer-events: none; }
+.page-btn.text-muted { color: #555 !important; cursor: default; }
+
 
 /* ==========================================================================
-   NAVBAR (Sama dengan Profil)
-   ========================================================================== */
-.nav-flex-between { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-.nav-left, .nav-right { display: flex; align-items: center; }
-.mr-32 { margin-right: 32px; }
-.nav-links-custom { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
-.nav-links-custom a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s ease; }
-.nav-links-custom a:hover { color: var(--color-primary); }
-.search-box-custom { display: flex; align-items: center; background: #141414; border-radius: 8px; padding: 10px 16px; gap: 12px; margin-right: 24px; width: 300px; border: 1px solid #222; }
-.search-box-custom input { background: transparent; border: none; color: #fff; width: 100%; outline: none; font-size: 13px; }
-.profile-pill { display: flex; align-items: center; background: transparent; border: 1px solid #333; border-radius: 50px; padding: 4px 16px 4px 4px; gap: 12px; color: #fff; font-size: 13px; font-weight: 500; }
-.profile-pill img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
-
-/* ==========================================================================
-   LAYOUT STRUCTURE (SIDEBAR KIRI)
-   ========================================================================== */
-.history-layout { display: flex; gap: 40px; align-items: flex-start; }
-.history-sidebar { width: 240px; flex-shrink: 0; position: sticky; top: 40px; }
-.sidebar-title { font-size: 24px; font-weight: 700; margin: 0; }
-.sidebar-subtitle { font-size: 10px; font-weight: 700; color: #666; letter-spacing: 1px; }
-.sidebar-menu { list-style: none; padding: 0; margin: 0; }
-.sidebar-menu li { margin-bottom: 4px; }
-.sidebar-menu a { display: flex; align-items: center; gap: 16px; padding: 14px 16px; color: #aaa; text-decoration: none; font-size: 14px; font-weight: 600; border-radius: 8px; }
-.active-menu { background-color: rgba(204,255,0,0.05); color: var(--color-primary) !important; border-left: 3px solid var(--color-primary); border-radius: 0 8px 8px 0 !important; }
-.member-pro-card { background: transparent; border: 1px solid #222; border-radius: 8px; padding: 16px; }
-
-/* ==========================================================================
-   CONTENT KANAN
-   ========================================================================== */
-.history-content { flex-grow: 1; min-width: 0; }
-
-/* Tabs Wrapper (Pill Hitam) */
-.tabs-wrapper { display: flex; background: #141414; border: 1px solid #222; border-radius: 8px; padding: 4px; }
-.tab-btn { background: transparent; border: none; color: #888; padding: 8px 24px; font-size: 13px; font-weight: 600; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-.tab-btn.active { background: var(--color-primary); color: #000; font-weight: 700; box-shadow: 0 2px 8px rgba(204,255,0,0.2); }
-
-/* ==========================================================================
-   HISTORY CARD COMPONENTS
-   ========================================================================== */
-.history-card { display: flex; gap: 24px; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 16px; border-radius: 12px; transition: 0.2s; }
-.history-card:hover { border-color: #333; }
-
-/* Image Kiri */
-.hc-image { position: relative; width: 260px; height: 140px; border-radius: 8px; flex-shrink: 0; overflow: hidden; }
-.hc-image img { width: 100%; height: 100%; object-fit: cover; }
-.hc-icon-badge { position: absolute; bottom: 8px; left: 8px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-.badge-neon { background: var(--color-primary); }
-.badge-dark { background: #1a1a1a; border: 1px solid #333; }
-
-/* Body Konten */
-.hc-body { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-
-/* Status Pill */
-.status-pill { display: inline-flex; align-items: center; gap: 8px; font-size: 9px; font-weight: 800; padding: 6px 12px; border-radius: 20px; border: 1px solid #222; background: #111; letter-spacing: 0.5px; }
-.status-selesai { color: #aaa; }
-.dot-green { width: 6px; height: 6px; background: var(--color-primary); border-radius: 50%; }
-.status-batal { color: #ff5555; background: rgba(255,85,85,0.05); border-color: rgba(255,85,85,0.2); }
-
-/* Tombol Outline & Harga */
-.btn-outline-gray { background: transparent; border: 1px solid #333; color: #fff; border-radius: 6px; font-weight: 500; cursor: pointer; transition: 0.2s; }
-.btn-outline-gray:hover { border-color: #666; background: #111; }
-.text-strike { text-decoration: line-through; color: #555; }
-
-/* ==========================================================================
-   PAGINATION FOOTER
-   ========================================================================== */
-.pagination { display: flex; gap: 8px; align-items: center; }
-.page-btn { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: transparent; border: none; color: #aaa; font-size: 14px; font-weight: 600; border-radius: 4px; cursor: pointer; transition: 0.2s; }
-.page-btn.active { background: var(--color-primary); color: #000; font-weight: 700; }
-.page-btn:hover:not(.active) { color: #fff; background: #1a1a1a; }
-.nav-btn { border: 1px solid #222; background: #0f0f0f; }
-
-/* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE DESIGN (Pixel Perfect Refinement)
    ========================================================================== */
 @media (max-width: 1024px) {
-  .history-layout { flex-direction: column; }
-  .history-sidebar { width: 100%; position: relative; top: 0; border-bottom: 1px solid #222; padding-bottom: 24px; margin-bottom: 24px; }
+    .hc-img-wrap { width: 180px; height: 120px;}
+    .hc-price { font-size: 20px; }
 }
+
 @media (max-width: 768px) {
-  .history-card { flex-direction: column; }
-  .hc-image { width: 100%; height: 180px; }
-  .hc-body .flex-between-start { flex-direction: column; gap: 24px; }
-  .hc-actions { width: 100%; align-items: flex-start; text-align: left; }
-  .flex-between-center { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .profile-layout { flex-direction: column; }
+    .profile-sidebar { width: 100%; position: static; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    
+    /* Ubah Kartu Menjadi Vertikal di HP */
+    .history-card {
+        flex-direction: column;
+        gap: 16px;
+        align-items: start;
+    }
+
+    .hc-img-wrap {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    .hc-body {
+        padding-right: 0;
+        border-right: none;
+        width: 100%;
+        border-bottom: 1px solid #222;
+        padding-bottom: 16px;
+        gap: 8px;
+    }
+
+    .hc-title { font-size: 18px; margin: 0; }
+
+    .hc-price-action {
+        width: 100%;
+        flex-direction: row; /* Horizontal di footer kartu hp */
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        padding-top: 16px;
+    }
+
+    .hc-price { font-size: 18px; margin: 0;}
+    .strike-through { font-size: 16px !important; }
+    .hc-action-btn-wrap {
+        width: auto;
+        margin-top: 0;
+    }
+    .btn-detail, .btn-qr { padding: 8px 16px; width: auto;}
+
+    /* Pagination di HP */
+    .pagination-wrap {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
 }

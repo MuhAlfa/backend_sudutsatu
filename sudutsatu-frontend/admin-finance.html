@@ -1,253 +1,528 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laporan Keuangan - Admin SudutSatu</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/pages/admin-dashboard.css">
-  <link rel="stylesheet" href="assets/css/pages/admin-finance.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body class="admin-body">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Laporan Keuangan - Admin SudutSatu
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-dashboard.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-finance.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <style>
+   /* Melarang SweetAlert menambahkan padding dan menyembunyikan scrollbar */
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+        padding-right: 0 !important;
+        overflow-y: auto !important; 
+    }
 
-  <div id="chartTooltip" class="chart-tooltip"></div>
+    /* Melarang SweetAlert mengutak-atik tinggi halaman */
+    html.swal2-shown, 
+    body.swal2-shown {
+        height: auto !important;
+    }
 
+    /* kunci lebar body 100% */
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+  </style>
+ </head>
+ <body class="admin-body">
+  <div class="chart-tooltip" id="chartTooltip">
+  </div>
   <div class="admin-layout">
-    
-    <aside class="admin-sidebar">
-      <div class="sidebar-header">
-        <div class="brand-logo">
-          <div class="brand-icon">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="var(--color-primary)" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-          </div>
-          <div>
-            <h2 class="brand-title text-primary">SUDUTSATU</h2>
-            <p class="brand-subtitle">Facility Manager</p>
-          </div>
-        </div>
+   <aside class="admin-sidebar">
+    <div class="sidebar-header">
+     <div class="brand-logo">
+      <div class="brand-icon">
+       <svg fill="none" height="18" stroke="var(--color-primary)" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+        </rect>
+        <circle cx="8.5" cy="8.5" r="1.5">
+        </circle>
+        <polyline points="21 15 16 10 5 21">
+        </polyline>
+       </svg>
       </div>
-
-      <div class="sidebar-menus">
-        <ul class="menu-list">
-          <li>
-            <a href="admin-dashboard.html" class="menu-item">
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-              Ringkasan
-            </a>
-          </li>
-          <li>
-            <a href="admin-schedule.html" class="menu-item">
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              Manajemen Jadwal
-            </a>
-          </li>
-          <li>
-            <a href="admin-venues.html" class="menu-item">
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-              Kelola Lapangan
-            </a>
-          </li>
-          <li>
-            <a href="admin-payment-verification.html" class="menu-item d-flex align-center justify-between" style="width: 100%;">
-              <div class="d-flex align-center gap-16">
-                <div style="position: relative; display: flex; align-items: center;">
-                  <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-                  <span class="badge-red-icon">3</span>
-                </div>
-                <span>Verifikasi Pembayaran</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="admin-finance.html" class="menu-item active">
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-              Laporan Keuangan
-            </a>
-          </li>
-        </ul>
-
-        <ul class="menu-list bottom-menu">
-          <li>
-            <a href="#" class="menu-item">
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-              Pengaturan
-            </a>
-          </li>
-          <li>
-            <a href="#" class="menu-item">
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-              Bantuan
-            </a>
-          </li>
-        </ul>
+      <div>
+       <h2 class="brand-title text-primary">
+        SUDUTSATU
+       </h2>
+       <p class="brand-subtitle">
+        Facility Manager
+       </p>
       </div>
-    </aside>
-
-    <div class="admin-main">
-      
-      <header class="admin-topbar">
-        <div class="topbar-search">
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#888" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="searchTransaksi" placeholder="Cari transaksi berdasarkan ID atau Nama Tim...">
-        </div>
-        <div class="topbar-actions">
-          <button class="icon-btn position-relative">
-            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            <span class="notification-dot"></span>
-          </button>
-          <div class="topbar-profile">
-            <img src="assets/images/admin.jpg" alt="Admin">
-          </div>
-        </div>
-      </header>
-
-      <main class="admin-content-area">
-        
-        <div class="flex-between align-center mb-32">
-          <div>
-            <h1 class="page-title text-white m-0 mb-8" style="font-size: 28px;">Ikhtisar Keuangan</h1>
-            <p class="text-muted text-small m-0">Lacak pendapatan, pembayaran tertunda, dan total transaksi.</p>
-          </div>
-          <button class="btn-outline-dark py-12 px-24 bold d-flex align-center gap-8" id="btnEksporLaporan">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Ekspor Laporan
-          </button>
-        </div>
-
-        <div class="finance-stats-grid mb-32">
-          <div class="fin-card">
-            <div class="fc-icon-wrapper"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
-            <label class="fc-label">TOTAL PENDAPATAN (YTD)</label>
-            <h2 class="fc-value">Rp 85.2M</h2>
-            <p class="fc-trend trend-up"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg> +12.5% vs bulan lalu</p>
-          </div>
-          
-          <div class="fin-card">
-            <div class="fc-icon-wrapper"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-            <label class="fc-label">PEMBAYARAN TERTUNDA</label>
-            <h2 class="fc-value text-white">Rp 4.5M</h2>
-            <p class="fc-subtext">Dari 18 pesanan</p>
-          </div>
-
-          <div class="fin-card">
-            <div class="fc-icon-wrapper"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
-            <label class="fc-label">TOTAL TRANSAKSI</label>
-            <h2 class="fc-value text-white">1,248</h2>
-            <p class="fc-trend trend-up-blue"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg> +4.2% vs bulan lalu</p>
-          </div>
-        </div>
-
-        <div class="content-box mb-32">
-          <div class="flex-between align-center mb-24">
-            <h3 class="box-title">Pertumbuhan Pendapatan</h3>
-            <div style="position: relative; display: flex; align-items: center;">
-              <select id="filterWaktuGrafik" class="btn-outline-dark text-small bold" style="appearance: none; padding: 10px 36px 10px 16px; outline: none; background: #111;">
-                <option value="6">6 Bulan Terakhir</option>
-                <option value="12">1 Tahun Terakhir</option>
-                <option value="ytd">Tahun Ini (YTD)</option>
-              </select>
-              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" style="position: absolute; right: 12px; pointer-events: none;"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-          </div>
-          
-          <div class="custom-chart-area">
-            <div class="chart-y-axis">
-              <span>18M</span><span>17M</span><span>16M</span><span>15M</span><span>14M</span><span>13M</span><span>12M</span><span>11M</span><span>10M</span>
-            </div>
-            
-            <div class="chart-scroll-container" id="chartScrollContainer">
-              <div id="chartCrosshair" class="chart-crosshair"></div>
-              
-              <div class="chart-scroll-inner" id="chartInner">
-                <div class="chart-grid"><div class="c-line"></div><div class="c-line"></div><div class="c-line"></div><div class="c-line"></div><div class="c-line"></div><div class="c-line"></div><div class="c-line"></div><div class="c-line"></div><div class="c-line"></div></div>
-                
-                <svg class="chart-svg" viewBox="0 0 1200 240" preserveAspectRatio="none" id="chartSvgElement">
-                  <defs>
-                    <linearGradient id="gradientCurve" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.2" />
-                      <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0" />
-                    </linearGradient>
-                  </defs>
-                  
-                  <path d="" fill="url(#gradientCurve)" id="chartPathFill" />
-                  <path d="" fill="none" stroke="var(--color-primary)" stroke-width="3" id="chartPathLine" />
-                  
-                  <g id="chartPointsGroup"></g>
-                </svg>
-
-                <div class="chart-x-axis" id="chartXAxis">
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="content-box p-0 overflow-visible"> 
-          <div class="flex-between align-center p-24 border-bottom-dark">
-            <h3 class="box-title m-0">Transaksi Terbaru</h3>
-            <button class="text-primary text-tiny bold tracking-wide text-decoration-none btn-lihat-semua" id="btnLihatSemua">LIHAT SEMUA</button>
-          </div>
-          
-          <table class="finance-table w-100">
-            <thead>
-              <tr>
-                <th>TANGGAL</th>
-                <th>ID PESANAN</th>
-                <th>TIM</th>
-                <th>JUMLAH</th>
-                <th>STATUS</th>
-                <th style="text-align: right;">AKSI</th>
-              </tr>
-            </thead>
-            <tbody id="financeTableBody">
-              </tbody>
-          </table>
-        </div>
-
-      </main>
+     </div>
     </div>
-  </div>
-
-  <div id="modalInvoice" class="modal-overlay hidden">
-    <div class="modal-content" style="max-width: 450px; padding: 0; background: #0a0a0a; overflow: hidden;">
-      <div style="background: #111; padding: 24px; border-bottom: 1px dashed #333; position: relative;">
-        <button id="closeInvoice" style="position: absolute; right: 24px; top: 24px; background: none; border: none; color: #888; font-size: 24px; cursor: pointer;">&times;</button>
-        <h3 class="text-white m-0 mb-4" style="font-size: 20px;">Detail Invoice</h3>
-        <p class="text-primary m-0 bold" id="invId" style="letter-spacing: 1px;">#BK-0000</p>
-      </div>
-      
-      <div style="padding: 24px;">
-        <div class="flex-between mb-16">
-          <span class="text-muted text-small">Tanggal</span>
-          <span class="text-white bold" id="invDate">Mei 24, 2026</span>
+    <div class="sidebar-menus">
+     <ul class="menu-list">
+      <li>
+       <a class="menu-item" href="admin-dashboard.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <rect height="7" width="7" x="3" y="3">
+         </rect>
+         <rect height="7" width="7" x="14" y="3">
+         </rect>
+         <rect height="7" width="7" x="14" y="14">
+         </rect>
+         <rect height="7" width="7" x="3" y="14">
+         </rect>
+        </svg>
+        Ringkasan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-schedule.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <rect height="18" rx="2" ry="2" width="18" x="3" y="4">
+         </rect>
+         <line x1="16" x2="16" y1="2" y2="6">
+         </line>
+         <line x1="8" x2="8" y1="2" y2="6">
+         </line>
+         <line x1="3" x2="21" y1="10" y2="10">
+         </line>
+        </svg>
+        Manajemen Jadwal
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-venues.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <path d="M22 12h-4l-3 9L9 3l-3 9H2">
+         </path>
+        </svg>
+        Kelola Lapangan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item d-flex align-center justify-between" href="admin-payment-verification.html" style="width: 100%;">
+        <div class="d-flex align-center gap-16">
+         <div style="position: relative; display: flex; align-items: center;">
+          <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+           <rect height="14" rx="2" width="20" x="2" y="5">
+           </rect>
+           <line x1="2" x2="22" y1="10" y2="10">
+           </line>
+          </svg>
+          <span class="badge-red-icon" id="badgeVerifikasiSide" style="display: none;">
+           0
+          </span>
+         </div>
+         <span>
+          Verifikasi Pembayaran
+         </span>
         </div>
-        <div class="flex-between mb-16">
-          <span class="text-muted text-small">Tim</span>
-          <span class="text-white bold" id="invTeam">Nama Tim</span>
+       </a>
+      </li>
+      <a class="menu-item active" href="admin-finance.html">
+       <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <line x1="18" x2="18" y1="20" y2="10">
+        </line>
+        <line x1="12" x2="12" y1="20" y2="4">
+        </line>
+        <line x1="6" x2="6" y1="20" y2="14">
+        </line>
+       </svg>
+       Laporan Keuangan
+      </a>
+      <li>
+       <a class="menu-item d-flex align-center justify-between" href="admin-messages.html" style="width: 100%;">
+        <div class="d-flex align-center gap-16">
+         <div style="position: relative; display: flex; align-items: center;">
+          <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+           </path>
+           <polyline points="22,6 12,13 2,6">
+           </polyline>
+          </svg>
+          <span class="badge-red-icon" id="badgePesanSide" style="display: none;">
+           0
+          </span>
+         </div>
+         <span>
+          Pesan Masuk
+         </span>
         </div>
-        <div class="flex-between mb-16">
-          <span class="text-muted text-small">Status</span>
-          <span id="invStatusBadge"></span>
-        </div>
-        
-        <div style="height: 1px; background: #222; margin: 24px 0;"></div>
-        
-        <div class="flex-between">
-          <span class="text-muted" style="font-size: 16px;">Total Pembayaran</span>
-          <span class="text-primary bold" id="invAmount" style="font-size: 24px;">Rp 0</span>
-        </div>
-      </div>
-
-      <div style="padding: 24px; background: #111; border-top: 1px solid #222; text-align: center;">
-        <button class="btn btn-primary w-100 py-12 bold d-flex align-center justify-center gap-8" id="btnCetakInvoice">
-          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#000" stroke-width="2" fill="none"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-          Cetak Invoice
-        </button>
-      </div>
+       </a>
+      </li>
+     </ul>
+     <ul class="menu-list bottom-menu">
+      <li>
+       <a class="menu-item" href="admin-settings.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <circle cx="12" cy="12" r="3">
+         </circle>
+         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+         </path>
+        </svg>
+        Pengaturan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-help.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <circle cx="12" cy="12" r="10">
+         </circle>
+         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3">
+         </path>
+         <line x1="12" x2="12.01" y1="17" y2="17">
+         </line>
+        </svg>
+        Bantuan
+       </a>
+      </li>
+      <a class="menu-item" href="#" id="btnLogoutSidebar" style="color: #ff5555; margin-top: 8px;">
+       <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4">
+        </path>
+        <polyline points="16 17 21 12 16 7">
+        </polyline>
+        <line x1="21" x2="9" y1="12" y2="12">
+        </line>
+       </svg>
+       Keluar Akun
+      </a>
+     </ul>
     </div>
+   </aside>
+   <div class="admin-main">
+    <header class="admin-topbar">
+     <div class="topbar-search">
+      <svg fill="none" height="16" stroke="#888" stroke-width="2" viewBox="0 0 24 24" width="16">
+       <circle cx="11" cy="11" r="8">
+       </circle>
+       <line x1="21" x2="16.65" y1="21" y2="16.65">
+       </line>
+      </svg>
+      <input id="searchTransaksi" placeholder="Cari transaksi berdasarkan ID atau Nama Tim..." type="text"/>
+     </div>
+     <div class="topbar-actions">
+      <button class="icon-btn position-relative">
+       <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9">
+        </path>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0">
+        </path>
+       </svg>
+       <span class="notification-dot">
+       </span>
+      </button>
+      <div class="topbar-profile">
+       <img alt="Admin" src="#"/>
+      </div>
+     </div>
+    </header>
+    <main class="admin-content-area">
+     <div class="flex-between align-center mb-32">
+      <div>
+       <h1 class="page-title text-white m-0 mb-8" style="font-size: 28px;">
+        Ikhtisar Keuangan
+       </h1>
+       <p class="text-muted text-small m-0">
+        Lacak pendapatan, pembayaran tertunda, dan total transaksi.
+       </p>
+      </div>
+      <button class="btn-outline-dark py-12 px-24 bold d-flex align-center gap-8" id="btnEkspor">
+       <svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4">
+        </path>
+        <polyline points="7 10 12 15 17 10">
+        </polyline>
+        <line x1="12" x2="12" y1="15" y2="3">
+        </line>
+       </svg>
+       Ekspor Laporan
+      </button>
+     </div>
+     <div class="finance-stats-grid mb-32">
+      <div class="fin-card">
+       <div class="fc-icon-wrapper">
+        <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18">
+         </polyline>
+         <polyline points="17 6 23 6 23 12">
+         </polyline>
+        </svg>
+       </div>
+       <label class="fc-label">
+        TOTAL PENDAPATAN (YTD)
+       </label>
+       <h2 class="fc-value">
+        Rp 85.2M
+       </h2>
+       <p class="fc-trend trend-up">
+        <svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14">
+         <line x1="12" x2="12" y1="19" y2="5">
+         </line>
+         <polyline points="5 12 12 5 19 12">
+         </polyline>
+        </svg>
+        +12.5% vs bulan lalu
+       </p>
+      </div>
+      <div class="fin-card">
+       <div class="fc-icon-wrapper">
+        <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+         <circle cx="12" cy="12" r="10">
+         </circle>
+         <polyline points="12 6 12 12 16 14">
+         </polyline>
+        </svg>
+       </div>
+       <label class="fc-label">
+        PEMBAYARAN TERTUNDA
+       </label>
+       <h2 class="fc-value text-white">
+        Rp 4.5M
+       </h2>
+       <p class="fc-subtext">
+        Dari 18 pesanan
+       </p>
+      </div>
+      <div class="fin-card">
+       <div class="fc-icon-wrapper">
+        <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+         </path>
+         <polyline points="14 2 14 8 20 8">
+         </polyline>
+         <line x1="16" x2="8" y1="13" y2="13">
+         </line>
+         <line x1="16" x2="8" y1="17" y2="17">
+         </line>
+         <polyline points="10 9 9 9 8 9">
+         </polyline>
+        </svg>
+       </div>
+       <label class="fc-label">
+        TOTAL TRANSAKSI
+       </label>
+       <h2 class="fc-value text-white">
+        1,248
+       </h2>
+       <p class="fc-trend trend-up-blue">
+        <svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14">
+         <line x1="12" x2="12" y1="19" y2="5">
+         </line>
+         <polyline points="5 12 12 5 19 12">
+         </polyline>
+        </svg>
+        +4.2% vs bulan lalu
+       </p>
+      </div>
+     </div>
+     <div class="content-box mb-32">
+      <div class="flex-between align-center mb-24">
+       <h3 class="box-title">
+        Pertumbuhan Pendapatan
+       </h3>
+       <div style="position: relative; display: flex; align-items: center;">
+        <select class="btn-outline-dark text-small bold" id="filterWaktuGrafik" style="appearance: none; padding: 10px 36px 10px 16px; outline: none; background: #111;">
+         <option value="6">
+          6 Bulan Terakhir
+         </option>
+         <option value="12">
+          1 Tahun Terakhir
+         </option>
+         <option value="ytd">
+          Tahun Ini (YTD)
+         </option>
+        </select>
+        <svg fill="none" height="14" stroke="currentColor" stroke-width="2" style="position: absolute; right: 12px; pointer-events: none;" viewBox="0 0 24 24" width="14">
+         <polyline points="6 9 12 15 18 9">
+         </polyline>
+        </svg>
+       </div>
+      </div>
+      <div class="custom-chart-area">
+       <div class="chart-y-axis">
+        <span>
+         18M
+        </span>
+        <span>
+         17M
+        </span>
+        <span>
+         16M
+        </span>
+        <span>
+         15M
+        </span>
+        <span>
+         14M
+        </span>
+        <span>
+         13M
+        </span>
+        <span>
+         12M
+        </span>
+        <span>
+         11M
+        </span>
+        <span>
+         10M
+        </span>
+       </div>
+       <div class="chart-scroll-container" id="chartScrollContainer">
+        <div class="chart-crosshair" id="chartCrosshair">
+        </div>
+        <div class="chart-scroll-inner" id="chartInner">
+         <div class="chart-grid">
+          <div class="c-line">
+          </div>
+          <div class="c-line">
+          </div>
+          <div class="c-line">
+          </div>
+          <div class="c-line">
+          </div>
+          <div class="c-line">
+          </div>
+          <div class="c-line">
+          </div>
+          <div class="c-line">
+          </div>
+          <div class="c-line">
+          </div>
+          <div class="c-line">
+          </div>
+         </div>
+         <svg class="chart-svg" id="chartSvgElement" preserveAspectRatio="none" viewBox="0 0 1200 240">
+          <defs>
+           <linearGradient id="gradientCurve" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.2">
+            </stop>
+            <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0">
+            </stop>
+           </linearGradient>
+          </defs>
+          <path d="" fill="url(#gradientCurve)" id="chartPathFill">
+          </path>
+          <path d="" fill="none" id="chartPathLine" stroke="var(--color-primary)" stroke-width="3">
+          </path>
+          <g id="chartPointsGroup">
+          </g>
+         </svg>
+         <div class="chart-x-axis" id="chartXAxis">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="content-box p-0 overflow-visible">
+      <div class="flex-between align-center p-24 border-bottom-dark">
+       <h3 class="box-title m-0">
+        Transaksi Terbaru
+       </h3>
+       <button class="text-primary text-tiny bold tracking-wide text-decoration-none btn-lihat-semua" id="btnLihatSemua">
+        LIHAT SEMUA
+       </button>
+      </div>
+      <table class="finance-table w-100">
+       <thead>
+        <tr>
+         <th>
+          TANGGAL
+         </th>
+         <th>
+          ID PESANAN
+         </th>
+         <th>
+          TIM
+         </th>
+         <th>
+          JUMLAH
+         </th>
+         <th>
+          STATUS
+         </th>
+         <th style="text-align: right;">
+          AKSI
+         </th>
+        </tr>
+       </thead>
+       <tbody id="financeTableBody">
+       </tbody>
+      </table>
+     </div>
+    </main>
+   </div>
   </div>
-
-  <script src="assets/js/pages/admin-finance.js"></script>
-</body>
+  <div class="modal-overlay hidden" id="modalInvoice">
+   <div class="modal-content" style="max-width: 450px; padding: 0; background: #0a0a0a; overflow: hidden;">
+    <div style="background: #111; padding: 24px; border-bottom: 1px dashed #333; position: relative;">
+     <button id="closeInvoice" style="position: absolute; right: 24px; top: 24px; background: none; border: none; color: #888; font-size: 24px; cursor: pointer;">
+      ×
+     </button>
+     <h3 class="text-white m-0 mb-4" style="font-size: 20px;">
+      Detail Invoice
+     </h3>
+     <p class="text-primary m-0 bold" id="invId" style="letter-spacing: 1px;">
+      #BK-0000
+     </p>
+    </div>
+    <div style="padding: 24px;">
+     <div class="flex-between mb-16">
+      <span class="text-muted text-small">
+       Tanggal
+      </span>
+      <span class="text-white bold" id="invDate">
+       Mei 24, 2026
+      </span>
+     </div>
+     <div class="flex-between mb-16">
+      <span class="text-muted text-small">
+       Tim
+      </span>
+      <span class="text-white bold" id="invTeam">
+       Nama Tim
+      </span>
+     </div>
+     <div class="flex-between mb-16">
+      <span class="text-muted text-small">
+       Status
+      </span>
+      <span id="invStatusBadge">
+      </span>
+     </div>
+     <div style="height: 1px; background: #222; margin: 24px 0;">
+     </div>
+     <div class="flex-between">
+      <span class="text-muted" style="font-size: 16px;">
+       Total Pembayaran
+      </span>
+      <span class="text-primary bold" id="invAmount" style="font-size: 24px;">
+       Rp 0
+      </span>
+     </div>
+    </div>
+    <div style="padding: 24px; background: #111; border-top: 1px solid #222; text-align: center;">
+     <button class="btn btn-primary w-100 py-12 bold d-flex align-center justify-center gap-8" id="btnCetakInvoice">
+      <svg fill="none" height="16" stroke="#000" stroke-width="2" viewBox="0 0 24 24" width="16">
+       <polyline points="6 9 6 2 18 2 18 9">
+       </polyline>
+       <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+       </path>
+       <rect height="8" width="12" x="6" y="14">
+       </rect>
+      </svg>
+      Cetak Invoice
+     </button>
+    </div>
+   </div>
+  </div>
+  <script src="assets/js/global.js">
+  </script>
+  <script src="assets/js/pages/admin-finance.js">
+  </script>
+  <script src="assets/js/pages/admin-guard.js">
+  </script>
+ </body>
 </html>

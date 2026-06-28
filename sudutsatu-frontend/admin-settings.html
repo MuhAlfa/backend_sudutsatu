@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Pengaturan Sistem - Admin SudutSatu
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+  </script>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-dashboard.css" rel="stylesheet"/>
+  <link href="assets/css/pages/admin-settings.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <style>
+   /* Melarang SweetAlert menambahkan padding dan menyembunyikan scrollbar */
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+        padding-right: 0 !important;
+        overflow-y: auto !important; 
+    }
+
+    /* Melarang SweetAlert mengutak-atik tinggi halaman */
+    html.swal2-shown, 
+    body.swal2-shown {
+        height: auto !important;
+    }
+
+    /* kunci lebar body 100% */
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+  </style>
+ </head>
+ <body class="admin-body">
+  <div class="admin-layout">
+   <aside class="admin-sidebar">
+    <div class="sidebar-header">
+     <div class="brand-logo">
+      <div class="brand-icon">
+       <svg fill="none" height="18" stroke="var(--color-primary)" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <rect height="18" rx="2" ry="2" width="18" x="3" y="3">
+        </rect>
+        <circle cx="8.5" cy="8.5" r="1.5">
+        </circle>
+        <polyline points="21 15 16 10 5 21">
+        </polyline>
+       </svg>
+      </div>
+      <div>
+       <h2 class="brand-title text-primary">
+        SUDUTSATU
+       </h2>
+       <p class="brand-subtitle">
+        Facility Manager
+       </p>
+      </div>
+     </div>
+    </div>
+    <div class="sidebar-menus">
+     <ul class="menu-list">
+      <li>
+       <a class="menu-item" href="admin-dashboard.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <rect height="7" width="7" x="3" y="3">
+         </rect>
+         <rect height="7" width="7" x="14" y="3">
+         </rect>
+         <rect height="7" width="7" x="14" y="14">
+         </rect>
+         <rect height="7" width="7" x="3" y="14">
+         </rect>
+        </svg>
+        Ringkasan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-schedule.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <rect height="18" rx="2" ry="2" width="18" x="3" y="4">
+         </rect>
+         <line x1="16" x2="16" y1="2" y2="6">
+         </line>
+         <line x1="8" x2="8" y1="2" y2="6">
+         </line>
+         <line x1="3" x2="21" y1="10" y2="10">
+         </line>
+        </svg>
+        Manajemen Jadwal
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-venues.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <path d="M22 12h-4l-3 9L9 3l-3 9H2">
+         </path>
+        </svg>
+        Kelola Lapangan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item d-flex align-center justify-between" href="admin-payment-verification.html" style="width: 100%;">
+        <div class="d-flex align-center gap-16">
+         <div style="position: relative; display: flex; align-items: center;">
+          <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+           <rect height="14" rx="2" width="20" x="2" y="5">
+           </rect>
+           <line x1="2" x2="22" y1="10" y2="10">
+           </line>
+          </svg>
+          <span class="badge-red-icon" id="badgeVerifikasiSide" style="display: none;">
+           0
+          </span>
+         </div>
+         <span>
+          Verifikasi Pembayaran
+         </span>
+        </div>
+       </a>
+      </li>
+      <a class="menu-item" href="admin-finance.html">
+       <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <line x1="18" x2="18" y1="20" y2="10">
+        </line>
+        <line x1="12" x2="12" y1="20" y2="4">
+        </line>
+        <line x1="6" x2="6" y1="20" y2="14">
+        </line>
+       </svg>
+       Laporan Keuangan
+      </a>
+      <li>
+       <a class="menu-item d-flex align-center justify-between" href="admin-messages.html" style="width: 100%;">
+        <div class="d-flex align-center gap-16">
+         <div style="position: relative; display: flex; align-items: center;">
+          <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+           </path>
+           <polyline points="22,6 12,13 2,6">
+           </polyline>
+          </svg>
+          <span class="badge-red-icon" id="badgePesanSide" style="display: none;">
+           0
+          </span>
+         </div>
+         <span>
+          Pesan Masuk
+         </span>
+        </div>
+       </a>
+      </li>
+     </ul>
+     <ul class="menu-list bottom-menu">
+      <li>
+       <a class="menu-item active" href="admin-settings.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <circle cx="12" cy="12" r="3">
+         </circle>
+         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+         </path>
+        </svg>
+        Pengaturan
+       </a>
+      </li>
+      <li>
+       <a class="menu-item" href="admin-help.html">
+        <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+         <circle cx="12" cy="12" r="10">
+         </circle>
+         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3">
+         </path>
+         <line x1="12" x2="12.01" y1="17" y2="17">
+         </line>
+        </svg>
+        Bantuan
+       </a>
+      </li>
+      <a class="menu-item" href="#" id="btnLogoutSidebar" style="color: #ff5555; margin-top: 8px;">
+       <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4">
+        </path>
+        <polyline points="16 17 21 12 16 7">
+        </polyline>
+        <line x1="21" x2="9" y1="12" y2="12">
+        </line>
+       </svg>
+       Keluar Akun
+      </a>
+     </ul>
+    </div>
+   </aside>
+   <div class="admin-main">
+    <header class="admin-topbar flex-between align-center">
+     <div class="topbar-search">
+      <svg fill="none" height="16" stroke="#888" stroke-width="2" viewBox="0 0 24 24" width="16">
+       <circle cx="11" cy="11" r="8">
+       </circle>
+       <line x1="21" x2="16.65" y1="21" y2="16.65">
+       </line>
+      </svg>
+      <input placeholder="Pencarian cepat..." type="text"/>
+     </div>
+     <div class="topbar-actions">
+      <button class="icon-btn position-relative">
+       <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9">
+        </path>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0">
+        </path>
+       </svg>
+       <span class="notification-dot">
+       </span>
+      </button>
+      <div class="topbar-profile">
+       <img alt="Admin" src="#"/>
+      </div>
+     </div>
+    </header>
+    <main class="admin-content-area">
+     <div class="content-header mb-32">
+      <h1 class="page-title text-white mb-8">
+       Pengaturan Sistem
+      </h1>
+      <p class="text-muted text-small m-0">
+       Kelola informasi profil, preferensi pembayaran, operasional, staf, dan notifikasi.
+      </p>
+     </div>
+     <div class="settings-layout">
+      <nav class="settings-nav">
+       <button class="set-tab-btn active" data-target="tab-profile">
+        Profil Akun
+       </button>
+       <button class="set-tab-btn" data-target="tab-payment">
+        Pengaturan Pembayaran
+       </button>
+       <button class="set-tab-btn" data-target="tab-operational">
+        Operasional Fasilitas
+       </button>
+       <button class="set-tab-btn" data-target="tab-staff">
+        Manajemen Staf
+       </button>
+       <button class="set-tab-btn" data-target="tab-notif">
+        Notifikasi &amp; Alert
+       </button>
+      </nav>
+      <div class="settings-content">
+       <div class="set-panel active-panel" id="tab-profile">
+        <h3 class="panel-title">
+         Profil Akun
+        </h3>
+        <form class="set-form" id="formProfile">
+         <div class="form-group mb-24 pb-24 border-bottom-dark" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img alt="Profile" class="profile-pic-large mb-16" id="profileImagePreview" src="#"/>
+          <input accept="image/png, image/jpeg, image/jpg" id="uploadFotoProfil" style="display: none;" type="file"/>
+          <button class="btn-outline-dark text-small py-8 px-16 mb-8" id="btnUbahFoto" type="button">
+           Ubah Foto
+          </button>
+          <p class="text-tiny text-muted m-0">
+           Rekomendasi ukuran: 256x256px. Maksimal 2MB.
+          </p>
+         </div>
+         <div class="form-grid mb-24">
+          <div class="form-group">
+           <label class="form-label">
+            Nama Lengkap
+           </label>
+           <input class="form-input" required="" type="text" value="Budi SudutSatu"/>
+          </div>
+          <div class="form-group">
+           <label class="form-label">
+            Jabatan / Role
+           </label>
+           <input class="form-input text-muted" readonly="" style="background: #111;" type="text" value="Super Admin"/>
+          </div>
+         </div>
+         <div class="form-group mb-24">
+          <label class="form-label">
+           Alamat Email
+          </label>
+          <input class="form-input" required="" type="email" value="admin@sudutsatu.com"/>
+         </div>
+         <h4 class="text-white mt-32 mb-16">
+          Ubah Kata Sandi
+         </h4>
+         <div class="form-group mb-16">
+          <label class="form-label">
+           Kata Sandi Saat Ini
+          </label>
+          <input class="form-input" placeholder="Masukkan kata sandi lama" type="password"/>
+         </div>
+         <div class="form-grid mb-24">
+          <div class="form-group">
+           <label class="form-label">
+            Kata Sandi Baru
+           </label>
+           <input class="form-input" placeholder="Minimal 8 karakter" type="password"/>
+          </div>
+          <div class="form-group">
+           <label class="form-label">
+            Konfirmasi Kata Sandi Baru
+           </label>
+           <input class="form-input" placeholder="Ulangi kata sandi baru" type="password"/>
+          </div>
+         </div>
+         <div class="flex-end">
+          <button class="btn btn-primary btn-save" type="submit">
+           Simpan Perubahan
+          </button>
+         </div>
+        </form>
+       </div>
+       <div class="set-panel" id="tab-payment">
+        <h3 class="panel-title">
+         Pengaturan Pembayaran
+        </h3>
+        <form class="set-form" id="formPayment">
+         <div class="form-group mb-24">
+          <label class="form-label">
+           Aturan Down Payment (DP)
+          </label>
+          <select class="form-input custom-select">
+           <option value="50">
+            Wajib DP 50%
+           </option>
+           <option value="100">
+            Wajib Lunas (100%)
+           </option>
+           <option value="0">
+            Bisa Bayar di Tempat (0%)
+           </option>
+          </select>
+         </div>
+         <div class="form-group mb-24">
+          <label class="form-label">
+           Batas Waktu Pembayaran (Menit)
+          </label>
+          <input class="form-input" placeholder="Contoh: 15" type="number" value="15"/>
+          <p class="text-tiny text-muted mt-8">
+           Booking akan otomatis dibatalkan jika pelanggan tidak mengunggah bukti bayar dalam waktu ini.
+          </p>
+         </div>
+         <h4 class="text-white mt-32 mb-16">
+          Informasi Rekening Bank
+         </h4>
+         <div class="form-grid mb-24">
+          <div class="form-group">
+           <label class="form-label">
+            Nama Bank
+           </label>
+           <input class="form-input" type="text" value="BCA"/>
+          </div>
+          <div class="form-group">
+           <label class="form-label">
+            Nomor Rekening
+           </label>
+           <input class="form-input" type="text" value="1234567890"/>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+           <label class="form-label">
+            Atas Nama
+           </label>
+           <input class="form-input" type="text" value="PT Sudut Satu Indonesia"/>
+          </div>
+         </div>
+         <div class="flex-end">
+          <button class="btn btn-primary btn-save" type="submit">
+           Simpan Peraturan
+          </button>
+         </div>
+        </form>
+       </div>
+       <div class="set-panel" id="tab-operational">
+        <h3 class="panel-title">
+         Operasional Fasilitas
+        </h3>
+        <form class="set-form" id="formOperational">
+         <div class="flex-between align-center p-16 border-dark rounded-8 mb-32 bg-darker">
+          <div>
+           <h4 class="m-0 text-white mb-4">
+            Status Fasilitas Global
+           </h4>
+           <p class="m-0 text-small text-muted">
+            Matikan jika sedang libur raya atau renovasi total.
+           </p>
+          </div>
+          <label class="toggle-switch">
+           <input checked="" type="checkbox"/>
+           <span class="slider">
+           </span>
+          </label>
+         </div>
+         <h4 class="text-white mb-16">
+          Jam Operasional Harian
+         </h4>
+         <div class="hours-grid mb-32">
+          <div class="hour-row flex-between align-center py-12 border-bottom-dark">
+           <span class="text-white bold" style="width: 100px;">
+            Senin
+           </span>
+           <input class="form-input time-input" type="time" value="08:00"/>
+           <span class="text-muted">
+            -
+           </span>
+           <input class="form-input time-input" type="time" value="23:00"/>
+          </div>
+          <div class="hour-row flex-between align-center py-12 border-bottom-dark">
+           <span class="text-white bold" style="width: 100px;">
+            Selasa
+           </span>
+           <input class="form-input time-input" type="time" value="08:00"/>
+           <span class="text-muted">
+            -
+           </span>
+           <input class="form-input time-input" type="time" value="23:00"/>
+          </div>
+          <div class="hour-row flex-between align-center py-12 border-bottom-dark">
+           <span class="text-white bold" style="width: 100px;">
+            Rabu
+           </span>
+           <input class="form-input time-input" type="time" value="08:00"/>
+           <span class="text-muted">
+            -
+           </span>
+           <input class="form-input time-input" type="time" value="23:00"/>
+          </div>
+          <div class="hour-row flex-between align-center py-12 border-bottom-dark">
+           <span class="text-white bold" style="width: 100px;">
+            Kamis
+           </span>
+           <input class="form-input time-input" type="time" value="08:00"/>
+           <span class="text-muted">
+            -
+           </span>
+           <input class="form-input time-input" type="time" value="23:00"/>
+          </div>
+          <div class="hour-row flex-between align-center py-12 border-bottom-dark">
+           <span class="text-white bold" style="width: 100px;">
+            Jumat
+           </span>
+           <input class="form-input time-input" type="time" value="08:00"/>
+           <span class="text-muted">
+            -
+           </span>
+           <input class="form-input time-input" type="time" value="23:00"/>
+          </div>
+          <div class="hour-row flex-between align-center py-12 border-bottom-dark">
+           <span class="text-primary bold" style="width: 100px;">
+            Sabtu
+           </span>
+           <input class="form-input time-input" type="time" value="07:00"/>
+           <span class="text-muted">
+            -
+           </span>
+           <input class="form-input time-input" type="time" value="23:59"/>
+          </div>
+          <div class="hour-row flex-between align-center py-12">
+           <span class="text-primary bold" style="width: 100px;">
+            Minggu
+           </span>
+           <input class="form-input time-input" type="time" value="07:00"/>
+           <span class="text-muted">
+            -
+           </span>
+           <input class="form-input time-input" type="time" value="23:59"/>
+          </div>
+         </div>
+         <div class="flex-end">
+          <button class="btn btn-primary btn-save" type="submit">
+           Simpan Jadwal
+          </button>
+         </div>
+        </form>
+       </div>
+       <div class="set-panel" id="tab-staff">
+        <div class="flex-between align-center mb-24">
+         <h3 class="panel-title m-0">
+          Manajemen Staf
+         </h3>
+         <button class="btn btn-primary py-8 px-16 text-small bold" id="btnTambahStaf">
+          + Tambah Staf
+         </button>
+        </div>
+        <div class="modal-overlay" id="modalAddStaff" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+         <div class="modal-content" style="background: #0f1215; border: 1px solid #333; padding: 24px; border-radius: 12px; width: 400px;">
+          <h3 class="text-white m-0 mb-16">
+           Tambah Staf Baru
+          </h3>
+          <div class="form-group mb-16">
+           <label class="form-label">
+            Nama
+           </label>
+           <input class="form-input" id="newStaffName" type="text"/>
+          </div>
+          <div class="form-group mb-16">
+           <label class="form-label">
+            Email
+           </label>
+           <input class="form-input" type="email"/>
+          </div>
+          <div class="form-group mb-24">
+           <label class="form-label">
+            Role
+           </label>
+           <select class="form-input custom-select">
+            <option>
+             Kasir
+            </option>
+            <option>
+             Staf Lapangan
+            </option>
+            <option>
+             Manajer
+            </option>
+           </select>
+          </div>
+          <div class="d-flex gap-12">
+           <button class="btn btn-primary w-100" id="btnSaveStaff">
+            Undang Staf
+           </button>
+           <button class="btn-outline-dark w-100" id="btnCancelStaff">
+            Batal
+           </button>
+          </div>
+         </div>
+        </div>
+        <div class="table-responsive">
+         <table class="staff-table w-100">
+          <thead>
+           <tr>
+            <th>
+             NAMA STAF
+            </th>
+            <th>
+             ROLE
+            </th>
+            <th>
+             EMAIL
+            </th>
+            <th>
+             STATUS
+            </th>
+            <th>
+             AKSI
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td class="text-white bold">
+             Budi SudutSatu
+            </td>
+            <td>
+             <span class="role-badge role-super">
+              Super Admin
+             </span>
+            </td>
+            <td>
+             admin@sudutsatu.com
+            </td>
+            <td>
+             <span class="text-primary">
+              Aktif
+             </span>
+            </td>
+            <td>
+             -
+            </td>
+           </tr>
+           <tr>
+            <td class="text-white bold">
+             Siti Kasir
+            </td>
+            <td>
+             <span class="role-badge role-staff">
+              Kasir
+             </span>
+            </td>
+            <td>
+             siti@sudutsatu.com
+            </td>
+            <td>
+             <span class="text-primary">
+              Aktif
+             </span>
+            </td>
+            <td>
+             <button class="btn-text text-red">
+              Hapus
+             </button>
+            </td>
+           </tr>
+           <tr>
+            <td class="text-white bold">
+             Ahmad Lapangan
+            </td>
+            <td>
+             <span class="role-badge role-staff">
+              Staf Lapangan
+             </span>
+            </td>
+            <td>
+             ahmad@sudutsatu.com
+            </td>
+            <td>
+             <span class="text-muted">
+              Nonaktif
+             </span>
+            </td>
+            <td>
+             <button class="btn-text text-red">
+              Hapus
+             </button>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+       <div class="set-panel" id="tab-notif">
+        <h3 class="panel-title">
+         Notifikasi &amp; Alert
+        </h3>
+        <form class="set-form" id="formNotif">
+         <div class="flex-between align-center py-16 border-bottom-dark">
+          <div>
+           <h4 class="m-0 text-white mb-4">
+            Email Laporan Mingguan
+           </h4>
+           <p class="m-0 text-small text-muted">
+            Terima ringkasan finansial dan booking setiap Senin pagi.
+           </p>
+          </div>
+          <label class="toggle-switch">
+           <input checked="" type="checkbox"/>
+           <span class="slider">
+           </span>
+          </label>
+         </div>
+         <div class="flex-between align-center py-16 border-bottom-dark">
+          <div>
+           <h4 class="m-0 text-white mb-4">
+            Peringatan Booking Baru
+           </h4>
+           <p class="m-0 text-small text-muted">
+            Bunyikan suara *ding* di panel admin saat ada booking baru.
+           </p>
+          </div>
+          <label class="toggle-switch">
+           <input checked="" type="checkbox"/>
+           <span class="slider">
+           </span>
+          </label>
+         </div>
+         <div class="flex-between align-center py-16 mb-24">
+          <div>
+           <h4 class="m-0 text-white mb-4">
+            WhatsApp Alert (Admin)
+           </h4>
+           <p class="m-0 text-small text-muted">
+            Kirim notifikasi WA ke nomor admin jika ada pembayaran tertunda.
+           </p>
+          </div>
+          <label class="toggle-switch">
+           <input type="checkbox"/>
+           <span class="slider">
+           </span>
+          </label>
+         </div>
+         <div class="flex-end mt-32">
+          <button class="btn btn-primary btn-save" type="submit">
+           Simpan Preferensi
+          </button>
+         </div>
+        </form>
+       </div>
+      </div>
+     </div>
+    </main>
+   </div>
+  </div>
+  <script src="assets/js/global.js">
+  </script>
+  <script src="assets/js/pages/admin-settings.js">
+  </script>
+  <script src="assets/js/pages/admin-guard.js">
+  </script>
+ </body>
+</html>

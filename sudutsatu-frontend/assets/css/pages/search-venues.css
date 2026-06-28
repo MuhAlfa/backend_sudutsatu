@@ -1,375 +1,135 @@
 /* ==========================================================================
-   PAGE: SEARCH-VENUES.CSS
+   CSS HALAMAN CARI LAPANGAN (USER) - BULLETPROOF VERSION
    ========================================================================== */
 
-/* Layout Utama Halaman Pencarian (Sidebar + Grid) */
-.search-container {
-  display: flex;
-  flex-direction: column; /* Mobile First: Sidebar di atas Grid */
-  gap: 24px;
-  padding-top: 32px;
-  padding-bottom: 60px;
+/* 1. RESET & FONDASI UTAMA */
+body.user-body { 
+  background-color: #0a0a0a; 
+  color: #fff; 
+  margin: 0; 
+  font-family: 'Inter', sans-serif; 
 }
 
-/* --- SIDEBAR FILTER --- */
-.filter-sidebar {
-  background-color: var(--color-bg-surface);
-  padding: 24px;
-  border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  position: sticky; /* Sticky filter */
-  top: 96px; /* Sticky di bawah Navbar */
-  height: max-content;
+/* 2. KELAS UTILITAS (Menjamin Tata Letak Sempurna) */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.d-flex { display: flex; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.align-center { display: flex; align-items: center; }
+.flex-wrap { display: flex; flex-wrap: wrap; }
+
+.gap-8 { gap: 8px; } 
+.gap-12 { gap: 12px; } 
+.gap-16 { gap: 16px; } 
+.gap-32 { gap: 32px; }
+
+.m-0 { margin: 0; } 
+.mb-4 { margin-bottom: 4px; } 
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; } 
+.mb-24 { margin-bottom: 24px; } 
+.mt-24 { margin-top: 24px; }
+.mr-8 { margin-right: 8px; } 
+.ml-auto { margin-left: auto; }
+.ml-8 { margin-left: 8px; }
+
+.py-12 { padding-top: 12px; padding-bottom: 12px; }
+.py-16 { padding-top: 16px; padding-bottom: 16px; }
+.py-32 { padding-top: 32px; padding-bottom: 32px; }
+.px-24 { padding-left: 24px; padding-right: 24px; }
+
+.text-primary { color: #ccff00; } 
+.text-white { color: #fff; } 
+.text-muted { color: #888; }
+.bold { font-weight: 700; } 
+.text-small { font-size: 13px; } 
+.text-tiny { font-size: 11px; }
+
+.uppercase { text-transform: uppercase; } 
+.tracking-wide { letter-spacing: 1px; }
+.text-decoration-none { text-decoration: none; }
+
+/* Tombol Dasar */
+.btn { cursor: pointer; border: none; font-family: 'Inter', sans-serif; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; }
+.btn-primary { background: #ccff00; color: #000; border-radius: 8px; }
+.btn-primary:hover { background: #b3e600; }
+.btn-text { background: none; border: none; cursor: pointer; color: #888; transition: 0.2s; }
+.btn-text:hover { color: #fff; }
+
+/* 3. HEADER / NAVBAR (Mirip index.html) */
+.user-navbar { 
+  background: #0a0a0a; 
+  border-bottom: 1px solid #1a1a1a; 
+  position: sticky; 
+  top: 0; 
+  z-index: 100; 
+}
+.nav-links { display: flex; align-items: center; }
+.nav-item { 
+  color: #888; 
+  text-decoration: none; 
+  font-size: 14px; 
+  font-weight: 600; 
+  padding-bottom: 6px; 
+  transition: 0.2s; 
+  border-bottom: 2px solid transparent; 
+}
+.nav-item:hover { color: #fff; }
+.nav-item.active { color: #fff; border-bottom: 2px solid #ccff00; }
+
+/* 4. LAYOUT GRID UTAMA */
+.search-layout { 
+  display: grid; 
+  grid-template-columns: 260px 1fr; 
+  gap: 32px; 
+  align-items: start; 
+}
+@media (max-width: 992px) { 
+  .search-layout { grid-template-columns: 1fr; } 
+  .user-navbar .nav-links { display: none; /* Sembunyikan menu di HP, bisa dibikin burger menu nanti */ }
 }
 
-.filter-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: var(--color-text-main);
-}
+/* 5. SIDEBAR FILTER */
+.filter-sidebar { background: #111; border: 1px solid #222; border-radius: 12px; padding: 24px; }
+.filter-title { display: block; font-size: 11px; font-weight: 700; color: #666; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
 
-.filter-group {
-  margin-bottom: 16px;
-}
+/* Custom Checkbox */
+.custom-checkbox { display: flex; align-items: center; gap: 12px; position: relative; cursor: pointer; margin-bottom: 12px; user-select: none; font-size: 14px; }
+.custom-checkbox input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+.checkmark { height: 18px; width: 18px; background-color: #1a1a1a; border: 1px solid #333; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+.custom-checkbox:hover input ~ .checkmark { border-color: #ccff00; }
+.custom-checkbox input:checked ~ .checkmark { background-color: #ccff00; border-color: #ccff00; }
+.custom-checkbox input:checked ~ .checkmark:after { content: ""; width: 4px; height: 8px; border: solid #000; border-width: 0 2px 2px 0; transform: rotate(45deg); display: block; }
 
-.filter-label {
-  display: block;
-  font-size: 13px;
-  color: var(--color-text-muted);
-  margin-bottom: 8px;
-}
+/* Time Pills (Tombol Pagi/Sore) */
+.time-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.time-pill { background: transparent; border: 1px solid #333; color: #888; padding: 10px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; text-align: center; }
+.time-pill:hover { border-color: #666; color: #fff; }
+.time-pill.active { background: #ccff00; border-color: #ccff00; color: #000; }
 
-/* Styling Input Form (Clean & Reusable-ready) */
-.form-input, .form-select {
-  width: 100%;
-  padding: 12px;
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: var(--border-radius-sm);
-  color: var(--color-text-main);
-  font-family: var(--font-family);
-  font-size: 14px;
-}
+/* 6. HEADER PENCARIAN (Kolom Kanan) */
+.search-header-box { background: #111; border: 1px solid #222; border-radius: 12px; padding: 24px; }
+.custom-select-dark { background: #0a0a0a; color: #fff; border: 1px solid #333; padding: 8px 16px; border-radius: 6px; outline: none; cursor: pointer; font-size: 13px; }
+.search-bar-dark { display: flex; align-items: center; gap: 12px; background: #0a0a0a; border: 1px solid #333; border-radius: 8px; padding: 12px 16px; width: 100%; box-sizing: border-box; }
+.search-bar-dark input { background: transparent; border: none; color: #fff; width: 100%; outline: none; font-size: 14px; }
 
-.form-input:focus, .form-select:focus {
-  border-color: var(--color-primary);
-  outline: none;
-}
+/* Tags / Chips Active */
+.filter-chip { background: transparent; border: 1px solid #ccff00; color: #ccff00; padding: 4px 12px; border-radius: 16px; font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.filter-chip:hover { background: rgba(204, 255, 0, 0.1); }
 
-/* --- VENUE LISTING GRID --- */
-.venue-listing {
-  flex: 1; /* Mengambil sisa ruang */
-}
+/* 7. GRID KARTU LAPANGAN */
+.venue-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.venue-card { background: #141414; border: 1px solid #222; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; text-decoration: none; }
+.venue-card:hover { transform: translateY(-4px); border-color: #333; box-shadow: 0 12px 24px rgba(0,0,0,0.5); }
+.card-img-wrapper { position: relative; height: 180px; width: 100%; background: #1a1a1a; }
+.card-img { width: 100%; height: 100%; object-fit: cover; }
 
-.listing-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
+.card-badges { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 6px; }
+.badge-green { background: #ccff00; color: #000; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; }
+.badge-dark { background: rgba(0,0,0,0.8); color: #fff; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; }
+.badge-red { background: #ff3333; color: #fff; font-size: 10px; font-weight: 800; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; }
 
-.results-count {
-  font-size: 14px;
-  color: var(--color-text-muted);
-}
-
-/* Grid Lapangan (Responsive) */
-.venue-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-/* --- REUSABLE COMPONENT: VENUE CARD --- */
-.venue-card {
-  background-color: var(--color-bg-surface);
-  border-radius: var(--border-radius-md);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.venue-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.card-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-  background-color: #1a1a1a; /* Fallback color */
-}
-
-.venue-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-type-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background-color: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(4px);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-primary);
-  text-transform: uppercase;
-}
-
-.venue-card-body {
-  padding: 20px;
-}
-
-.venue-card-name {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: var(--color-text-main);
-}
-
-.venue-card-location {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.venue-card-details {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.venue-card-rating {
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #ffcc00; /* Warna Emas untuk Rating */
-}
-
-.venue-card-price {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.price-unit {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--color-text-muted);
-}
-
-/* --- STATE MANAGEMENT UI --- */
-.state-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 80px 20px;
-  color: var(--color-text-muted);
-  grid-column: 1 / -1; /* Mengambil seluruh kolom grid */
-}
-
-.state-icon {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
-/* ==========================================================================
-   RESPONSIVE MEDIA QUERIES
-   ========================================================================== */
-
-/* Tablet (768px+) */
-@media (min-width: 768px) {
-  .search-container {
-    flex-direction: row; /* Sidebar di kiri, Grid di kanan */
-  }
-  
-  .filter-sidebar {
-    width: 260px; /* Lebar tetap untuk sidebar */
-  }
-}
-
-/* =========================================================
-   NAVBAR SEARCH & SUB-NAVBAR
-   ========================================================= */
-.nav-search-bar {
-  display: flex;
-  align-items: center;
-  background: #111;
-  border: 1px solid #333;
-  border-radius: 4px;
-  padding: 6px 12px;
-  width: 250px;
-}
-.nav-search-bar input {
-  background: transparent;
-  border: none;
-  color: #fff;
-  outline: none;
-  margin-left: 8px;
-  width: 100%;
-}
-
-.sub-navbar {
-  background-color: #141414;
-  border-top: 1px solid #222; 
-  padding: 16px 0;
-  margin-top: auto; 
-}
-.sub-navbar-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 600;
-  color: #888;
-}
-.sub-brand { font-size: 14px; font-weight: 700; color: #fff; }
-.sub-links { display: flex; gap: 24px; list-style: none; }
-.sub-links a { color: #888; letter-spacing: 0.5px; }
-.sub-links a:hover { color: var(--color-primary); }
-
-/* =========================================================
-   MAIN LAYOUT (2 COLUMNS)
-   ========================================================= */
-.search-layout {
-  display: flex;
-  gap: 32px;
-  padding-top: 32px;
-  padding-bottom: 64px;
-}
-
-/* =========================================================
-   SIDEBAR FILTERS
-   ========================================================= */
-.sidebar-filter {
-  width: 260px;
-  flex-shrink: 0;
-  background: #141414;
-  border: 1px solid #222;
-  border-radius: 8px;
-  padding: 24px;
-  height: fit-content;
-}
-.filter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #333;
-  padding-bottom: 16px;
-  margin-bottom: 24px;
-}
-.filter-header h3 { font-size: 16px; }
-.btn-reset { background: none; border: none; color: #888; font-size: 11px; cursor: pointer; }
-
-.filter-group { margin-bottom: 24px; }
-.filter-group h4 {
-  font-size: 11px;
-  color: #888;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  letter-spacing: 0.5px;
-}
-
-/* Checkbox Custom */
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-left: 28px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 13px;
-  color: #ccc;
-}
-.checkbox-label input { position: absolute; opacity: 0; cursor: pointer; }
-.checkmark {
-  position: absolute; left: 0; top: 0; height: 18px; width: 18px;
-  background-color: #222; border: 1px solid #444; border-radius: 4px;
-}
-.checkbox-label input:checked ~ .checkmark { background-color: var(--color-primary); border-color: var(--color-primary); }
-.checkmark:after { content: ""; position: absolute; display: none; }
-.checkbox-label input:checked ~ .checkmark:after {
-  display: block; left: 6px; top: 2px; width: 4px; height: 10px;
-  border: solid #000; border-width: 0 2px 2px 0; transform: rotate(45deg);
-}
-.count { margin-left: auto; color: #555; font-size: 12px; }
-
-/* Ketersediaan Waktu (Grid Buttons) */
-.time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.btn-time {
-  background: #111; border: 1px solid #333; color: #ccc;
-  padding: 8px; border-radius: 4px; cursor: pointer; font-size: 13px;
-}
-.btn-time.active { background: var(--color-primary); color: #000; border-color: var(--color-primary); font-weight: 600; }
-
-/* =========================================================
-   SEARCH RESULTS (RIGHT COLUMN)
-   ========================================================= */
-.search-results { flex-grow: 1; }
-.results-header {
-  display: flex; justify-content: space-between; align-items: center;
-  background: #141414; border: 1px solid #222; border-radius: 8px;
-  padding: 20px 24px; margin-bottom: 16px;
-}
-.results-title { font-size: 24px; margin-bottom: 4px; }
-.results-subtitle { font-size: 14px; color: #888; }
-.sort-by { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #888; }
-.sort-select { background: #111; color: #fff; border: 1px solid #333; padding: 6px 12px; border-radius: 4px; outline: none; }
-
-/* Active Filters Pills */
-.active-filters { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; font-size: 12px; }
-.active-filters .label { color: #888; }
-.pill { border: 1px solid var(--color-primary); color: var(--color-primary); padding: 4px 12px; border-radius: 20px; cursor: pointer; }
-.clear-all { color: #888; text-decoration: underline; }
-
-/* Venues Grid */
-.venues-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-
-/* Venue Card */
-.venue-card {
-  background: #141414; border: 1px solid #222; border-radius: 8px;
-  overflow: hidden; display: flex; flex-direction: column;
-}
-.card-image-wrapper { position: relative; height: 180px; width: 100%; }
-.card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-.image-placeholder { width: 100%; height: 100%; background: #222; display: flex; align-items: center; justify-content: center; color: #555; font-size: 12px; }
-
-/* Card Badges */
-.badge-stack { position: absolute; top: 12px; left: 12px; display: flex; flex-direction: column; gap: 4px; }
-.badge-top-left { position: absolute; top: 12px; left: 12px; padding: 4px 8px; font-size: 10px; font-weight: 700; border-radius: 4px; }
-.badge-stack .badge-top-left { position: relative; top: 0; left: 0; width: max-content;}
-.badge-green { background: var(--color-primary); color: #000; }
-.badge-red { background: #ff3333; color: #fff; }
-.badge-dark { background: rgba(0,0,0,0.6); color: #ccc; border: 1px solid #444; }
-
-.btn-heart { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid #444; border-radius: 4px; width: 28px; height: 28px; cursor: pointer; }
-.badge-bottom-left { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.8); padding: 4px 8px; font-size: 12px; font-weight: 700; border-radius: 4px; }
-.review-count { font-weight: 400; color: #aaa; font-size: 10px; }
-.badge-bottom-right { position: absolute; bottom: 12px; right: 12px; color: var(--color-primary); font-size: 16px; }
-
-/* Card Body & Footer */
-.card-content { padding: 16px; flex-grow: 1; border-bottom: 1px solid #222; }
-.card-content h3 { font-size: 16px; margin-bottom: 4px; }
-.card-content p { font-size: 12px; color: #888; }
-
-.card-footer { padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
-.price-info .label { font-size: 10px; color: #888; display: block; margin-bottom: 4px; }
-.price { font-size: 16px; font-weight: 700; }
-.price-strike { font-size: 12px; color: #555; text-decoration: line-through; margin-left: 4px; font-weight: 400; }
-.btn-arrow { background: transparent; border: 1px solid #444; color: #fff; width: 32px; height: 32px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
-.btn-arrow:hover { background: var(--color-primary); color: #000; border-color: var(--color-primary); }
+.card-rating { position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.8); padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 4px; font-size: 12px; color: #fff; font-weight: 700; }
+.card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.card-price-row { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; padding-top: 16px; border-top: 1px solid #222; }
+.btn-arrow { background: #222; color: #fff; border: none; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: 0.2s; font-size: 16px; font-weight: bold; }
+.venue-card:hover .btn-arrow { background: #ccff00; color: #000; }
